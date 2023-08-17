@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
+/*   Updated: 2023/08/14 20:51:16 by lucas            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/cub3d.h"
+
+int	get_size(t_game *game)
+{
+	int		fd;
+	char	*line;
+	int		size;
+
+	fd = open(game->map, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (-1);
+	while (line)
+	{
+		if (line == NULL)
+			return (-1);
+		free(line);
+		line = get_next_line(fd);
+		size++;
+	}
+	close(fd);
+	return (size);
+}
+
+char	**allocate_map(t_game *game, int fd)
+{
+	
+}
+
+t_game	game_init(t_game *game)
+{
+	int	fd;
+	int	nb_line;
+
+	
+	game->map_size = get_size(game);
+	fd = open(game->map, O_RDONLY);
+	if (fd == -1)
+		return ;
+	allocate_texture(game, fd);
+	game->tab_map = allocate_map(&game, fd);
+}
+
+int main(int argc, char **argv)
+{
+	t_game	game;
+	if (argc != 2)
+		return (printf("ERROR ARGS\n"), 1);
+	game.map = argv[1];
+	return (0);
+}
