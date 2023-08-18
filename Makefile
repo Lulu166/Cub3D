@@ -6,7 +6,7 @@
 #    By: lucas <lucas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/14 20:50:56 by lucas            ###   ########.fr        #
+#    Updated: 2023/08/18 00:23:15 by lucas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ DIR_INC = ./include/
 
 LIST_SRC =	main.c \
 			utils.c \
-			texture.c \
+			fill_texture.c \
+			fill_map.c \
+			parse_map.c \
+			error.c \
 			
 
 LIST_INC = cub3d.h

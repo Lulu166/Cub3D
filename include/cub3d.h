@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/14 20:52:33 by lucas            ###   ########.fr       */
+/*   Updated: 2023/08/18 11:29:23 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct  s_texture {
 	char	*SO;
 	char	*WE;
 	char	*EA;
-	char	*F;
-	char	*C;
+	int		*F;
+	int		*C;
 }   t_texture;
 
 typedef struct	s_game {
@@ -38,13 +38,20 @@ typedef struct	s_game {
 	char		*map;
 	char		**tab_map;
 	int			map_size;
+	int			count;
 }	t_game;
 
 /***************TEXTURE***************/
 void	allocate_texture(t_game *game, int fd);
 
-
 /***************UTILS***************/
-int	compare_str(char *s1, char *s2);
+int	compare_str(char *s1, char *s2, int len);
+
+/***************MAP***************/
+char	**allocate_map(t_game *game, int fd);
+int		parse_map(t_game *game);
+
+/***************ERROR***************/
+void	map_error(t_game *game);
 
 #endif

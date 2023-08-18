@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_char_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:48:27 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/07/19 15:58:45 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:55:31 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "libft.h"
-#include "../include/minishell.h"
 
 int	check_quote(char *str, int *index, char *charset)
 {

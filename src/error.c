@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 20:35:43 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/17 13:20:20 by lucas            ###   ########.fr       */
+/*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
+/*   Updated: 2023/08/17 23:47:05 by lucas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	compare_str(char *s1, char *s2, int len)
+void    free_pack(t_game *game)
 {
-	int	i;
+	int i;
 
+	free(game->texture.NO);
+	free(game->texture.SO);
+	free(game->texture.EA);
+	free(game->texture.WE);
+	free(game->texture.F);
+	free(game->texture.C);
 	i = 0;
-	while ((i < len) && (s1[i] || s2[i]))
+	if (game->tab_map)
 	{
-		if ((s1[i] != s2[i]) || (s2[i] != s1[i]))
-			return (0);
-		i++;
+		while (game->tab_map[i])
+			free(game->tab_map[i++]);
+		free(game->tab_map);
 	}
-	return (1);
+}
+
+void    map_error(t_game *game)
+{
+	printf("Error\n");
+	free_pack(game);
+	exit(1);
 }
