@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/17 23:51:36 by lucas            ###   ########.fr       */
+/*   Updated: 2023/08/19 16:04:03 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	**allocate_map(t_game *game, int fd)
 		free(line);
 		line = get_next_line(fd);
 		if (line == NULL)
-			return (map_tab);
+			return (map_tab[i] = NULL, map_tab);
 	}
 	return (map_error(game), NULL);
 }

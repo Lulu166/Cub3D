@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucas <lucas@student.42.fr>                +#+  +:+       +#+         #
+#    By: charles <charles@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/19 11:19:32 by lucas            ###   ########.fr        #
+#    Updated: 2023/08/19 16:01:08 by charles          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,10 @@ INC = $(addprefix $(DIR_INC), $(LIST_INC))
 
 DIR_LIBFT = libft
 
+DIR_MLX = minilibx-linux
+
+MLX = mlx.a
+
 LIBFT = libft/libft.a
 
 all : $(NAME)
@@ -53,10 +57,10 @@ $(LIBFT) : $(DIR_LIBFT)
 	$(MAKE) -C $(DIR_LIBFT)
 
 $(DIR_OBJ)%.o : $(DIR_SRC)%.c $(INC)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_INC)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_INC) -I $(DIR_MLX)
 
 $(NAME) : $(DIR_OBJ) $(OBJ) $(INC) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 
 bonus :
 	$(MAKE) -C bonus
