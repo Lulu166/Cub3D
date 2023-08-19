@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: charles <charles@student.42.fr>            +#+  +:+       +#+         #
+#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/19 16:01:08 by charles          ###   ########.fr        #
+#    Updated: 2023/08/19 16:56:24 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ DIR_SRC = ./src/
 DIR_OBJ = ./.obj/
 
 DIR_INC = ./include/
+
+MLX_DIR = ./minilibx-linux
 
 LIST_SRC =	main.c \
 			utils.c \

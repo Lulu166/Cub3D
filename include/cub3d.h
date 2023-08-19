@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/19 11:20:22 by lucas            ###   ########.fr       */
+/*   Updated: 2023/08/19 16:54:25 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define EMPTY 0
 # define WALL 1
 
+# include <../minilibx-linux/mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -23,6 +24,18 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+
+typedef struct	s_window {
+	void	*ref;
+	int		x;
+	int		y;
+}	t_window;
+
+typedef struct	s_screen {
+	void		*mlx;
+	void		*img;
+	t_window	window;
+}	t_screen;
 
 typedef struct  s_texture {
 	char	*NO;
@@ -35,6 +48,7 @@ typedef struct  s_texture {
 
 typedef struct	s_game {
 	t_texture	texture;
+	t_screen	screen;
 	char		*map;
 	char		**tab_map;
 	int			map_size;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/18 11:30:04 by lucas            ###   ########.fr       */
+/*   Updated: 2023/08/19 16:53:18 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	game_init(t_game *game)
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
 	parse_map(game);
+	game->screen.mlx = mlx_init();
+	game->screen.img = mlx_new_window(game->screen.mlx, 1920, 1080, "TEST");
+	mlx_loop(game->screen.mlx);
 }
 
 int	check_name(char	*name)
