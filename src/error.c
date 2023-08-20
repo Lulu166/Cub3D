@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/17 23:47:05 by lucas            ###   ########.fr       */
+/*   Updated: 2023/08/20 15:39:11 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    free_pack(t_game *game)
 {
-	int i;
+	//int i;
 
 	free(game->texture.NO);
 	free(game->texture.SO);
@@ -22,13 +22,13 @@ void    free_pack(t_game *game)
 	free(game->texture.WE);
 	free(game->texture.F);
 	free(game->texture.C);
-	i = 0;
-	if (game->tab_map)
-	{
-		while (game->tab_map[i])
-			free(game->tab_map[i++]);
-		free(game->tab_map);
-	}
+	//i = 0;
+	// if (game->tab_map)
+	// {
+	// 	while (game->tab_map[i])
+	// 		free(game->tab_map[i++]);
+	// 	free(game->tab_map);
+	// }
 }
 
 void    map_error(t_game *game)

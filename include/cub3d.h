@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/19 16:54:25 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:07:21 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct	s_game {
 
 /***************TEXTURE***************/
 void	allocate_texture(t_game *game, int fd);
+int		valid_line(char *line);
 
 /***************UTILS***************/
 int	compare_str(char *s1, char *s2, int len);
@@ -68,6 +69,9 @@ int		skip_space(t_game *game, int i, int *j);
 int		skip_wall(t_game *game, int i, int *j);
 int		skip_empty(t_game *game, int i, int *j);
 int		empty_error(t_game *game, int i, int j);
+
+/***************WINDOW***************/
+void    window_init(t_game *game);
 
 /***************ERROR***************/
 void	map_error(t_game *game);

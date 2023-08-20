@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/19 16:53:18 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:07:29 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	game_init(t_game *game)
 	int	fd;
 	
 	game->map_size = get_size(game);
+	game->texture.NO = NULL;
+	game->texture.SO = NULL;
+	game->texture.WE = NULL;
+	game->texture.EA = NULL;
+	game->texture.C = NULL;
+	game->texture.F = NULL;
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 		return ;
@@ -49,9 +55,7 @@ void	game_init(t_game *game)
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
 	parse_map(game);
-	game->screen.mlx = mlx_init();
-	game->screen.img = mlx_new_window(game->screen.mlx, 1920, 1080, "TEST");
-	mlx_loop(game->screen.mlx);
+	window_init(game);
 }
 
 int	check_name(char	*name)
