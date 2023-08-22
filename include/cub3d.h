@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/20 17:07:21 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/22 01:33:58 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bpr;
+	int		len;
+	int		endian;
+}	t_data;
+
 typedef struct	s_window {
 	void	*ref;
 	int		x;
@@ -33,7 +41,7 @@ typedef struct	s_window {
 
 typedef struct	s_screen {
 	void		*mlx;
-	void		*img;
+	void		*win;
 	t_window	window;
 }	t_screen;
 
@@ -49,6 +57,7 @@ typedef struct  s_texture {
 typedef struct	s_game {
 	t_texture	texture;
 	t_screen	screen;
+	t_data		*data;
 	char		*map;
 	char		**tab_map;
 	int			map_size;

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/20 17:07:29 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/22 11:33:08 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	check_name(char	*name)
 int main(int argc, char **argv)
 {
 	t_game	game;
+
 	if (argc != 2)
 		return (printf("Error\n"), 1);
 	else if (check_name(argv[1]) == 0)
