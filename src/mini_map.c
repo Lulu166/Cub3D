@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 15:18:05 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 18:26:30 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	my_pixel_loop(t_game *game, int height, int len, int color)
 void	mini_line(t_game *game, int i, int j, int height, int *lenght)
 {
 	if (game->tab_map[i][j] == '0')
-		my_pixel_loop(game, height, *lenght, 0x000000FF);
+		my_pixel_loop(game, height, *lenght, 0x808080);
 	else if (game->tab_map[i][j] == '1')
-		my_pixel_loop(game, height, *lenght, 0xFF0000);
+		my_pixel_loop(game, height, *lenght, 0xB03030);
 	if (j == game->player.x && i == game->player.y)
 		my_pixel_loop(game, height, *lenght, game->player.color);
 	*lenght += 16;

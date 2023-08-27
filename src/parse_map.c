@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 12:23:04 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:25:49 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	player_pos(t_game *game)
 
 	i = 0;
 	game->player.nb_p = 0;
-	game->player.color = 0x00FFFF00;
+	game->player.color = 0xFFD700;
 	while (game->tab_map[i])
 	{
 		j = 0;
@@ -53,7 +53,7 @@ int	map_closed(t_game *game)
 		if (game->tab_map[i][j] == ' ')
 			skip_space(game, i, &j);
 		if (game->tab_map[i][j] != '1')
-			map_error(game);
+			map_error(game, 1);
 		while (game->tab_map[i][j])
 		{
 			if (skip_wall(game, i, &j) == 2)
@@ -72,8 +72,8 @@ int	map_closed(t_game *game)
 int	parse_map(t_game *game)
 {
 	if (map_closed(game))
-		map_error(game);
+		map_error(game, 1);
 	if (player_pos(game) == 0)
-		map_error(game);
+		map_error(game, 1);
 	return (0);
 }

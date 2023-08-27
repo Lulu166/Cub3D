@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 14:03:52 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:27:34 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct	s_game {
 /***************TEXTURE***************/
 void	allocate_texture(t_game *game, int fd);
 int		valid_line(char *line);
+char	*supp_space(char *line, int to_supress);
+int		*allocate_RGB(t_game *game, char *line);
 
 /***************UTILS***************/
 int	compare_str(char *s1, char *s2, int len);
@@ -99,6 +101,7 @@ void	mini_map(t_game *game);
 int can_move(t_game *game, int x, int y);
 
 /***************ERROR***************/
-void	map_error(t_game *game);
+void	map_error(t_game *game, int is_map);
+void	free_for_end(t_game *game);
 
 #endif

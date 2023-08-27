@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 14:05:51 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:28:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	close_window(t_game *game)
 {
     mlx_destroy_window(game->screen.mlx, game->screen.win);
-	exit(0);
+	free_for_end(game);
+	exit (0);
 }
 
 int	key_press(int keycode, t_game *game)
@@ -23,6 +24,7 @@ int	key_press(int keycode, t_game *game)
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(game->screen.mlx, game->screen.win);
+		free_for_end(game);
 		exit(0);
 	}
 	else if (keycode == 100)
@@ -50,7 +52,7 @@ void    window_init(t_game *game)
 {
 	game->data = (t_data *)malloc(sizeof(t_data));
 	if (!game->data)
-		map_error(game);
+		map_error(game, 1);
     game->screen.mlx = mlx_init();
 	game->screen.win = mlx_new_window(game->screen.mlx, 1920, 1080, "Cub3D");
     game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);

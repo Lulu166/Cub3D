@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 12:11:08 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:25:05 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ char	*find_map(t_game *game, int fd)
 				return (NULL);
 			game->count++;
 		}
-		i = 0;
-		while (line[i])
+		i = -1;
+		while (line[++i])
 		{
 			if (line[i] == '1' || line[i] == '0')
 				return (line);
 			else if (line[i] != ' ')
 				return (NULL);
-			i++;
 		}
 	}
 	return (NULL);
@@ -70,7 +69,7 @@ char	**allocate_map(t_game *game, int fd)
 
 	i = 0;
 	line = find_map(game, fd);
-	map_tab = malloc(sizeof(char *) * ((game->map_size - game->count) + 1));
+	map_tab = malloc(sizeof(char *) * ((game->map_size - game->count) + 2));
 	while (line)
 	{
 		if (check_line(line) == 1)
@@ -78,7 +77,7 @@ char	**allocate_map(t_game *game, int fd)
 		else
 		{
 			free(line);
-			map_error(game);
+			map_error(game, 1);
 		}
 		i++;
 		free(line);
@@ -86,5 +85,5 @@ char	**allocate_map(t_game *game, int fd)
 		if (line == NULL)
 			return (map_tab[i] = NULL, map_tab);
 	}
-	return (map_error(game), NULL);
+	return (map_error(game, 1), NULL);
 }

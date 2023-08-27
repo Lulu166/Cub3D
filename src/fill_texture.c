@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/22 14:03:21 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:25:30 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*supp_space(char *line, int to_supress)
 	cpy = malloc(sizeof(char) * (ft_strlen(line) + to_supress));
 	if (!cpy)
 		return (NULL);
-	while (line[to_supress])
+	while (line[to_supress] && line[to_supress] != '\n')
 	{
 		cpy[i] = line[to_supress];
 		i++;
@@ -33,49 +33,23 @@ char	*supp_space(char *line, int to_supress)
 	return (cpy);
 }
 
-int	*parse_RGB(char *line)
-{
-	char	*cpy;
-	char	**split;
-	int		*tmp;
-	int		i;
-
-	tmp = malloc(sizeof(int) * 4);
-	cpy = supp_space(line, 2);
-	if (!cpy)
-		return (NULL);
-	split = ft_split(cpy, ',');
-	i = 0;
-	while (i < 3)
-	{
-		tmp[i] = ft_atoi(split[i]);
-		i++;
-	}
-	tmp[i] = '\0';
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-	return (tmp);
-}
-
 int	check_RGB(t_game *game, char *line)
 {
 	if (compare_str("F", line, 1) && game->texture.F == NULL)
 	{
-		game->texture.F = parse_RGB(line);
+		game->texture.F = allocate_RGB(game, line);
 		return (1);	
 	}
 	else if (compare_str("F", line, 1) && game->texture.F != NULL)
-		map_error(game);
+		map_error(game, 0);
 	if (compare_str("C", line, 1) && game->texture.C == NULL)
 	{
-		game->texture.C = parse_RGB(line);
+		game->texture.C = allocate_RGB(game, line);
 		return (1);
 	}
 	else if (compare_str("C", line, 1) && game->texture.C != NULL)
-		map_error(game);
-	map_error(game);
+		map_error(game, 0);
+	map_error(game, 0);
 	return (0);
 }
 
@@ -84,19 +58,19 @@ int check_texture(t_game *game, char *line)
 	if (compare_str("NO", line, 2) && game->texture.NO == NULL)
 		return (game->texture.NO = supp_space(line, 2), 1);
 	else if (compare_str("NO", line, 2) && game->texture.NO != NULL)
-		map_error(game);
+		map_error(game, 0);
 	if (compare_str("SO", line, 2) && game->texture.SO == NULL)
 		return (game->texture.SO = supp_space(line, 2), 1);
 	else if (compare_str("SO", line, 2) && game->texture.SO != NULL)
-		map_error(game);
+		map_error(game, 0);
 	if (compare_str("WE", line, 2) && game->texture.WE == NULL)
 		return (game->texture.WE = supp_space(line, 2), 1);
 	else if (compare_str("WE", line, 2) && game->texture.WE != NULL)
-		map_error(game);
+		map_error(game, 0);
 	if (compare_str("EA", line, 2) && game->texture.EA == NULL)
 		return (game->texture.EA = supp_space(line, 2), 1);	
 	else if (compare_str("EA", line, 2) && game->texture.EA != NULL)
-		map_error(game);
+		map_error(game, 0);
 	return (0);
 }
 

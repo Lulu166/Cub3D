@@ -6,11 +6,34 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/22 11:33:08 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:25:38 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	texture_exist(t_game *game)
+{
+	int	fd;
+
+	fd = open(game->texture.NO, O_RDONLY);
+    if (fd == -1)
+        map_error(game, 0);
+    close(fd);
+	fd = open(game->texture.SO, O_RDONLY);
+    if (fd == -1)
+        map_error(game, 0);
+    close(fd);
+	fd = open(game->texture.EA, O_RDONLY);
+    if (fd == -1)
+        map_error(game, 0);
+    close(fd);
+	fd = open(game->texture.WE, O_RDONLY);
+    if (fd == -1)
+        map_error(game, 0);
+    close(fd);
+    return 1;
+}
 
 int	get_size(t_game *game)
 {
@@ -52,6 +75,7 @@ void	game_init(t_game *game)
 	if (fd == -1)
 		return ;
 	allocate_texture(game, fd);
+	texture_exist(game);
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
 	parse_map(game);

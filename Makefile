@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/27 14:02:21 by luhumber         ###   ########.fr        #
+#    Updated: 2023/08/27 18:38:46 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIST_SRC =	main.c \
 			utils.c \
 			fill_texture.c \
 			fill_map.c \
+			parse_rgb.c \
 			parse_map.c \
 			parse_utils.c \
 			window_init.c \
