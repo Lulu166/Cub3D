@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 15:13:21 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:18:05 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	my_pixel_loop(t_game *game, int height, int len, int color)
 	i = 0;
 	pix_h = height;
 	pix_l = len;
-	while (i < 32)
+	while (i < 16)
 	{
 		j = 0;
 		pix_l = len;
-		while (j < 32)
+		while (j < 16)
 		{
 			my_mlx_pixel_put(game->data, pix_l, pix_h, color);
 			pix_l++;
@@ -53,7 +53,7 @@ void	mini_line(t_game *game, int i, int j, int height, int *lenght)
 		my_pixel_loop(game, height, *lenght, 0xFF0000);
 	if (j == game->player.x && i == game->player.y)
 		my_pixel_loop(game, height, *lenght, game->player.color);
-	*lenght += 32;
+	*lenght += 16;
 }
 
 void	mini_map(t_game *game)
@@ -65,21 +65,21 @@ void	mini_map(t_game *game)
 	int	count_h;
 	int	count_l;
 
-	i = game->player.y - 4;
+	i = game->player.y - 5;
 	if (i < 0)
 		i = 0;
 	height = 0;
 	count_h = -1;
-	while (game->tab_map[i] && ++count_h <= 8)
+	while (game->tab_map[i] && ++count_h <= 10)
 	{
 		lenght = 0;
 		count_l = -1;
-		j = game->player.x - 4;
+		j = game->player.x - 5;
 		if (j < 0)
 			j = 0;
-		while (game->tab_map[i][j] != '\n' && game->tab_map[i][j] != '\0' && ++count_l <= 8)
+		while (game->tab_map[i][j] != '\n' && game->tab_map[i][j] != '\0' && ++count_l <= 10)
 			mini_line(game, i, j++, height, &lenght);
 		i++;
-		height += 32;
+		height += 16;
 	}
 }
