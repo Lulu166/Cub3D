@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/22 01:33:58 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 14:03:52 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,17 @@ typedef struct  s_texture {
 	int		*C;
 }   t_texture;
 
+typedef struct	s_player {
+	int	x;
+	int	y;
+	int	color;
+	int	nb_p;
+}	t_player;
+
 typedef struct	s_game {
 	t_texture	texture;
 	t_screen	screen;
+	t_player	player;
 	t_data		*data;
 	char		*map;
 	char		**tab_map;
@@ -78,9 +86,17 @@ int		skip_space(t_game *game, int i, int *j);
 int		skip_wall(t_game *game, int i, int *j);
 int		skip_empty(t_game *game, int i, int *j);
 int		empty_error(t_game *game, int i, int j);
+int		is_empty(t_game *game, int i, int j);
+int		is_player(t_game *game, int i, int j);
 
 /***************WINDOW***************/
 void    window_init(t_game *game);
+
+/***************MINI_MAP***************/
+void	mini_map(t_game *game);
+
+/***************MOVEMENT***************/
+int can_move(t_game *game, int x, int y);
 
 /***************ERROR***************/
 void	map_error(t_game *game);

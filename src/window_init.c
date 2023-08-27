@@ -6,32 +6,11 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/22 11:33:51 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/27 14:05:51 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->len + x * (data->bpr / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	hook_reload(t_game *game)
-{
-	mlx_clear_window(game->screen.mlx, game->screen.win);
-	int x = 0;
-	while (x < 100)
-	{
-		my_mlx_pixel_put(game->data, x, 10, 0xFF0000);
-		x++;
-	}
-	mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
-	return (0);
-}
 
 int	close_window(t_game *game)
 {
@@ -41,12 +20,29 @@ int	close_window(t_game *game)
 
 int	key_press(int keycode, t_game *game)
 {
-	//printf("OK = %d\n", keycode);
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(game->screen.mlx, game->screen.win);
 		exit(0);
 	}
+	else if (keycode == 100)
+		can_move(game, game->player.x + 1, game->player.y);
+	else if (keycode == 119)
+		can_move(game, game->player.x, game->player.y - 1);
+	else if (keycode == 97)
+		can_move(game, game->player.x - 1, game->player.y);
+	else if (keycode == 115)
+		can_move(game, game->player.x, game->player.y + 1);
+	return (0);
+}
+
+int	hook_reload(t_game *game)
+{
+	mlx_destroy_image(game->screen.mlx, game->data->img);
+	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
+	mlx_clear_window(game->screen.mlx, game->screen.win);
+	mini_map(game);
+	mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }
 
@@ -63,5 +59,4 @@ void    window_init(t_game *game)
 	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
 	mlx_loop_hook(game->screen.mlx, hook_reload, game);
 	mlx_loop(game->screen.mlx);
-	
 }
