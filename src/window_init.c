@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/29 11:50:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:13:13 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int	key_press(int keycode, t_game *game)
 		can_move(game, game->player.x - 1, game->player.y);
 	else if (keycode == 115)
 		can_move(game, game->player.x, game->player.y + 1);
+	else if (keycode == 65363)
+		printf("Turn right\n");
+	else if (keycode == 65361)
+		printf("Turn left\n");
 	return (0);
 }
 
@@ -44,8 +48,8 @@ int	hook_reload(t_game *game)
 	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	mini_map(game);
-	// mlx_put_image_to_window
-	// 	(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
+	mlx_put_image_to_window
+		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 11:29:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:19:07 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
+
+enum position {NO, SO, EA, WE};
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>
@@ -55,10 +57,11 @@ typedef struct s_texture {
 }	t_texture;
 
 typedef struct s_player {
-	int	x;
-	int	y;
-	int	color;
-	int	nb_p;
+	enum position	pos;
+	int				x;
+	int				y;
+	int				color;
+	int				nb_p;
 }	t_player;
 
 typedef struct s_game {
