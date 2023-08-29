@@ -6,16 +6,16 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 19:25:59 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:04:35 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	parse_RGB(t_game *game, char *split)
+void	parse_rgb(t_game *game, char *split)
 {
 	int		i;
-	
+
 	i = -1;
 	if (split == NULL || split[0] == '\n')
 		map_error(game, 0);
@@ -24,7 +24,7 @@ void	parse_RGB(t_game *game, char *split)
 			map_error(game, 0);
 }
 
-int	*allocate_RGB(t_game *game, char *line)
+int	*allocate_rgb(t_game *game, char *line)
 {
 	char	*cpy;
 	char	**split;
@@ -39,7 +39,7 @@ int	*allocate_RGB(t_game *game, char *line)
 	i = 0;
 	while (i < 3)
 	{
-		parse_RGB(game, split[i]);
+		parse_rgb(game, split[i]);
 		tmp[i] = ft_atoi(split[i]);
 		i++;
 	}

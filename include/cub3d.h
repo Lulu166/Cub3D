@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 19:27:34 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:29:41 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bpr;
@@ -33,35 +33,35 @@ typedef struct	s_data {
 	int		endian;
 }	t_data;
 
-typedef struct	s_window {
+typedef struct s_window {
 	void	*ref;
 	int		x;
 	int		y;
 }	t_window;
 
-typedef struct	s_screen {
+typedef struct s_screen {
 	void		*mlx;
 	void		*win;
 	t_window	window;
 }	t_screen;
 
-typedef struct  s_texture {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	int		*F;
-	int		*C;
-}   t_texture;
+typedef struct s_texture {
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		*f;
+	int		*c;
+}	t_texture;
 
-typedef struct	s_player {
+typedef struct s_player {
 	int	x;
 	int	y;
 	int	color;
 	int	nb_p;
 }	t_player;
 
-typedef struct	s_game {
+typedef struct s_game {
 	t_texture	texture;
 	t_screen	screen;
 	t_player	player;
@@ -70,16 +70,18 @@ typedef struct	s_game {
 	char		**tab_map;
 	int			map_size;
 	int			count;
+	int			lenght;
+	int			height;
 }	t_game;
 
 /***************TEXTURE***************/
 void	allocate_texture(t_game *game, int fd);
 int		valid_line(char *line);
 char	*supp_space(char *line, int to_supress);
-int		*allocate_RGB(t_game *game, char *line);
+int		*allocate_rgb(t_game *game, char *line);
 
 /***************UTILS***************/
-int	compare_str(char *s1, char *s2, int len);
+int		compare_str(char *s1, char *s2, int len);
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);
@@ -92,13 +94,13 @@ int		is_empty(t_game *game, int i, int j);
 int		is_player(t_game *game, int i, int j);
 
 /***************WINDOW***************/
-void    window_init(t_game *game);
+void	window_init(t_game *game);
 
 /***************MINI_MAP***************/
 void	mini_map(t_game *game);
 
 /***************MOVEMENT***************/
-int can_move(t_game *game, int x, int y);
+int		can_move(t_game *game, int x, int y);
 
 /***************ERROR***************/
 void	map_error(t_game *game, int is_map);

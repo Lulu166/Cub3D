@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 18:26:30 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:46:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,41 +45,40 @@ void	my_pixel_loop(t_game *game, int height, int len, int color)
 	}
 }
 
-void	mini_line(t_game *game, int i, int j, int height, int *lenght)
+void	mini_line(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j] == '0')
-		my_pixel_loop(game, height, *lenght, 0x808080);
+		my_pixel_loop(game, game->height, game->lenght, 0x808080);
 	else if (game->tab_map[i][j] == '1')
-		my_pixel_loop(game, height, *lenght, 0xB03030);
+		my_pixel_loop(game, game->height, game->lenght, 0xB03030);
 	if (j == game->player.x && i == game->player.y)
-		my_pixel_loop(game, height, *lenght, game->player.color);
-	*lenght += 16;
+		my_pixel_loop(game, game->height, game->lenght, game->player.color);
+	game->lenght += 16;
 }
 
 void	mini_map(t_game *game)
 {
 	int	i;
 	int	j;
-	int	height;
-	int	lenght;
 	int	count_h;
 	int	count_l;
 
+	game->height = 0;
 	i = game->player.y - 5;
 	if (i < 0)
 		i = 0;
-	height = 0;
 	count_h = -1;
 	while (game->tab_map[i] && ++count_h <= 10)
 	{
-		lenght = 0;
+		game->lenght = 0;
 		count_l = -1;
 		j = game->player.x - 5;
 		if (j < 0)
 			j = 0;
-		while (game->tab_map[i][j] != '\n' && game->tab_map[i][j] != '\0' && ++count_l <= 10)
-			mini_line(game, i, j++, height, &lenght);
+		while (game->tab_map[i][j] != '\n'
+			&& game->tab_map[i][j] != '\0' && ++count_l <= 10)
+			mini_line(game, i, j++);
 		i++;
-		height += 16;
+		game->height += 16;
 	}
 }

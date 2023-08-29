@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 19:25:38 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:16:27 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ int	texture_exist(t_game *game)
 {
 	int	fd;
 
-	fd = open(game->texture.NO, O_RDONLY);
-    if (fd == -1)
-        map_error(game, 0);
-    close(fd);
-	fd = open(game->texture.SO, O_RDONLY);
-    if (fd == -1)
-        map_error(game, 0);
-    close(fd);
-	fd = open(game->texture.EA, O_RDONLY);
-    if (fd == -1)
-        map_error(game, 0);
-    close(fd);
-	fd = open(game->texture.WE, O_RDONLY);
-    if (fd == -1)
-        map_error(game, 0);
-    close(fd);
-    return 1;
+	fd = open(game->texture.no, O_RDONLY);
+	if (fd == -1)
+		map_error(game, 0);
+	close(fd);
+	fd = open(game->texture.so, O_RDONLY);
+	if (fd == -1)
+		map_error(game, 0);
+	close(fd);
+	fd = open(game->texture.ea, O_RDONLY);
+	if (fd == -1)
+		map_error(game, 0);
+	close(fd);
+	fd = open(game->texture.we, O_RDONLY);
+	if (fd == -1)
+		map_error(game, 0);
+	close(fd);
+	return (1);
 }
 
 int	get_size(t_game *game)
@@ -63,14 +63,14 @@ int	get_size(t_game *game)
 void	game_init(t_game *game)
 {
 	int	fd;
-	
+
 	game->map_size = get_size(game);
-	game->texture.NO = NULL;
-	game->texture.SO = NULL;
-	game->texture.WE = NULL;
-	game->texture.EA = NULL;
-	game->texture.C = NULL;
-	game->texture.F = NULL;
+	game->texture.no = NULL;
+	game->texture.so = NULL;
+	game->texture.we = NULL;
+	game->texture.ea = NULL;
+	game->texture.c = NULL;
+	game->texture.f = NULL;
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 		return ;
@@ -95,7 +95,7 @@ int	check_name(char	*name)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 

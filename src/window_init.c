@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/27 19:28:09 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:50:41 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_window(t_game *game)
 {
-    mlx_destroy_window(game->screen.mlx, game->screen.win);
+	mlx_destroy_window(game->screen.mlx, game->screen.win);
 	free_for_end(game);
 	exit (0);
 }
@@ -44,19 +44,22 @@ int	hook_reload(t_game *game)
 	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	mini_map(game);
-	mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
+	// mlx_put_image_to_window
+	// 	(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }
 
-void    window_init(t_game *game)
+void	window_init(t_game *game)
 {
 	game->data = (t_data *)malloc(sizeof(t_data));
 	if (!game->data)
 		map_error(game, 1);
-    game->screen.mlx = mlx_init();
+	game->screen.mlx = mlx_init();
 	game->screen.win = mlx_new_window(game->screen.mlx, 1920, 1080, "Cub3D");
-    game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
-	game->data->addr = mlx_get_data_addr(game->data->img, &game->data->bpr, &game->data->len, &game->data->endian);
+	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
+	game->data->addr = mlx_get_data_addr
+		(game->data->img, &game->data->bpr,
+			&game->data->len, &game->data->endian);
 	mlx_hook(game->screen.win, 17, 0L, close_window, game);
 	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
 	mlx_loop_hook(game->screen.mlx, hook_reload, game);

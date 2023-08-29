@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 19:25:30 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:17:38 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,43 +33,43 @@ char	*supp_space(char *line, int to_supress)
 	return (cpy);
 }
 
-int	check_RGB(t_game *game, char *line)
+int	check_rgb(t_game *game, char *line)
 {
-	if (compare_str("F", line, 1) && game->texture.F == NULL)
+	if (compare_str("F", line, 1) && game->texture.f == NULL)
 	{
-		game->texture.F = allocate_RGB(game, line);
-		return (1);	
-	}
-	else if (compare_str("F", line, 1) && game->texture.F != NULL)
-		map_error(game, 0);
-	if (compare_str("C", line, 1) && game->texture.C == NULL)
-	{
-		game->texture.C = allocate_RGB(game, line);
+		game->texture.f = allocate_rgb(game, line);
 		return (1);
 	}
-	else if (compare_str("C", line, 1) && game->texture.C != NULL)
+	else if (compare_str("F", line, 1) && game->texture.f != NULL)
+		map_error(game, 0);
+	if (compare_str("C", line, 1) && game->texture.c == NULL)
+	{
+		game->texture.c = allocate_rgb(game, line);
+		return (1);
+	}
+	else if (compare_str("C", line, 1) && game->texture.c != NULL)
 		map_error(game, 0);
 	map_error(game, 0);
 	return (0);
 }
 
-int check_texture(t_game *game, char *line)
+int	check_texture(t_game *game, char *line)
 {
-	if (compare_str("NO", line, 2) && game->texture.NO == NULL)
-		return (game->texture.NO = supp_space(line, 2), 1);
-	else if (compare_str("NO", line, 2) && game->texture.NO != NULL)
+	if (compare_str("NO", line, 2) && game->texture.no == NULL)
+		return (game->texture.no = supp_space(line, 2), 1);
+	else if (compare_str("NO", line, 2) && game->texture.no != NULL)
 		map_error(game, 0);
-	if (compare_str("SO", line, 2) && game->texture.SO == NULL)
-		return (game->texture.SO = supp_space(line, 2), 1);
-	else if (compare_str("SO", line, 2) && game->texture.SO != NULL)
+	if (compare_str("SO", line, 2) && game->texture.so == NULL)
+		return (game->texture.so = supp_space(line, 2), 1);
+	else if (compare_str("SO", line, 2) && game->texture.so != NULL)
 		map_error(game, 0);
-	if (compare_str("WE", line, 2) && game->texture.WE == NULL)
-		return (game->texture.WE = supp_space(line, 2), 1);
-	else if (compare_str("WE", line, 2) && game->texture.WE != NULL)
+	if (compare_str("WE", line, 2) && game->texture.we == NULL)
+		return (game->texture.we = supp_space(line, 2), 1);
+	else if (compare_str("WE", line, 2) && game->texture.we != NULL)
 		map_error(game, 0);
-	if (compare_str("EA", line, 2) && game->texture.EA == NULL)
-		return (game->texture.EA = supp_space(line, 2), 1);	
-	else if (compare_str("EA", line, 2) && game->texture.EA != NULL)
+	if (compare_str("EA", line, 2) && game->texture.ea == NULL)
+		return (game->texture.ea = supp_space(line, 2), 1);
+	else if (compare_str("EA", line, 2) && game->texture.ea != NULL)
 		map_error(game, 0);
 	return (0);
 }
@@ -77,9 +77,9 @@ int check_texture(t_game *game, char *line)
 void	allocate_texture(t_game *game, int fd)
 {
 	char	*line;
-    int     nb;
+	int		nb;
 
-    nb = 0;
+	nb = 0;
 	line = get_next_line(fd);
 	game->count++;
 	while (nb < 6 && line)
@@ -92,7 +92,7 @@ void	allocate_texture(t_game *game, int fd)
 			{
 				if (check_texture(game, line))
 					nb++;
-				else if (check_RGB(game, line))
+				else if (check_rgb(game, line))
 					nb++;
 			}
 		}

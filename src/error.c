@@ -6,22 +6,22 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 19:27:24 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:17:59 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void    free_pack(t_game *game, int is_map)
+void	free_pack(t_game *game, int is_map)
 {
-	int i;
+	int	i;
 
-	free(game->texture.NO);
-	free(game->texture.SO);
-	free(game->texture.EA);
-	free(game->texture.WE);
-	free(game->texture.F);
-	free(game->texture.C);
+	free(game->texture.no);
+	free(game->texture.so);
+	free(game->texture.ea);
+	free(game->texture.we);
+	free(game->texture.f);
+	free(game->texture.c);
 	if (is_map == 1)
 	{
 		i = 0;
@@ -34,7 +34,7 @@ void    free_pack(t_game *game, int is_map)
 	}
 }
 
-void    map_error(t_game *game, int is_map)
+void	map_error(t_game *game, int is_map)
 {
 	printf("Error\n");
 	free_pack(game, is_map);
@@ -44,5 +44,5 @@ void    map_error(t_game *game, int is_map)
 void	free_for_end(t_game *game)
 {
 	free_pack(game, 1);
-	exit (0);	
+	exit (0);
 }

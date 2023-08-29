@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/27 19:25:05 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:07:19 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_line(char *line)
 			i++;
 		else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W')
-				i++;
+			i++;
 		else if (line[i] == '1' || line[i] == '0' || line[i] == ' ')
 			i++;
 		else
