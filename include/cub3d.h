@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/30 09:39:43 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:08:54 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_player {
 	enum e_position	pos;
 	int				x;
 	int				y;
+	int				lenght;
+	int				height;
 	int				color;
 	int				nb_p;
 }	t_player;
@@ -105,6 +107,10 @@ void	mini_map(t_game *game);
 
 /***************MOVEMENT***************/
 int		can_move(t_game *game, int x, int y);
+
+/***************PIXELS***************/
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_pixel_loop(t_game *game, int height, int len, int color);
 
 /***************ERROR***************/
 void	map_error(t_game *game, int is_map);

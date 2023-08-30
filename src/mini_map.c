@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/30 09:39:15 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 12:05:58 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,19 @@ void	mini_map(t_game *game)
 {
 	int	i;
 	int	j;
-	int	count_h;
-	int	count_l;
 
 	game->height = 0;
 	i = game->player.y - 5;
 	if (i < 0)
 		i = 0;
-	count_h = -1;
-	while (game->tab_map[i] && ++count_h <= 10)
+	while (game->tab_map[i] && game->height <= 160)
 	{
 		game->lenght = 0;
-		count_l = -1;
 		j = game->player.x - 5;
 		if (j < 0)
 			j = 0;
 		while (game->tab_map[i][j] != '\n'
-			&& game->tab_map[i][j] != '\0' && ++count_l <= 10)
+			&& game->tab_map[i][j] != '\0' && game->lenght <= 160)
 			mini_line(game, i, j++);
 		i++;
 		game->height += 16;
