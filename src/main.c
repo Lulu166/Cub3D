@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 11:16:27 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:10:27 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	game_init(t_game *game)
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 		return ;
+	init_ray_struct(game->ray);
 	allocate_texture(game, fd);
 	texture_exist(game);
 	game->tab_map = allocate_map(game, fd);

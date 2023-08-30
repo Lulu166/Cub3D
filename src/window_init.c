@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/29 11:50:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:06:08 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+
+// void	clear_image(t_game *game)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < WIN_H)
+// 	{
+// 		j = 0;
+// 		while (j < WIN_W)
+// 		{
+// 			game->tab_map[(int)i * WIN_W + (int)j] = 0;
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 int	close_window(t_game *game)
 {
@@ -43,9 +62,10 @@ int	hook_reload(t_game *game)
 	mlx_destroy_image(game->screen.mlx, game->data->img);
 	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
+	ray_casting(game);
 	mini_map(game);
-	// mlx_put_image_to_window
-	// 	(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
+	mlx_put_image_to_window
+		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }
 

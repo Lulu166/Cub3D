@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
+#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/27 18:38:46 by luhumber         ###   ########.fr        #
+#    Updated: 2023/08/30 11:44:53 by chsiffre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ DIR_INC = ./include/
 MLX_DIR = ./minilibx-linux
 
 LIST_SRC =	main.c \
+			init.c \
+			ray_casting.c \
 			utils.c \
 			fill_texture.c \
 			fill_map.c \

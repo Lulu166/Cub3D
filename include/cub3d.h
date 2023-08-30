@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 11:29:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:32:11 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
+# define WIN_H 480
+# define WIN_W 480
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>
@@ -61,11 +63,36 @@ typedef struct s_player {
 	int	nb_p;
 }	t_player;
 
+typedef struct s_ray {
+	double cameraX;
+	double posX;
+	double posY;
+	double dirX;
+	double dirY;
+	double planeX;
+	double planeY;
+	double raydirX;
+	double raydirY;
+	int mapX;
+	int mapY;
+	double lengthray_X;
+	double lengthray_Y;
+	double deltaX;
+	double deltaY;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	double time;
+	double old_time;
+}	t_ray;
+
 typedef struct s_game {
 	t_texture	texture;
 	t_screen	screen;
 	t_player	player;
 	t_data		*data;
+	t_ray		*ray;
 	char		*map;
 	char		**tab_map;
 	int			map_size;
