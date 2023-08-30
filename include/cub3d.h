@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 13:19:07 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:39:43 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define EMPTY 0
 # define WALL 1
 
-enum position {NO, SO, EA, WE};
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>
@@ -26,6 +25,8 @@ enum position {NO, SO, EA, WE};
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+
+enum e_position {no, so, ea, we};
 
 typedef struct s_data {
 	void	*img;
@@ -57,7 +58,7 @@ typedef struct s_texture {
 }	t_texture;
 
 typedef struct s_player {
-	enum position	pos;
+	enum e_position	pos;
 	int				x;
 	int				y;
 	int				color;

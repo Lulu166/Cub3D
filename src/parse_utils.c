@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:18:45 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 13:21:58 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:40:22 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	is_player(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j] == 'N')
-		return (game->player.pos = NO, 1);
+		return (game->player.pos = no, 1);
 	else if (game->tab_map[i][j] == 'S')
-		return (game->player.pos = SO, 1);
+		return (game->player.pos = so, 1);
 	else if (game->tab_map[i][j] == 'E')
-		return (game->player.pos = EA, 1);
+		return (game->player.pos = ea, 1);
 	else if (game->tab_map[i][j] == 'W')
-		return (game->player.pos = WE, 1);
+		return (game->player.pos = we, 1);
 	return (0);
 }
 
