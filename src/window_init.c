@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/30 11:06:08 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/08/31 14:52:33 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int	key_press(int keycode, t_game *game)
 int	hook_reload(t_game *game)
 {
 	mlx_destroy_image(game->screen.mlx, game->data->img);
-	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
+	// draw_window(game);
+	//mini_map(game);
 	ray_casting(game);
-	mini_map(game);
-	mlx_put_image_to_window
-		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
+	mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }
 
@@ -75,8 +75,8 @@ void	window_init(t_game *game)
 	if (!game->data)
 		map_error(game, 1);
 	game->screen.mlx = mlx_init();
-	game->screen.win = mlx_new_window(game->screen.mlx, 1920, 1080, "Cub3D");
-	game->data->img = mlx_new_image(game->screen.mlx, 1920, 1080);
+	game->screen.win = mlx_new_window(game->screen.mlx, WIN_H, WIN_W, "Cub3D");
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	game->data->addr = mlx_get_data_addr
 		(game->data->img, &game->data->bpr,
 			&game->data->len, &game->data->endian);

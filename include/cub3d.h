@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/30 14:32:11 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:38:31 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_player {
 
 typedef struct s_ray {
 	double cameraX;
-	double posX;
-	double posY;
+	int posX;
+	int posY;
 	double dirX;
 	double dirY;
 	double planeX;
@@ -83,6 +83,9 @@ typedef struct s_ray {
 	int		stepY;
 	int		hit;
 	int		side;
+	double	perpWallDist;
+	int		DrawStart;
+	int		DrawEnd;
 	double time;
 	double old_time;
 }	t_ray;
@@ -109,6 +112,15 @@ int		*allocate_rgb(t_game *game, char *line);
 
 /***************UTILS***************/
 int		compare_str(char *s1, char *s2, int len);
+void	init_ray_struct(t_game *g);
+int		get_size(t_game *game);
+int		texture_exist(t_game *game);
+
+/***************RAYCASTING***************/
+
+void	ray_casting(t_game *game);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);
@@ -125,6 +137,7 @@ void	window_init(t_game *game);
 
 /***************MINI_MAP***************/
 void	mini_map(t_game *game);
+void	game_init(t_game *game, char *arg);
 
 /***************MOVEMENT***************/
 int		can_move(t_game *game, int x, int y);

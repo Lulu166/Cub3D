@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/30 11:10:27 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/08/31 13:25:42 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,6 @@ int	get_size(t_game *game)
 	return (size);
 }
 
-void	game_init(t_game *game)
-{
-	int	fd;
-
-	game->map_size = get_size(game);
-	game->texture.no = NULL;
-	game->texture.so = NULL;
-	game->texture.we = NULL;
-	game->texture.ea = NULL;
-	game->texture.c = NULL;
-	game->texture.f = NULL;
-	fd = open(game->map, O_RDONLY);
-	if (fd == -1)
-		return ;
-	init_ray_struct(game->ray);
-	allocate_texture(game, fd);
-	texture_exist(game);
-	game->tab_map = allocate_map(game, fd);
-	close(fd);
-	parse_map(game);
-	window_init(game);
-}
 
 int	check_name(char	*name)
 {
@@ -104,8 +82,6 @@ int	main(int argc, char **argv)
 		return (printf("Error\n"), 1);
 	else if (check_name(argv[1]) == 0)
 		return (printf("Error\n"), 1);
-	game.count = 0;
-	game.map = argv[1];
-	game_init(&game);
+	game_init(&game, argv[1]);
 	return (0);
 }
