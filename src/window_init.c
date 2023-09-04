@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/29 15:56:38 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:50:28 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,25 @@ int	key_press(int keycode, t_game *game)
 		exit(0);
 	}
 	else if (keycode == 100)
-		can_move(game, game->player.x + 1, game->player.y);
+	{
+		game->player.right = 1;
+		can_move(game);
+	}
 	else if (keycode == 119)
-		can_move(game, game->player.x, game->player.y - 1);
+	{
+		game->player.top = 1;
+		can_move(game);
+	}
 	else if (keycode == 97)
-		can_move(game, game->player.x - 1, game->player.y);
+	{
+		game->player.left = 1;
+		can_move(game);
+	}
 	else if (keycode == 115)
-		can_move(game, game->player.x, game->player.y + 1);
+	{
+		game->player.down = 1;
+		can_move(game);
+	}
 	else if (keycode == 65363)
 		printf("Turn right\n");
 	else if (keycode == 65361)

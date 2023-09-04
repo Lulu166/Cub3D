@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/30 11:59:43 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:18:10 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	player_pos(t_game *game)
 				game->player.nb_p++;
 				game->player.x = j;
 				game->player.y = i;
+				game->player.height = game->player.y * 16;
+				game->player.lenght = game->player.x * 16;
+				game->player.top = 0;
+				game->player.right = 0;
+				game->player.down = 0;
+				game->player.left = 0;
 				game->tab_map[i][j] = '0';
 			}
 			j++;

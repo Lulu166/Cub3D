@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/08/30 11:24:52 by luhumber         ###   ########.fr        #
+#    Updated: 2023/09/04 13:10:49 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ LIST_SRC =	main.c \
 			window_init.c \
 			mini_map.c \
 			movement.c \
+			pix.c \
 			error.c \
 
 LIST_INC = cub3d.h
