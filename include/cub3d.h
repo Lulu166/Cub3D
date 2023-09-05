@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/05 14:19:19 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:42:15 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
-
+# define WIN_H 2460
+# define WIN_W 2460
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>
@@ -71,11 +72,39 @@ typedef struct s_player {
 	int				down;
 }	t_player;
 
+typedef struct s_ray {
+	double cameraX;
+	int posX;
+	int posY;
+	double dirX;
+	double dirY;
+	double planeX;
+	double planeY;
+	double raydirX;
+	double raydirY;
+	int mapX;
+	int mapY;
+	double lengthray_X;
+	double lengthray_Y;
+	double deltaX;
+	double deltaY;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	double	perpWallDist;
+	int		DrawStart;
+	int		DrawEnd;
+	double time;
+	double old_time;
+}	t_ray;
+
 typedef struct s_game {
 	t_texture	texture;
 	t_screen	screen;
 	t_player	player;
 	t_data		*data;
+	t_ray		*ray;
 	char		*map;
 	char		**tab_map;
 	int			map_size;
@@ -92,6 +121,15 @@ int		*allocate_rgb(t_game *game, char *line);
 
 /***************UTILS***************/
 int		compare_str(char *s1, char *s2, int len);
+void	init_ray_struct(t_game *g);
+int		get_size(t_game *game);
+int		texture_exist(t_game *game);
+
+/***************RAYCASTING***************/
+
+void	ray_casting(t_game *game);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);
@@ -108,6 +146,7 @@ void	window_init(t_game *game);
 
 /***************MINI_MAP***************/
 void	mini_map(t_game *game);
+void	game_init(t_game *game, char *arg);
 
 /***************MOVEMENT***************/
 int		can_move(t_game *game);

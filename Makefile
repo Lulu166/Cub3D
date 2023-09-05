@@ -6,13 +6,13 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/09/04 13:10:49 by luhumber         ###   ########.fr        #
+#    Updated: 2023/09/05 14:43:31 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 CC = cc
 
@@ -25,6 +25,8 @@ DIR_INC = ./include/
 MLX_DIR = ./minilibx-linux
 
 LIST_SRC =	main.c \
+			init.c \
+			ray_casting.c \
 			utils.c \
 			fill_texture.c \
 			fill_map.c \
