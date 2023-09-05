@@ -6,11 +6,32 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/04 13:24:08 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:40:56 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+// void	mini_map_pix(t_game *game)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	pix_h;
+// 	int	pix_l;
+
+// 	pix_h = 0;
+// 	i = game->player.height / 16;
+// 	while (game->tab_map[i])
+// 	{
+// 		pix_l = 0;
+// 		j = game->player.lenght / 16;
+// 		while (game->tab_map[i][j])
+// 		{
+			
+// 		}
+// 	}
+// }
+
 
 void	mini_line(t_game *game, int i, int j)
 {
