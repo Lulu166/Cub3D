@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/31 14:52:33 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/05 12:58:39 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int	hook_reload(t_game *game)
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	// draw_window(game);
-	//mini_map(game);
 	ray_casting(game);
+	mini_map(game);
 	mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
 }

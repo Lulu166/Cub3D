@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/08/31 16:31:36 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:02:35 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // 	i = 0;
 // 	y = 0;
-// 	while(game->tab_map[i])
+// 	while( i < WIN_W)
 // 	{
 		
 // 	}
@@ -34,22 +34,22 @@ void    ray_casting(t_game *game)
 	int mapY;
 	int color;
 
-	color = 0xFFFF00;
-	i = 0;
+	color = 0xB03030;
 	mapX = 0;
 	mapY = 0;
 	x = 0;
 
 	while (x++ < WIN_W)
 	{
-		mapX = game->ray->posX;
-		mapY = game->ray->posY;
-		game->ray->cameraX = 2 * x / WIN_W - 1;
+	// 	mapX = game->ray->posX;
+	// 	mapY = game->ray->posY;
+		game->ray->cameraX = 2 * x / (double) WIN_W - 1;
 		game->ray->raydirX = game->ray->dirX + game->ray->planeX * game->ray->cameraX;
 		game->ray->raydirY = game->ray->dirY + game->ray->planeY * game->ray->cameraX;
 		game->ray->deltaX = sqrt(1 + (game->ray->raydirY * game->ray->raydirY) / (game->ray->raydirX * game->ray->raydirX));
 		game->ray->deltaY = sqrt(1 + (game->ray->raydirX * game->ray->raydirX) / (game->ray->raydirY * game->ray->raydirY));
-		// printf("raydirX : %f , raydirY : %f deltaX : %f deltaY : %f\n", game->ray->raydirX, game->ray->raydirY, game->ray->deltaX, game->ray->deltaY);	
+		
+		// printf("deltaX : %f deltaY : %f\n",  game->ray->deltaX, game->ray->deltaY);
 		if (game->ray->raydirX < 0)
 		{
 			game->ray->stepX = -1;
@@ -70,6 +70,7 @@ void    ray_casting(t_game *game)
 			game->ray->stepY = 1;
 			game->ray->lengthray_Y = (mapY + 1.0 - game->ray->posY) * game->ray->deltaY;
 		}
+		// printf("lenghtrayx : %f , lenghtrayY : %f deltaX : %f deltaY : %f\n", game->ray->lengthray_X, game->ray->lengthray_Y, game->ray->deltaX, game->ray->deltaY);
 		while (game->ray->hit == 0)
 		{
 			if (game->ray->lengthray_X < game->ray->lengthray_Y)
@@ -77,29 +78,39 @@ void    ray_casting(t_game *game)
 				game->ray->lengthray_X += game->ray->deltaX;
 				mapX += game->ray->stepX;
 				game->ray->side = 0;
+				// printf("44\n");	
 			}
 			else
 			{
 				game->ray->lengthray_Y += game->ray->deltaY;
 				mapY += game->ray->stepY;
 				game->ray->side = 1;
+				// printf("34\n");
 			}
 			if (game->tab_map[game->ray->mapX][game->ray->mapY] > '0')
 				game->ray->hit = 1;
+			// printf("5\n");
 		}
+		// printf("lenghtrayX : %f\n lenghtrayY : %f\n", game->ray->lengthray_X, game->ray->lengthray_Y);
 		if (game->ray->side == 0)
+		{
+			// printf("1\n");
 			game->ray->perpWallDist = (game->ray->lengthray_X - game->ray->deltaX);
+		}
       	else
+		{
+			// printf("2\n");
 			game->ray->perpWallDist = (game->ray->lengthray_Y - game->ray->deltaY);
+		}
 		// printf("lenghtrayX : %f\n lenghtrayY : %f", game->ray->lengthray_X, game->ray->lengthray_Y);
-		printf("%f\n", game->ray->perpWallDist);
+		// printf("perpWalldist : %f\n", game->ray->perpWallDist);
 		int lineHeight = 0;
-		lineHeight = (int)(WIN_H / game->ray->perpWallDist);
-		printf("%d\n", lineHeight);
-		game->ray->DrawStart = -lineHeight / 2 + WIN_H / 2;
+		lineHeight = (int) (WIN_H / game->ray->perpWallDist);
+		// printf(" lineheight : %d\n", lineHeight);
+		game->ray->DrawStart = -lineHeight / 2 +  WIN_H / 2;
 		if (game->ray->DrawStart < 0)
 			game->ray->DrawStart = 0;
-		game->ray->DrawEnd = (lineHeight / 2) + (WIN_H / 2);
+		game->ray->DrawEnd = lineHeight / 2 + WIN_H / 2;
 		if (game->ray->DrawEnd >= WIN_H)
 			game->ray->DrawEnd = WIN_H - 1;
 		i = game->ray->DrawStart;
@@ -108,16 +119,14 @@ void    ray_casting(t_game *game)
 			wallX = game->ray->posY + game->ray->perpWallDist * game->ray->raydirY;
 		else
 			wallX = game->ray->posX + game->ray->perpWallDist * game->ray->raydirX;
-		printf("start : %d\n end : %d\n", game->ray->DrawStart, game->ray->DrawEnd);
-		exit(1);
+		// printf("start : %d\n end : %d\n", game->ray->DrawStart, game->ray->DrawEnd);
+		// exit(1);
 		while (i < game->ray->DrawEnd)
 		{
 			if (game->ray->side == 1)
 				color = (color >> 1) & 8355711;
-			my_mlx_pixel_put(game->data, x, i, color);
+			my_mlx_pixel_put(game->data, x, i, 0xB03030);
 			i++;
 		}
 	}
-	//mlx_put_image_to_window(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
-	
 }

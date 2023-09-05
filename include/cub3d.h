@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/31 15:38:31 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:09:45 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
-# define WIN_H 480
-# define WIN_W 480
+# define WIN_H 2460
+# define WIN_W 2460
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>

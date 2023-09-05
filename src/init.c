@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/08/31 15:20:15 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:27:42 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void    init_ray_struct(t_game *g)
     g->ray->stepY = 0;
     g->ray->deltaX = 0;
     g->ray->deltaY = 0;
-    g->ray->perpWallDist = 0;
     g->ray->DrawEnd = 0;
     g->ray->DrawStart = 0;
 }
