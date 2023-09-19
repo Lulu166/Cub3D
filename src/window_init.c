@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/05 14:42:56 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:07:14 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,15 @@ int	key_press(int keycode, t_game *game)
 		can_move(game);
 	}
 	else if (keycode == 65363)
-		printf("Turn right\n");
+	{
+		game->player.rotRight = 1;
+		can_turn(game);
+	}
 	else if (keycode == 65361)
-		printf("Turn left\n");
+	{
+		game->player.rotLeft = 1;
+		can_turn(game);
+	}
 	return (0);
 }
 

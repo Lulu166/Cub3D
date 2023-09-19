@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:27:42 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:51:27 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void    init_ray_struct(t_game *g)
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
-    g->ray->posX = 22;
-    g->ray->posY = 12;
+    g->ray->posX = 10;
+    g->ray->posY = 8;
     g->ray->dirX = -1;
     g->ray->dirY = 0;
     g->ray->time = 0;

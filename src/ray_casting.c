@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:02:35 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:46:37 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void    ray_casting(t_game *game)
 
 	while (x++ < WIN_W)
 	{
-	// 	mapX = game->ray->posX;
-	// 	mapY = game->ray->posY;
+		// mapX = game->ray->posX;
+		// mapY = game->ray->posY;
 		game->ray->cameraX = 2 * x / (double) WIN_W - 1;
 		game->ray->raydirX = game->ray->dirX + game->ray->planeX * game->ray->cameraX;
 		game->ray->raydirY = game->ray->dirY + game->ray->planeY * game->ray->cameraX;

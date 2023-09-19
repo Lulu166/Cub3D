@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/05 14:42:15 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:08:56 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct s_player {
 	int				top;
 	int				right;
 	int				down;
+	int				rotLeft;
+	int				rotRight;
 }	t_player;
 
 typedef struct s_ray {
@@ -150,7 +152,7 @@ void	game_init(t_game *game, char *arg);
 
 /***************MOVEMENT***************/
 int		can_move(t_game *game);
-
+int		can_turn(t_game *game);
 /***************PIXELS***************/
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_square(t_game *game, int height, int len, int color);
