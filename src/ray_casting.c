@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:02:35 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/18 10:34:58 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ void    ray_casting(t_game *game)
 			game->ray->DrawEnd = WIN_H - 1;
 		i = game->ray->DrawStart;
 		double	wallX = 0;
-		if (game->ray->side == 0)
+		if (game->ray->side == 0 && wallX)
 			wallX = game->ray->posY + game->ray->perpWallDist * game->ray->raydirY;
 		else
 			wallX = game->ray->posX + game->ray->perpWallDist * game->ray->raydirX;
-		// printf("start : %d\n end : %d\n", game->ray->DrawStart, game->ray->DrawEnd);
+		// printf("start : %d\n end : %d\n", game->ray->DrawStart, gaaaaaaaaaaaaassddwwdddame->ray->DrawEnd);
 		// exit(1);
 		while (i < game->ray->DrawEnd)
 		{
