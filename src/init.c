@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:51:27 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:01:25 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	game_init(t_game *game, char *arg)
 {
 	int	fd;
-
 
 	game->count = 0;
 	game->map = arg;
@@ -40,7 +39,6 @@ void	game_init(t_game *game, char *arg)
 
 void    init_ray_struct(t_game *g)
 {
-    printf("ok\n");
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
@@ -52,7 +50,6 @@ void    init_ray_struct(t_game *g)
     g->ray->old_time = 0;
     g->ray->planeX = 0;
     g->ray->planeY = 0.66;
-    g->ray->cameraX = 0.0;
     g->ray->raydirX = 0;
     g->ray->raydirY = 0;
     g->ray->mapX = 0;

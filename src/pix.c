@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pix.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:09:44 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/05 11:02:58 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:41:59 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->len + x * (data->bpr / 8));
-	*(unsigned int *)dst = color;
+	if (x < WIN_W && y < WIN_H && x > 0 && y > 0)
+	{
+		dst = data->addr + (y * data->len + x * (data->bpr / 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 void	draw_circle(t_game *game, int y, int x, int color)

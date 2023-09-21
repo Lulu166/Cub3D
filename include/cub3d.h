@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/05 15:08:56 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:01:11 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
-# define WIN_H 2460
-# define WIN_W 2460
+# define WIN_H 1500
+# define WIN_W 1500
 
 # include <../minilibx-linux/mlx.h>
 # include <unistd.h>
@@ -75,17 +75,16 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_ray {
-	double cameraX;
 	int posX;
 	int posY;
+	int	mapX;
+	int	mapY;
 	double dirX;
 	double dirY;
 	double planeX;
 	double planeY;
 	double raydirX;
 	double raydirY;
-	int mapX;
-	int mapY;
 	double lengthray_X;
 	double lengthray_Y;
 	double deltaX;

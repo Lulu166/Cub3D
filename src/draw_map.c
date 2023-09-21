@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:26:24 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/19 15:26:53 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:36:33 by charles          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		draw_map(t_data *data)
+void		draw_map(t_game *game)
 {
 	float	x;
 	float	y;
@@ -20,7 +20,7 @@ void		draw_map(t_data *data)
 
 	y = -1;
 	j = 0;
-	while (++y < data->width * 0.15 && (i = 0) == 0)
+	while (++y < game->width * 0.15 && (i = 0) == 0)
 	{
 		x = -1;
 		while (++x < (data->width * 0.15))
