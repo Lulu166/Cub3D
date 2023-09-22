@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/05 15:09:42 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:30:48 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ int	can_turn(t_game *game)
       	game->ray->planeX = game->ray->planeX * cos(0.3) - game->ray->planeY * sin(0.3);
       	game->ray->planeY = oldPlaneX * sin(0.3) + game->ray->planeY * cos(0.3);
 		game->player.rotLeft = 0;
+
+		game->angle -= M_PI / 12;
+		if (game->angle < 0)
+			game->angle = 2 * M_PI;
+
 	}
 	if (game->player.rotRight == 1)
 	{
@@ -62,6 +67,10 @@ int	can_turn(t_game *game)
       	game->ray->planeX = game->ray->planeX * cos(-0.3) - game->ray->planeY * sin(-0.3);
       	game->ray->planeY = oldPlaneX * sin(-0.3) + game->ray->planeY * cos(-0.3);
 		game->player.rotRight = 0;
+
+		game->angle += M_PI / 12;
+		if (game->angle > 2 * M_PI)
+			game->angle = 0;
 	}
 	return (0);
 }
