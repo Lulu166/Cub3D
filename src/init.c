@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/21 12:01:25 by charles          ###   ########.fr       */
+/*   Updated: 2023/09/22 11:53:17 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void    init_ray_struct(t_game *g)
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
-    g->ray->posX = 10;
-    g->ray->posY = 8;
+    g->ray->posX = 22;
+    g->ray->posY = 12;
     g->ray->dirX = -1;
     g->ray->dirY = 0;
     g->ray->time = 0;
