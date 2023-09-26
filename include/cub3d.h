@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: charles <charles@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/21 12:01:11 by charles          ###   ########.fr       */
+/*   Updated: 2023/09/22 17:23:09 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,37 @@
 # define WIN_H 1500
 # define WIN_W 1500
 
-# include <../minilibx-linux/mlx.h>
+# ifdef __APPLE__
+#  define LEFT_ARROW_KEY 123
+#  define RIGHT_ARROW_KEY 124
+#  define UP_ARROW_KEY 126
+#  define DOWN_ARROW_KEY 125
+#  define W_LOWER_KEY 13
+#  define S_LOWER_KEY 1
+#  define A_LOWER_KEY 0
+#  define D_LOWER_KEY 2
+#  define ESC_KEY 53
+#  define F5_KEY 96
+#  define M_KEY 46
+#  define P_KEY 35
+#  define SPACE_KEY 49
+# else
+#  define LEFT_ARROW_KEY 65361
+#  define RIGHT_ARROW_KEY 65363
+#  define UP_ARROW_KEY 65362
+#  define DOWN_ARROW_KEY 65364
+#  define W_LOWER_KEY 119
+#  define S_LOWER_KEY 115
+#  define A_LOWER_KEY 97
+#  define D_LOWER_KEY 100
+#  define SPACE_KEY 32
+#  define ESC_KEY 65307
+#  define F5_KEY 65474
+#  define M_KEY 109
+#  define P_KEY 112
+# endif
+
+# include <../mlx/mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -112,6 +142,7 @@ typedef struct s_game {
 	int			count;
 	int			lenght;
 	int			height;
+	double		angle;
 }	t_game;
 
 /***************TEXTURE***************/
@@ -129,7 +160,6 @@ int		texture_exist(t_game *game);
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
 /***************MAP***************/
@@ -153,7 +183,7 @@ void	game_init(t_game *game, char *arg);
 int		can_move(t_game *game);
 int		can_turn(t_game *game);
 /***************PIXELS***************/
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
 void	draw_square(t_game *game, int height, int len, int color);
 void	draw_circle(t_game *game, int y, int x, int color);
 

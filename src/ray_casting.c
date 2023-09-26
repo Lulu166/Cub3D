@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/26 11:13:31 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:18:23 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // 	y = 0;
 // 	while( i < WIN_W)
 // 	{
-		
+
 // 	}
 // }
 
@@ -70,7 +70,7 @@ void    ray_casting(t_game *game)
 		if (game->ray->raydirY < 0)
 		{
 			game->ray->stepY = -1;
-			game->ray->lengthray_Y = (game->ray->posY - game->ray->mapY) * game->ray->deltaY;	
+			game->ray->lengthray_Y = (game->ray->posY - game->ray->mapY) * game->ray->deltaY;
 		}
 		else
 		{
@@ -84,7 +84,6 @@ void    ray_casting(t_game *game)
 				game->ray->lengthray_X += game->ray->deltaX;
 				game->ray->mapX += game->ray->stepX;
 				game->ray->side = 0;
-				// printf("44\n");	
 			}
 			else
 			{

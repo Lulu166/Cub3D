@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/22 13:26:52 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:41:41 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,32 @@ int	key_press(int keycode, t_game *game)
 		free_for_end(game);
 		exit(0);
 	}
-	else if (keycode == 100)
+	else if (keycode == D_LOWER_KEY)
 	{
 		game->player.right = 1;
 		can_move(game);
 	}
-	else if (keycode == 119)
+	else if (keycode == W_LOWER_KEY)
 	{
 		game->player.top = 1;
 		can_move(game);
 	}
-	else if (keycode == 97)
+	else if (keycode == A_LOWER_KEY)
 	{
 		game->player.left = 1;
 		can_move(game);
 	}
-	else if (keycode == 115)
+	else if (keycode == S_LOWER_KEY)
 	{
 		game->player.down = 1;
 		can_move(game);
 	}
-	else if (keycode == 65363)
+	else if (keycode == RIGHT_ARROW_KEY)
 	{
 		game->player.rotRight = 1;
 		can_turn(game);
 	}
-	else if (keycode == 65361)
+	else if (keycode == LEFT_ARROW_KEY)
 	{
 		game->player.rotLeft = 1;
 		can_turn(game);
@@ -85,7 +85,7 @@ int	hook_reload(t_game *game)
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	//draw_map(game);
-	//ray_casting(game);
+	ray_casting(game);
 	mini_map(game);
 	mlx_put_image_to_window
 		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);

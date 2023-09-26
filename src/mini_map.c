@@ -6,11 +6,32 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/22 14:10:18 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:17:17 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	throw_ray(t_game *game, double x, double y)
+{
+	int	i;
+	int longueur;
+
+	longueur = 100;
+	i = 0;
+
+    double	deltaX = cos(game->angle);
+    double	deltaY = sin(game->angle);
+
+    while (i < longueur)
+	{
+        my_mlx_pixel_put(game->data, x + 10, y + 10, 0x00008B);
+        x += deltaX;
+        y += deltaY;
+		i++;
+    }
+	printf("%f , %f \n", game->ray->lengthray_X, game->ray->lengthray_Y);
+}
 
 void	mini_line(t_game *game, int i, int j)
 {
@@ -19,7 +40,8 @@ void	mini_line(t_game *game, int i, int j)
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, 0xB03030);
 	draw_circle(game, game->player.height, game->player.lenght, game->player.color);
-	throw_ray(game);
+
+	throw_ray(game,game->player.lenght, game->player.height);
 	game->lenght += 16;
 }
 
