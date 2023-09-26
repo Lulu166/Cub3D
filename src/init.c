@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:27:42 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:51:31 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	game_init(t_game *game, char *arg)
 {
 	int	fd;
 
-
+    game->angle = 0; // a changer en fonction de l'orientation
 	game->count = 0;
 	game->map = arg;
     game->map_size = get_size(game);
@@ -40,19 +40,17 @@ void	game_init(t_game *game, char *arg)
 
 void    init_ray_struct(t_game *g)
 {
-    printf("ok\n");
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
-    g->ray->posX = 22;
-    g->ray->posY = 12;
+    g->ray->posX = 160;
+    g->ray->posY = 144;
     g->ray->dirX = -1;
     g->ray->dirY = 0;
     g->ray->time = 0;
     g->ray->old_time = 0;
     g->ray->planeX = 0;
     g->ray->planeY = 0.66;
-    g->ray->cameraX = 0.0;
     g->ray->raydirX = 0;
     g->ray->raydirY = 0;
     g->ray->mapX = 0;
