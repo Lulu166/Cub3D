@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/26 11:18:23 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:21:46 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void    ray_casting(t_game *game)
 	while (x++ < WIN_W)
 	{
 		ft_init_var(game, x);
-		ft_init_lenghtray();
+		// ft_init_lenghtray();
 		if (game->ray->raydirX < 0)
 		{
 			game->ray->stepX = -1;

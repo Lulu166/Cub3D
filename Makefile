@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/09/22 15:18:09 by chsiffre         ###   ########.fr        #
+#    Updated: 2023/09/26 11:25:16 by chsiffre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ DIR_OBJ = ./.obj/
 
 DIR_INC = ./include/
 
-MLX_DIR = ./mlx
+MLX_DIR = ./minilibx-linux
 
 LIST_SRC =	main.c \
 			init.c \
@@ -51,7 +51,7 @@ INC = $(addprefix $(DIR_INC), $(LIST_INC))
 
 DIR_LIBFT = libft
 
-DIR_MLX = mlx
+DIR_MLX = minilibx-linux
 
 MLX = mlx.a
 
@@ -69,7 +69,7 @@ $(DIR_OBJ)%.o : $(DIR_SRC)%.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_INC) -I $(DIR_MLX)
 
 $(NAME) : $(DIR_OBJ) $(OBJ) $(INC) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -L $(MLX_DIR) -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 
 bonus :
 	$(MAKE) -C bonus
