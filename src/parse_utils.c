@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:18:45 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/30 09:40:22 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:22:40 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,20 @@ int	empty_error(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j + 1] != '1' && is_empty(game, i, j + 1) != 1)
 		return (1);
-	if (game->tab_map[i + 1][j + 1] != '1' && is_empty(game, i + 1, j + 1) != 1)
-		return (1);
+	//if (game->tab_map[i + 1][j + 1] != '1' && is_empty(game, i + 1, j + 1) != 1)
+	//	return (1);
 	if (game->tab_map[i + 1][j] != '1' && is_empty(game, i + 1, j) != 1)
 		return (1);
-	if (game->tab_map[i + 1][j - 1] != '1' && is_empty(game, i + 1, j - 1) != 1)
-		return (1);
+	//if (game->tab_map[i + 1][j - 1] != '1' && is_empty(game, i + 1, j - 1) != 1)
+	//	return (1);
 	if (game->tab_map[i][j - 1] != '1' && is_empty(game, i, j - 1) != 1)
 		return (1);
-	if (game->tab_map[i - 1][j - 1] != '1' && is_empty(game, i - 1, j - 1) != 1)
-		return (1);
+	//if (game->tab_map[i - 1][j - 1] != '1' && is_empty(game, i - 1, j - 1) != 1)
+	//	return (1);
 	if (game->tab_map[i - 1][j] != '1' && is_empty(game, i - 1, j) != 1)
 		return (1);
-	if (game->tab_map[i - 1][j + 1] != '1' && is_empty(game, i - 1, j + 1) != 1)
-		return (1);
+	//if (game->tab_map[i - 1][j + 1] != '1' && is_empty(game, i - 1, j + 1) != 1)
+	//	return (1);
 	return (0);
 }
 
@@ -58,7 +58,10 @@ int	skip_empty(t_game *game, int i, int *j)
 	while (is_empty(game, i, *j) == 1)
 	{
 		if (empty_error(game, i, *j) == 1)
+		{
+			//printf("OK = %c et %d et %d\n", game->tab_map[i][*j], i, *j);
 			map_error(game, 1);
+		}
 		(*j)++;
 	}
 	if (game->tab_map[i][*j] != '1')

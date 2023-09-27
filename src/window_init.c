@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/26 11:26:32 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/27 11:09:40 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int	key_press(int keycode, t_game *game)
 		mlx_destroy_window(game->screen.mlx, game->screen.win);
 		free_for_end(game);
 		exit(0);
+	}
+	else if (keycode == 109)
+	{
+		if (game->mini_map == 0)
+			game->mini_map = 1;
+		else if (game->mini_map == 1)
+			game->mini_map = 0;
 	}
 	else if (keycode == D_LOWER_KEY)
 	{
@@ -86,7 +93,8 @@ int	hook_reload(t_game *game)
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	//draw_map(game);
 	// ray_casting(game);
-	mini_map(game);
+	if (game->mini_map == 1)
+		mini_map(game);
 	mlx_put_image_to_window
 		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);

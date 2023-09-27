@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/22 17:51:31 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:26:19 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	game_init(t_game *game, char *arg)
 	game->texture.ea = NULL;
 	game->texture.c = NULL;
 	game->texture.f = NULL;
+    game->mini_map = 0;
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 		return ;
