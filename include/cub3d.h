@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/27 17:26:20 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:48:05 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct s_ray {
 }	t_ray;
 
 typedef struct s_game {
-	t_texture	texture;
+	t_texture	tex;
 	t_screen	screen;
 	t_player	player;
 	t_data		*data;

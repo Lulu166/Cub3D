@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/08/29 11:04:35 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:38:06 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ void	parse_rgb(t_game *game, char *split)
 	while (split[++i] != '\n' && split[i] != '\0')
 		if (ft_isdigit(split[i]) == 0)
 			map_error(game, 0);
+}
+
+int	to_hexa(int nb)
+{
+	int	hexa;
+	int	base;
+	int tmp;
+
+	base = 1;
+	hexa = 0;
+	while (nb > 0)
+	{
+		tmp = nb % 16;
+		hexa = hexa + tmp * base;
+		nb = nb / 16;
+		base = base * 10;
+	}
+	return (hexa);
 }
 
 int	*allocate_rgb(t_game *game, char *line)
@@ -41,6 +59,11 @@ int	*allocate_rgb(t_game *game, char *line)
 	{
 		parse_rgb(game, split[i]);
 		tmp[i] = ft_atoi(split[i]);
+		if (tmp[i] > 255 || tmp[i] < 0)
+			map_error(game, 0);
+		printf("KO = %d\n", tmp[i]);
+		tmp[i] = to_hexa(tmp[i]);
+		printf("OK = %x\n", tmp[i]);
 		i++;
 	}
 	if (split[i])

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:35:43 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/27 17:23:42 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:46:51 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	compare_str(char *s1, char *s2, int len)
 	int	i;
 
 	i = 0;
-	while ((i < len) && (s1[i] || s2[i]))
+	while ((i <= len) && (s1[i] || s2[i]))
 	{
-		if ((s1[i] != s2[i]) || (s2[i] != s1[i]))
+		if (s1[i] != s2[i])
 			return (0);
 		i++;
 	}

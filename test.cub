@@ -1,13 +1,9 @@
-NO                                     ./texture/wall.xpm
-
+NO ./texture/wall.xpm
 WE ./texture/wall.xpm
-
-
-
-C 225,30,0
 EA ./texture/wall.xpm
 SO ./texture/wall.xpm
-F                           220,100,0
+C 255,30,0
+F 220,100,0
 
 111111111111111111111111111
   100000000000000000000001
