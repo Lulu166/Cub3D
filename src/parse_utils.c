@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:18:45 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/27 17:22:40 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:20:12 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ int	skip_empty(t_game *game, int i, int *j)
 	while (is_empty(game, i, *j) == 1)
 	{
 		if (empty_error(game, i, *j) == 1)
-		{
-			//printf("OK = %c et %d et %d\n", game->tab_map[i][*j], i, *j);
 			map_error(game, 1);
-		}
 		(*j)++;
 	}
 	if (game->tab_map[i][*j] != '1')

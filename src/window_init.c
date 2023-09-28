@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/27 11:09:40 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/28 09:24:06 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	hook_reload(t_game *game)
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	//draw_map(game);
-	// ray_casting(game);
+	//ray_casting(game);
 	if (game->mini_map == 1)
 		mini_map(game);
 	mlx_put_image_to_window
