@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/28 12:48:43 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:34:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*supp_space(char *line, int to_supress)
 	i = 0;
 	while (line[to_supress] == ' ')
 		to_supress++;
-	cpy = malloc(sizeof(char) * (ft_strlen(line) + to_supress));
+	cpy = malloc(sizeof(char) * (ft_strlen(line) - to_supress) + 1);
 	if (!cpy)
 		return (NULL);
 	while (line[to_supress] && line[to_supress] != '\n')
@@ -35,19 +35,19 @@ char	*supp_space(char *line, int to_supress)
 
 int	check_rgb(t_game *game, char **line)
 {
-	if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f == NULL)
+	if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f == 0)
 	{
 		game->tex.f = allocate_rgb(game, line[1]);
 		return (1);
 	}
-	else if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f != NULL)
+	else if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f != 0)
 		map_error(game, 0);
-	if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c == NULL)
+	if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c == 0)
 	{
 		game->tex.c = allocate_rgb(game, line[1]);
 		return (1);
 	}
-	else if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c != NULL)
+	else if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c != 0)
 		map_error(game, 0);
 	map_error(game, 0);
 	return (0);

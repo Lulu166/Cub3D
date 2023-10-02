@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/28 13:38:06 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:35:47 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ void	parse_rgb(t_game *game, char *split)
 			map_error(game, 0);
 }
 
+int	convert_value(int *tab)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	while (i < 3)
+		res = (res << 8) | tab[i++];
+	return (res);
+}
+
 int	to_hexa(int nb)
 {
 	int	hexa;
@@ -37,20 +48,21 @@ int	to_hexa(int nb)
 		tmp = nb % 16;
 		hexa = hexa + tmp * base;
 		nb = nb / 16;
-		base = base * 10;
+		base = base * 16;
 	}
 	return (hexa);
 }
 
-int	*allocate_rgb(t_game *game, char *line)
+int	allocate_rgb(t_game *game, char *line)
 {
 	char	*cpy;
 	char	**split;
 	int		*tmp;
 	int		i;
+	int		hexa;
 
 	tmp = malloc(sizeof(int) * 4);
-	cpy = supp_space(line, 2);
+	cpy = supp_space(line, 0);
 	if (!cpy)
 		map_error(game, 0);
 	split = ft_split(cpy, ',');
@@ -61,17 +73,16 @@ int	*allocate_rgb(t_game *game, char *line)
 		tmp[i] = ft_atoi(split[i]);
 		if (tmp[i] > 255 || tmp[i] < 0)
 			map_error(game, 0);
-		printf("KO = %d\n", tmp[i]);
-		tmp[i] = to_hexa(tmp[i]);
-		printf("OK = %x\n", tmp[i]);
 		i++;
 	}
 	if (split[i])
 		map_error(game, 0);
-	tmp[i] = '\0';
+	hexa = ((to_hexa(tmp[0]) << 16) | (to_hexa(tmp[1]) << 8) | to_hexa(tmp[2]));
+	//tmp[i] = '\0';
 	i = 0;
 	while (split[i])
 		free(split[i++]);
 	free(split);
-	return (tmp);
+	hexa = convert_value(tmp);
+	return (hexa);
 }

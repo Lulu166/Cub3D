@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/28 12:48:16 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:08:58 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	free_pack(t_game *game, int is_map)
 	free(game->tex.so);
 	free(game->tex.ea);
 	free(game->tex.we);
-	free(game->tex.f);
-	free(game->tex.c);
+	//free(game->tex.f);
+	//free(game->tex.c);
 	if (is_map == 1)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/28 12:48:05 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:08:36 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef struct s_texture {
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		*f;
-	int		*c;
+	int		f;
+	int		c;
 }	t_texture;
 
 typedef struct s_player {
@@ -150,7 +150,7 @@ typedef struct s_game {
 void	allocate_texture(t_game *game, int fd);
 int		valid_line(char *line);
 char	*supp_space(char *line, int to_supress);
-int		*allocate_rgb(t_game *game, char *line);
+int		allocate_rgb(t_game *game, char *line);
 
 /***************UTILS***************/
 int		compare_str(char *s1, char *s2, int len);

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/28 12:48:55 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:07:26 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	game_init(t_game *game, char *arg)
 	game->tex.so = NULL;
 	game->tex.we = NULL;
 	game->tex.ea = NULL;
-	game->tex.c = NULL;
-	game->tex.f = NULL;
+	game->tex.c = 0;
+	game->tex.f = 0;
     game->mini_map = 0;
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)

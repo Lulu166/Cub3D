@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/28 09:48:16 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:35:32 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	throw_ray(t_game *game, double x, double y)
 void	mini_line(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j] == '0')
-		draw_square(game, game->height, game->lenght, 0x808080);
+		draw_square(game, game->height, game->lenght, game->tex.c);
 	else if (game->tab_map[i][j] == '1')
-		draw_square(game, game->height, game->lenght, 0xB03030);
+		draw_square(game, game->height, game->lenght, game->tex.f);
 	draw_circle
 		(game, game->player.height, game->player.lenght, game->player.color);
 	throw_ray(game, game->player.lenght, game->player.height);
