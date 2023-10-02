@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/31 13:25:42 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:49:04 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ int	texture_exist(t_game *game)
 {
 	int	fd;
 
-	fd = open(game->texture.no, O_RDONLY);
+	fd = open(game->tex.no, O_RDONLY);
 	if (fd == -1)
 		map_error(game, 0);
 	close(fd);
-	fd = open(game->texture.so, O_RDONLY);
+	fd = open(game->tex.so, O_RDONLY);
 	if (fd == -1)
 		map_error(game, 0);
 	close(fd);
-	fd = open(game->texture.ea, O_RDONLY);
+	fd = open(game->tex.ea, O_RDONLY);
 	if (fd == -1)
 		map_error(game, 0);
 	close(fd);
-	fd = open(game->texture.we, O_RDONLY);
+	fd = open(game->tex.we, O_RDONLY);
 	if (fd == -1)
 		map_error(game, 0);
 	close(fd);

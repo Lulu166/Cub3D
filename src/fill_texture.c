@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/08/29 11:17:38 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:34:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*supp_space(char *line, int to_supress)
 	i = 0;
 	while (line[to_supress] == ' ')
 		to_supress++;
-	cpy = malloc(sizeof(char) * (ft_strlen(line) + to_supress));
+	cpy = malloc(sizeof(char) * (ft_strlen(line) - to_supress) + 1);
 	if (!cpy)
 		return (NULL);
 	while (line[to_supress] && line[to_supress] != '\n')
@@ -33,72 +33,85 @@ char	*supp_space(char *line, int to_supress)
 	return (cpy);
 }
 
-int	check_rgb(t_game *game, char *line)
+int	check_rgb(t_game *game, char **line)
 {
-	if (compare_str("F", line, 1) && game->texture.f == NULL)
+	if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f == 0)
 	{
-		game->texture.f = allocate_rgb(game, line);
+		game->tex.f = allocate_rgb(game, line[1]);
 		return (1);
 	}
-	else if (compare_str("F", line, 1) && game->texture.f != NULL)
+	else if (compare_str("F", line[0], ft_strlen(line[0])) && game->tex.f != 0)
 		map_error(game, 0);
-	if (compare_str("C", line, 1) && game->texture.c == NULL)
+	if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c == 0)
 	{
-		game->texture.c = allocate_rgb(game, line);
+		game->tex.c = allocate_rgb(game, line[1]);
 		return (1);
 	}
-	else if (compare_str("C", line, 1) && game->texture.c != NULL)
+	else if (compare_str("C", line[0], ft_strlen(line[0])) && game->tex.c != 0)
 		map_error(game, 0);
 	map_error(game, 0);
 	return (0);
 }
 
-int	check_texture(t_game *game, char *line)
+int	check_texture(t_game *game, char **line)
 {
-	if (compare_str("NO", line, 2) && game->texture.no == NULL)
-		return (game->texture.no = supp_space(line, 2), 1);
-	else if (compare_str("NO", line, 2) && game->texture.no != NULL)
+	if (compare_str("NO", line[0], ft_strlen(line[0])) && game->tex.no == NULL)
+		return (game->tex.no = ft_strdup(line[1]), 1);
+	else if (compare_str("NO", line[0], ft_strlen(line[0])) && game->tex.no != NULL)
 		map_error(game, 0);
-	if (compare_str("SO", line, 2) && game->texture.so == NULL)
-		return (game->texture.so = supp_space(line, 2), 1);
-	else if (compare_str("SO", line, 2) && game->texture.so != NULL)
+	if (compare_str("SO", line[0], ft_strlen(line[0])) && game->tex.so == NULL)
+		return (game->tex.so = ft_strdup(line[1]), 1);
+	else if (compare_str("SO", line[0], ft_strlen(line[0])) && game->tex.so != NULL)
 		map_error(game, 0);
-	if (compare_str("WE", line, 2) && game->texture.we == NULL)
-		return (game->texture.we = supp_space(line, 2), 1);
-	else if (compare_str("WE", line, 2) && game->texture.we != NULL)
+	if (compare_str("WE", line[0], ft_strlen(line[0])) && game->tex.we == NULL)
+		return (game->tex.we = ft_strdup(line[1]), 1);
+	else if (compare_str("WE", line[0], ft_strlen(line[0])) && game->tex.we != NULL)
 		map_error(game, 0);
-	if (compare_str("EA", line, 2) && game->texture.ea == NULL)
-		return (game->texture.ea = supp_space(line, 2), 1);
-	else if (compare_str("EA", line, 2) && game->texture.ea != NULL)
+	if (compare_str("EA", line[0], ft_strlen(line[0])) && game->tex.ea == NULL)
+		return (game->tex.ea = ft_strdup(line[1]), 1);
+	else if (compare_str("EA", line[0], ft_strlen(line[0])) && game->tex.ea != NULL)
 		map_error(game, 0);
 	return (0);
+}
+
+void	free_tab(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+	return ;
 }
 
 void	allocate_texture(t_game *game, int fd)
 {
 	char	*line;
+	char	**split_line;
 	int		nb;
 
 	nb = 0;
 	line = get_next_line(fd);
+	split_line = ft_split_charset(line, " \t\n\r\v\f");
 	game->count++;
-	while (nb < 6 && line)
+	while (nb < 6 && split_line)
 	{
-		if (line == NULL)
+		if (split_line == NULL)
 			return ;
-		else if (line[0] != '\n')
+		else if (split_line[0][0] != '\n')
 		{
-			if (valid_line(line) == 0)
-			{
-				if (check_texture(game, line))
-					nb++;
-				else if (check_rgb(game, line))
-					nb++;
-			}
+			if (check_texture(game, split_line))
+				nb++;
+			else if (check_rgb(game, split_line))
+				nb++;
 		}
+		free_tab(split_line);
 		free(line);
 		line = get_next_line(fd);
+		split_line = ft_split_charset(line, " \t\n\r\v\f");
 		game->count++;
 	}
 	free(line);
+	free_tab(split_line);
 }

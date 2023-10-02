@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/05 14:27:42 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:07:26 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ void	game_init(t_game *game, char *arg)
 {
 	int	fd;
 
-
+    game->angle = 0; // a changer en fonction de l'orientation
 	game->count = 0;
 	game->map = arg;
     game->map_size = get_size(game);
-	game->texture.no = NULL;
-	game->texture.so = NULL;
-	game->texture.we = NULL;
-	game->texture.ea = NULL;
-	game->texture.c = NULL;
-	game->texture.f = NULL;
+	game->tex.no = NULL;
+	game->tex.so = NULL;
+	game->tex.we = NULL;
+	game->tex.ea = NULL;
+	game->tex.c = 0;
+	game->tex.f = 0;
+    game->mini_map = 0;
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 		return ;
@@ -40,19 +41,17 @@ void	game_init(t_game *game, char *arg)
 
 void    init_ray_struct(t_game *g)
 {
-    printf("ok\n");
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
-    g->ray->posX = 22;
-    g->ray->posY = 12;
+    g->ray->posX = 160;
+    g->ray->posY = 144;
     g->ray->dirX = -1;
     g->ray->dirY = 0;
     g->ray->time = 0;
     g->ray->old_time = 0;
     g->ray->planeX = 0;
     g->ray->planeY = 0.66;
-    g->ray->cameraX = 0.0;
     g->ray->raydirX = 0;
     g->ray->raydirY = 0;
     g->ray->mapX = 0;
