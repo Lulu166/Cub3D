@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/22 17:23:09 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:53:53 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ int		texture_exist(t_game *game);
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
-
+void	throw_ray(t_game *game, double x, double y);
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);

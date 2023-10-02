@@ -6,55 +6,62 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/26 13:08:58 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:35:01 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-double ft_calculate_lenghtray(t_game *game, double x, double y)
+int ft_calculate_lenghtray(t_game *game, double x, double y)
 {
-	game->ray->mapX = 5 * x;
-	game->ray->mapY = 5 * y;
+	// int side_dist;
+	// (void) game;
+	// // (void) x;
+	// // (void) y;
+	// side_dist = (165 - (int)x) * (165 - (int)x) + (165 - (int)y) * (165 - (int)y);
+	// side_dist = sqrt(side_dist);
+
+	// return (side_dist);
+	game->ray->mapX = 1.5 *(int)x;
+	game->ray->mapY = 1.5 *(int)y;
+	//printf("%d , %d \n", game->ray->mapX, game->ray->mapY);
 	
-	if (game->ray->raydirX < 0)
+	if ((int)game->ray->deltaX == -1 && (int)game->ray->deltaY == 0)
 	{
-		game->ray->stepX = -1;
-		game->ray->lengthray_X = (x - game->ray->mapX) * game->ray->deltaX;
+		printf("gauche\n");
+		return ((int)x + 10);
 	}
-	else
+	if ((int)game->ray->deltaX == 0 && (int)game->ray->deltaY == -1)
 	{
-		game->ray->stepX = 1;
-		game->ray->lengthray_X = (game->ray->mapX + 1.0 - x) * game->ray->deltaX;
+		printf("bas\n");
+		return ((int)y + 10);
 	}
-	if (game->ray->raydirY < 0)
+	if ((int)game->ray->deltaX == 0 && (int)game->ray->deltaY == 1)
 	{
-		game->ray->stepY = -1;
-		game->ray->lengthray_Y = (game->ray->posY - y) * game->ray->deltaY;
+		printf("haut\n");
+		return (165 - ((int)y));
 	}
-	else
+	if ((int)game->ray->deltaX == 1 && (int)game->ray->deltaY == 0)
 	{
-		game->ray->stepY = 1;
-		game->ray->lengthray_Y = (y + 1.0 - game->ray->posY) * game->ray->deltaY;
+		printf("droite\n");
+		return (165 - ((int)x));
 	}
-	if (game->ray->lengthray_Y > game->ray->lengthray_X)
-		return (game->ray->lengthray_Y);
-	else
-		return (game->ray->lengthray_X);
+	return (1000);
 }
 
 void	throw_ray(t_game *game, double x, double y)
 {
 	int	i;
 	double side_dist;
-	
-	side_dist = ft_calculate_lenghtray(game, x, y);
+
 	i = 0;
     game->ray->deltaX = cos(game->angle);
     game->ray->deltaY = sin(game->angle);
-    while (i < side_dist)
+	side_dist = ft_calculate_lenghtray(game, x, y);
+    while (i < 150)
 	{
-        my_mlx_pixel_put(game->data, x + 10, y + 10, 0x00008B);
+		// if (game->tab_map[(int)y / 16][(int)x / 16] == '0')
+        my_mlx_pixel_put(game->data, x + 10, y + 10, 0xFFFFFF);
         x += game->ray->deltaX;
         y += game->ray->deltaY;
 		i++;
@@ -70,6 +77,7 @@ void	mini_line(t_game *game, int i, int j)
 		draw_square(game, game->height, game->lenght, 0xB03030);
 	draw_circle(game, game->player.height, game->player.lenght, game->player.color);
 	throw_ray(game,game->player.lenght, game->player.height);
+	
 	game->lenght += 16;
 }
 
