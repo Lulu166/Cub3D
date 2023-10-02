@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/30 13:08:36 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:13:00 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ int		compare_str(char *s1, char *s2, int len);
 void	init_ray_struct(t_game *g);
 int		get_size(t_game *game);
 int		texture_exist(t_game *game);
+void	free_tab(char **split);
 
 /***************RAYCASTING***************/
 

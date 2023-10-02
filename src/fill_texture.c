@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/02 11:34:09 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:15:19 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,6 @@ int	check_texture(t_game *game, char **line)
 	else if (compare_str("EA", line[0], ft_strlen(line[0])) && game->tex.ea != NULL)
 		map_error(game, 0);
 	return (0);
-}
-
-void	free_tab(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-	return ;
 }
 
 void	allocate_texture(t_game *game, int fd)

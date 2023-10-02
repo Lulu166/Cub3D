@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/02 11:35:47 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:21:30 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,9 @@ int	allocate_rgb(t_game *game, char *line)
 	if (split[i])
 		map_error(game, 0);
 	hexa = ((to_hexa(tmp[0]) << 16) | (to_hexa(tmp[1]) << 8) | to_hexa(tmp[2]));
-	//tmp[i] = '\0';
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
 	hexa = convert_value(tmp);
+	free_tab(split);
+	free(tmp);
+	free(cpy);
 	return (hexa);
 }
