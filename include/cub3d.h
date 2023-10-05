@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/02 15:13:00 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:30:23 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@
 #  define P_KEY 112
 # endif
 
-# include <../mlx/mlx.h>
+//# include <../mlx/mlx.h>
+# include <../minilibx-linux/mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
