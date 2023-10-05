@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/02 13:46:17 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:12:44 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ typedef struct s_player {
 	enum e_position	pos;
 	int				x;
 	int				y;
-	int				lenght;
-	int				height;
+	double			lenght;
+	double			height;
 	int				color;
 	int				nb_p;
 	int				left;
@@ -105,8 +105,8 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_ray {
-	int posX;
-	int posY;
+	double posX;
+	double posY;
 	int	mapX;
 	int	mapY;
 	double dirX;
@@ -143,6 +143,9 @@ typedef struct s_game {
 	int			lenght;
 	int			height;
 	double		angle;
+	double		shift;
+	double		sin_angle;
+	double		cos_angle;
 	int			mini_map;
 }	t_game;
 
@@ -161,6 +164,7 @@ int		texture_exist(t_game *game);
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
+void	throw_ray(t_game *game, double x_start, double y_start, double angle);
 
 
 /***************MAP***************/

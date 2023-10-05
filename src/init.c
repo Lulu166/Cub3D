@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/30 13:07:26 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:51:30 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	game_init(t_game *game, char *arg)
 	int	fd;
 
     game->angle = 0; // a changer en fonction de l'orientation
+    game->sin_angle = sin(game->angle);
+    game->cos_angle = cos(game->angle);
 	game->count = 0;
 	game->map = arg;
     game->map_size = get_size(game);
@@ -44,8 +46,8 @@ void    init_ray_struct(t_game *g)
     g->ray = malloc(sizeof(t_ray));
     if (!g->ray)
         return  ;
-    g->ray->posX = 160;
-    g->ray->posY = 144;
+    g->ray->posX = g->player.height;
+    g->ray->posY = g->player.lenght;
     g->ray->dirX = -1;
     g->ray->dirY = 0;
     g->ray->time = 0;

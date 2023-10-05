@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/09/28 09:24:06 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:31:24 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,19 @@ int	hook_reload(t_game *game)
 	//ray_casting(game);
 	if (game->mini_map == 1)
 		mini_map(game);
+	int x = 1;
+	while (x < WIN_W)
+	{
+		// game->angle += M_PI / 120;
+		game->shift = ((float) x / WIN_W) + 1;
+		game->cos_angle = cos((game->shift * (M_PI / 3)) + game->angle);
+        game->sin_angle = -sin((game->shift * (M_PI / 3) + game->angle));
+        game->shift = (game->shift - 1.5) * (M_PI / 3);
+		// printf("%f\n", game->angle);
+		throw_ray(game, game->player.lenght + 10, game->player.height + 10, game->angle + game->shift);
+		x++;
+	}
+	//ray_casting(game);
 	mlx_put_image_to_window
 		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);
