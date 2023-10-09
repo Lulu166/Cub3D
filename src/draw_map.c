@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:26:24 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/09/22 12:06:54 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:26:11 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_setup_coord(t_game *game)
 	{
 		x = 0;
 		while (x < map->s->column_count)
-		{	
+		{
 			ft_place_line(map, y, x);
 			x++;
 		}

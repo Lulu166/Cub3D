@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/27 17:25:37 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:18:47 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,35 @@ int	player_pos(t_game *game)
 	return (1);
 }
 
+void	algo_parse(t_game *game, int i, int j)
+{
+	if (game->tab_map[i][j] != '1')
+		map_error(game, 1);
+	while (game->tab_map[i][j])
+	{
+		if (skip_wall(game, i, &j) == 2)
+			break ;
+		if (game->tab_map[i][j] == '0')
+			skip_empty(game, i, &j);
+		else if (game->tab_map[i][j] == ' ')
+			if (skip_space(game, i, &j) == 2)
+				break ;
+	}
+}
+
 int	map_closed(t_game *game)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (game->tab_map[i])
+	i = -1;
+	while (game->tab_map[++i])
 	{
 		j = 0;
 		if (game->tab_map[i][j] == ' ')
 			skip_space(game, i, &j);
 		if (game->tab_map[i][j] != '\n')
-		{
-			if (game->tab_map[i][j] != '1')
-				map_error(game, 1);
-			while (game->tab_map[i][j])
-			{
-				if (skip_wall(game, i, &j) == 2)
-					break ;
-				if (game->tab_map[i][j] == '0')
-					skip_empty(game, i, &j);
-				else if (game->tab_map[i][j] == ' ')
-					if (skip_space(game, i, &j) == 2)
-						break ;
-			}
-		}
-		i++;
+			algo_parse(game, i, j);
 	}
 	return (0);
 }
