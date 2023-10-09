@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/30 13:08:58 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:35:18 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	free_pack(t_game *game, int is_map)
 	free(game->tex.so);
 	free(game->tex.ea);
 	free(game->tex.we);
-	//free(game->tex.f);
-	//free(game->tex.c);
 	if (is_map == 1)
 	{
 		i = 0;
@@ -32,6 +30,8 @@ void	free_pack(t_game *game, int is_map)
 		}
 		free(game->tab_map);
 	}
+	free(game->data);
+	free(game->ray);
 }
 
 void	map_error(t_game *game, int is_map)
@@ -43,6 +43,10 @@ void	map_error(t_game *game, int is_map)
 
 void	free_for_end(t_game *game)
 {
+	mlx_destroy_image(game->screen.mlx, game->data->img);
+	mlx_destroy_window(game->screen.mlx, game->screen.win);
+	mlx_destroy_display(game->screen.mlx);
+	free(game->screen.mlx);
 	free_pack(game, 1);
 	exit (0);
 }

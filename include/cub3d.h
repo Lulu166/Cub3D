@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/05 15:12:44 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:10:54 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@
 #  define P_KEY 112
 # endif
 
-# include <../mlx/mlx.h>
+//# include <../mlx/mlx.h>
+# include <../minilibx-linux/mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -160,6 +161,7 @@ int		compare_str(char *s1, char *s2, int len);
 void	init_ray_struct(t_game *g);
 int		get_size(t_game *game);
 int		texture_exist(t_game *game);
+void	free_tab(char **split);
 
 /***************RAYCASTING***************/
 
