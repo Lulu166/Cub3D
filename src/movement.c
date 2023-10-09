@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/05 15:33:39 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:24:31 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,29 @@ int	can_move(t_game *game)
 {
 	if (game->player.top == 1)
 	{
-		game->player.height -= game->sin_angle * 2;
-		game->player.lenght -= game->cos_angle * 2;
+		game->player.posx += cosf(game->angle) * 2;
+		game->player.posy += sinf(game->angle) * 2;
 		game->player.top = 0;
-		game->ray->posY += game->ray->raydirY;
-		game->ray->posX += game->ray->raydirX;
-	}
-	if (game->player.right == 1)
-	{
-		game->player.lenght += 2;
-		game->player.right = 0;
 	}
 	if (game->player.down == 1)
 	{
-		game->player.height += 2;
+		game->player.posx -= cosf(game->angle) * 2;
+		game->player.posy -= sinf(game->angle) * 2;
 		game->player.down = 0;
-		game->ray->posY -= game->ray->raydirY;
-		game->ray->posX -= game->ray->raydirX;
+
 	}
 	if (game->player.left == 1)
 	{
-		game->player.lenght -= 2;
+		game->player.posx += sin(game->angle) * 2;
+		game->player.posy -= cos(game->angle) * 2;
 		game->player.left = 0;
+	}
+	if (game->player.right == 1)
+	{
+
+		game->player.posx -= (sinf(game->angle)) * 2;
+		game->player.posy += (cosf(game->angle)) * 2;
+		game->player.right = 0;
 	}
 	return (0);
 }

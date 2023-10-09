@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/09/27 17:25:37 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:29:18 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_player(t_game *game, int i, int j)
 	game->player.nb_p++;
 	game->player.x = j;
 	game->player.y = i;
-	game->player.height = game->player.y * 16;
-	game->player.lenght = game->player.x * 16;
+	game->player.posy = game->player.y * 16;
+	game->player.posx = game->player.x * 16;
 	game->player.top = 0;
 	game->player.right = 0;
 	game->player.down = 0;

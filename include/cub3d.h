@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 11:10:54 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:22:24 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ typedef struct s_player {
 	enum e_position	pos;
 	int				x;
 	int				y;
-	double			lenght;
-	double			height;
+	double			posx;
+	double			posy;
 	int				color;
 	int				nb_p;
 	int				left;

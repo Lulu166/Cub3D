@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/09 11:11:13 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:44:12 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	hook_reload(t_game *game)
         game->sin_angle = -sin((game->shift * (M_PI / 3) + game->angle));
         game->shift = (game->shift - 1.5) * (M_PI / 3);
 		// printf("%f\n", game->angle);
-		throw_ray(game, game->player.lenght + 10, game->player.height + 10, game->angle + game->shift);
+		throw_ray(game, game->player.posx + 10, game->player.posy + 10, game->angle + game->shift);
 		x++;
 	}
 	//ray_casting(game);

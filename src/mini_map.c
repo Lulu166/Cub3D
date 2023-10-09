@@ -6,29 +6,30 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/05 14:50:33 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:45:57 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 
-void	throw_ray(t_game *game, double x_start, double y_start, double angle)
+void	throw_ray(t_game *g, double x_start, double y_start, double angle)
 {
 	double	t;
 
 	t = 0;
 	
-	double x = x_start + t * game->cos_angle;
-    double y = y_start + t * game->sin_angle;
-	while (game->tab_map[(int) y / 16 ][(int) x / 16] && game->tab_map[(int) y / 16 ][(int) x / 16] != '1')
+	g->ray->dirX = x_start + t * g->cos_angle;
+    g->ray->dirY = y_start + t * g->sin_angle;
+	printf("cos = %f , sin = %f\n", cos(g->angle) , sin(g->angle));
+	while (g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
 	{
-		if (game->tab_map[(int) (y_start / 16) ][(int) (x_start / 16)] == '1')
+		if (g->tab_map[(int) (y_start / 16) ][(int) (x_start / 16)] == '1')
 			break;
 		t += 1;
-		x = x_start + t * cos(angle);
-		y = y_start + t * sin(angle);
-		my_mlx_pixel_put(game->data, x, y, 0x000080);
+		g->ray->dirX = x_start + t * cos(angle);
+		g->ray->dirY = y_start + t * sin(angle);
+		my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
 	}
 	// printf("%f, %f \n", game->ray->lengthray_X, game->ray->lengthray_Y);
 }
@@ -40,7 +41,7 @@ void	mini_line(t_game *game, int i, int j)
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, game->tex.f);
 	draw_circle
-		(game, game->player.height, game->player.lenght, game->player.color);
+		(game, game->player.posy, game->player.posx, game->player.color);
 	game->lenght += 16;
 }
 
