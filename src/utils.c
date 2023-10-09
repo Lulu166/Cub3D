@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:35:43 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/03 11:00:37 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:09:17 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ int	skip_space(t_game *game, int i, int *j)
 	return (0);
 }
 
-int	compare_str(char *s1, char *s2, int len)
+int	comp_s(char *s1, char *s2, int len)
 {
 	int	i;
 
 	i = 0;
+	if (s1 == NULL)
+		return (0);
+	if (s2 == NULL)
+		return (0);
 	while ((i <= len) && (s1[i] || s2[i]))
 	{
 		if (s1[i] != s2[i])

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
+#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/09/26 11:25:16 by chsiffre         ###   ########.fr        #
+#    Updated: 2023/10/09 13:58:02 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ LIST_SRC =	main.c \
 			parse_utils.c \
 			window_init.c \
 			mini_map.c \
+			hooks.c \
 			movement.c \
 			pix.c \
 			error.c \

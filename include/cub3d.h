@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 11:22:24 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:29:38 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ char	*supp_space(char *line, int to_supress);
 int		allocate_rgb(t_game *game, char *line);
 
 /***************UTILS***************/
-int		compare_str(char *s1, char *s2, int len);
+int		comp_s(char *s1, char *s2, int len);
 void	init_ray_struct(t_game *g);
 int		get_size(t_game *game);
 int		texture_exist(t_game *game);
@@ -186,9 +186,14 @@ void	window_init(t_game *game);
 void	mini_map(t_game *game);
 void	game_init(t_game *game, char *arg);
 
+/***************HOOKS***************/
+int		close_window(t_game *game);
+int		key_press(int keycode, t_game *game);
+
 /***************MOVEMENT***************/
 int		can_move(t_game *game);
 int		can_turn(t_game *game);
+
 /***************PIXELS***************/
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
 void	draw_square(t_game *game, int height, int len, int color);

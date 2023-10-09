@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/02 15:21:30 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:43:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	to_hexa(int nb)
 {
 	int	hexa;
 	int	base;
-	int tmp;
+	int	tmp;
 
 	base = 1;
 	hexa = 0;
@@ -50,6 +50,16 @@ int	to_hexa(int nb)
 		nb = nb / 16;
 		base = base * 16;
 	}
+	return (hexa);
+}
+
+int	rgb_to_hexa(int *tmp)
+{
+	int		hexa;
+
+	hexa = ((to_hexa(tmp[0]) << 16) | (to_hexa(tmp[1]) << 8) | to_hexa(tmp[2]));
+	hexa = convert_value(tmp);
+	free(tmp);
 	return (hexa);
 }
 
@@ -66,21 +76,18 @@ int	allocate_rgb(t_game *game, char *line)
 	if (!cpy)
 		map_error(game, 0);
 	split = ft_split(cpy, ',');
-	i = 0;
-	while (i < 3)
+	i = -1;
+	while (++i < 3)
 	{
 		parse_rgb(game, split[i]);
 		tmp[i] = ft_atoi(split[i]);
 		if (tmp[i] > 255 || tmp[i] < 0)
 			map_error(game, 0);
-		i++;
 	}
 	if (split[i])
 		map_error(game, 0);
-	hexa = ((to_hexa(tmp[0]) << 16) | (to_hexa(tmp[1]) << 8) | to_hexa(tmp[2]));
-	hexa = convert_value(tmp);
+	hexa = rgb_to_hexa(tmp);
 	free_tab(split);
-	free(tmp);
 	free(cpy);
 	return (hexa);
 }

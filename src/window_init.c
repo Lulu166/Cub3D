@@ -3,86 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/09 11:44:12 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:31:19 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-
-// void	clear_image(t_game *game)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < WIN_H)
-// 	{
-// 		j = 0;
-// 		while (j < WIN_W)
-// 		{
-// 			game->tab_map[(int)i * WIN_W + (int)j] = 0;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
-int	close_window(t_game *game)
-{
-	free_for_end(game);
-	exit (0);
-}
-
-int	key_press(int keycode, t_game *game)
-{
-	if (keycode == 65307)
-	{
-		free_for_end(game);
-		exit(0);
-	}
-	else if (keycode == 109)
-	{
-		if (game->mini_map == 0)
-			game->mini_map = 1;
-		else if (game->mini_map == 1)
-			game->mini_map = 0;
-	}
-	else if (keycode == D_LOWER_KEY)
-	{
-		game->player.right = 1;
-		can_move(game);
-	}
-	else if (keycode == W_LOWER_KEY)
-	{
-		game->player.top = 1;
-		can_move(game);
-	}
-	else if (keycode == A_LOWER_KEY)
-	{
-		game->player.left = 1;
-		can_move(game);
-	}
-	else if (keycode == S_LOWER_KEY)
-	{
-		game->player.down = 1;
-		can_move(game);
-	}
-	else if (keycode == RIGHT_ARROW_KEY)
-	{
-		game->player.rotRight = 1;
-		can_turn(game);
-	}
-	else if (keycode == LEFT_ARROW_KEY)
-	{
-		game->player.rotLeft = 1;
-		can_turn(game);
-	}
-	return (0);
-}
 
 int	hook_reload(t_game *game)
 {

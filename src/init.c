@@ -3,40 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/09 11:34:33 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:30:15 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	game_init(t_game *game, char *arg)
+void	game_file(t_game *game)
 {
 	int	fd;
 
-    game->angle = 0; // a changer en fonction de l'orientation
-    game->sin_angle = sin(game->angle);
-    game->cos_angle = cos(game->angle);
+	fd = open(game->map, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error\n");
+		exit (1);
+	}
+	init_ray_struct(game);
+	allocate_texture(game, fd);
+	texture_exist(game);
+	game->tab_map = allocate_map(game, fd);
+	close(fd);
+}
+
+void	game_init(t_game *game, char *arg)
+{
+	game->angle = 0; // a changer en fonction de l'orientation
+	game->sin_angle = sin(game->angle);
+	game->cos_angle = cos(game->angle);
 	game->count = 0;
 	game->map = arg;
-    game->map_size = get_size(game);
+	game->map_size = get_size(game);
 	game->tex.no = NULL;
 	game->tex.so = NULL;
 	game->tex.we = NULL;
 	game->tex.ea = NULL;
 	game->tex.c = 0;
 	game->tex.f = 0;
-    game->mini_map = 0;
-	fd = open(game->map, O_RDONLY);
-	if (fd == -1)
-		return ;
-	init_ray_struct(game);
-	allocate_texture(game, fd);
-	texture_exist(game);
-	game->tab_map = allocate_map(game, fd);
-	close(fd);
+	game->mini_map = 0;
+	game_file(game);
 	parse_map(game);
 	window_init(game);
 }
