@@ -6,32 +6,34 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/10 12:51:29 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:43:39 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 
-void	throw_ray(t_game *g, double x_start, double y_start, double angle)
+double	throw_ray(t_game *g, double x_start, double y_start, double angle)
 {
 	double	t;
-
+	double	dist;
+	
+	dist = 0;
 	t = 0;
-
 	g->ray->dirX = x_start + t * g->cos_angle;
     g->ray->dirY = y_start + t * g->sin_angle;
-	//printf("cos = %f , sin = %f\n", cos(g->angle) , sin(g->angle));
-	while (g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
+	while (g->tab_map[(int)(g->ray->dirY) / 16][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
 	{
 		if (g->tab_map[(int) (y_start / 16) ][(int) (x_start / 16)] == '1')
 			break;
 		t += 1;
-		g->ray->dirX = x_start + t * cos(angle);
-		g->ray->dirY = y_start + t * sin(angle);
+		g->ray->dirX = x_start + t * cos(angle) / 10;
+		g->ray->dirY = y_start + t * sin(angle) / 10;
+		dist += 0.20;
 		my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
 	}
-	// printf("%f, %f \n", game->ray->lengthray_X, game->ray->lengthray_Y);
+	// printf(" x = %f, y = %f", g->ray->dirX / 16, g->ray->dirY / 16);
+	return (dist);
 }
 
 void	mini_line(t_game *game, int i, int j)
@@ -40,6 +42,7 @@ void	mini_line(t_game *game, int i, int j)
 		draw_square(game, game->height, game->lenght, game->tex.c);
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, game->tex.f);
+	// printf("x= %f, y = %f\n", game->player.posx / 16, game->player.posy / 16);
 	draw_circle
 		(game, game->player.posy, game->player.posx, game->player.color);
 	game->lenght += 16;

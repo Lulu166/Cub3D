@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/10 16:42:06 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:47:03 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ void	allocate_texture(t_game *game, int fd)
 	int		nb;
 
 	nb = 0;
-	line = get_next_line(fd);
-	if (line == NULL)
-		map_error(game, 0);
+	line = NULL;
 	line = pass_empty(game, line, fd);
 	split_line = ft_split_charset(line, " \t\n\r\v\f");
 	game->count++;
