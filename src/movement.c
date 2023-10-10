@@ -3,42 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/09 16:31:05 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:39:46 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	can_move(t_game *game)
+int	can_move(t_game *g)
 {
-	if (game->player.top == 1)
+	if (g->player.top == 1)
 	{
-		game->player.posx += cosf(game->angle) * 2;
-		game->player.posy += sinf(game->angle) * 2;
-		game->player.top = 0;
+		// printf("posy = %d, posx = %d\n", (int)g->player.posy / 16, (int)g->player.posx / 16);
+		if (g->tab_map[((int)g->player.posy) / 16][(int) g->player.posx / 16] != '1')
+		{
+			g->player.posx += cosf(g->angle) * 2;
+			g->player.posy += sinf(g->angle) * 2;
+		}
+		g->player.top = 0;
 	}
-	if (game->player.down == 1)
+	if (g->player.down == 1)
 	{
-		game->player.posx -= cosf(game->angle) * 2;
-		game->player.posy -= sinf(game->angle) * 2;
-		game->player.down = 0;
+		g->player.posx -= cosf(g->angle) * 2;
+		g->player.posy -= sinf(g->angle) * 2;
+		g->player.down = 0;
 
 	}
-	if (game->player.left == 1)
+	if (g->player.left == 1)
 	{
-		game->player.posx += sin(game->angle) * 2;
-		game->player.posy -= cos(game->angle) * 2;
-		game->player.left = 0;
+		g->player.posx += sinf(g->angle) * 2;
+		g->player.posy -= cosf(g->angle) * 2;
+		g->player.left = 0;
 	}
-	if (game->player.right == 1)
+	if (g->player.right == 1)
 	{
 
-		game->player.posx -= (sinf(game->angle)) * 2;
-		game->player.posy += (cosf(game->angle)) * 2;
-		game->player.right = 0;
+		g->player.posx -= (sinf(g->angle)) * 2;
+		g->player.posy += (cosf(g->angle)) * 2;
+		g->player.right = 0;
 	}
 	return (0);
 }
@@ -47,32 +51,18 @@ int	can_turn(t_game *game)
 {
 	if (game->player.rotLeft == 1)
 	{
-		double oldDirX = game->ray->dirX;
-      	game->ray->dirX = game->ray->dirX * cos(0.3) - game->ray->dirY * sin(0.3);
-      	game->ray->dirY = oldDirX * sin(0.3) + game->ray->dirY * cos(0.3);
-      	double oldPlaneX = game->ray->planeX;
-      	game->ray->planeX = game->ray->planeX * cos(0.3) - game->ray->planeY * sin(0.3);
-      	game->ray->planeY = oldPlaneX * sin(0.3) + game->ray->planeY * cos(0.3);
-		game->player.rotLeft = 0;
-
 		game->angle -= M_PI / 24;
 		if (game->angle < 0)
 			game->angle = 2 * M_PI;
+		game->player.rotLeft = 0;
 
 	}
 	if (game->player.rotRight == 1)
 	{
-		double oldDirX = game->ray->dirX;
-      	game->ray->dirX = game->ray->dirX * cos(-0.3) - game->ray->dirY * sin(-0.3);
-      	game->ray->dirY = oldDirX * sin(-0.3) + game->ray->dirY * cos(-0.3);
-      	double oldPlaneX = game->ray->planeX;
-      	game->ray->planeX = game->ray->planeX * cos(-0.3) - game->ray->planeY * sin(-0.3);
-      	game->ray->planeY = oldPlaneX * sin(-0.3) + game->ray->planeY * cos(-0.3);
-		game->player.rotRight = 0;
-
 		game->angle += M_PI / 24;
 		if (game->angle > 2 * M_PI)
 			game->angle = 0;
+		game->player.rotRight = 0;
 	}
 	return (0);
 }

@@ -3,37 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/09 16:31:19 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:36:38 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+
+void draw_wall(t_game *game, int *y, int y_max, int color)
+{
+	while (*y <= y_max)
+	{
+		my_mlx_pixel_put(game->data, game->ray->x, *y, color);
+		(*y)++;
+	}
+}
+
+void draw_ceilling_floor(t_game *game, int *y, int y_max, int color)
+{
+	while (*y < y_max)
+	{
+		my_mlx_pixel_put(game->data, game->ray->x, *y, color);
+		(*y)++;
+	}
+}
+
+void	draw_all(t_game *game, double dist)
+{
+	int y;
+	double wall_size;
+	double half_size;
+	
+	y = 0;
+	if (dist == 0)
+		dist = 0.2;
+	wall_size = (1 / ((dist) * cos(game->shift))) * 35000;
+	half_size = wall_size / 2;
+	draw_ceilling_floor(game, &y, ((WIN_H / 2) - half_size), game->tex.c);
+	draw_wall(game, &y, ((WIN_H / 2) + half_size), 0x79615C);
+	draw_ceilling_floor(game, &y, WIN_H, game->tex.f);
+	
+}
+void	draw_map(t_game *game)
+{
+	int y;
+	double dist;
+
+	y = 0;
+	init_ray_struct(game);
+	while (game->ray->x < WIN_W)
+	{
+		game->shift = ((float) game->ray->x / WIN_W) + 1;
+		game->cos_angle = cosf((game->shift * (M_PI / 3)) + game->angle);
+        game->sin_angle = -sinf((game->shift * (M_PI / 3) + game->angle));
+        game->shift = (game->shift - 1.5) * (M_PI / 3);
+		dist = throw_ray(game, game->player.posx + 10, game->player.posy + 10, game->angle + game->shift);
+		draw_all(game, dist);
+		game->ray->x++;
+	}
+}
 
 int	hook_reload(t_game *game)
 {
 	mlx_destroy_image(game->screen.mlx, game->data->img);
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
-	//draw_map(game);
-	//ray_casting(game);
+	draw_map(game);
 	if (game->mini_map == 1)
 		mini_map(game);
-	int x = 1;
-	while (x < WIN_W)
-	{
-		// game->angle += M_PI / 120;
-		game->shift = ((float) x / WIN_W) + 1;
-		game->cos_angle = cos((game->shift * (M_PI / 3)) + game->angle);
-        game->sin_angle = -sin((game->shift * (M_PI / 3) + game->angle));
-        game->shift = (game->shift - 1.5) * (M_PI / 3);
-		// printf("%f\n", game->angle);
-		throw_ray(game, game->player.posx + 10, game->player.posy + 10, game->angle + game->shift);
-		x++;
-	}
-	//ray_casting(game);
 	mlx_put_image_to_window
 		(game->screen.mlx, game->screen.win, game->data->img, 0, 0);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:29:38 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:27:23 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
-# define WIN_H 1600
-# define WIN_W 1600
+# define WIN_H 1480
+# define WIN_W 1480
 
 # ifdef __APPLE__
 #  define LEFT_ARROW_KEY 123
@@ -110,6 +110,7 @@ typedef struct s_ray {
 	double posY;
 	int	mapX;
 	int	mapY;
+	int	x;
 	double dirX;
 	double dirY;
 	double planeX;
@@ -118,6 +119,7 @@ typedef struct s_ray {
 	double raydirY;
 	double lengthray_X;
 	double lengthray_Y;
+	double	dist;
 	double deltaX;
 	double deltaY;
 	int		stepX;
@@ -166,7 +168,7 @@ void	free_tab(char **split);
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
-void	throw_ray(t_game *game, double x_start, double y_start, double angle);
+double	throw_ray(t_game *game, double x_start, double y_start, double angle);
 
 
 /***************MAP***************/

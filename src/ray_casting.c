@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:06:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/04 14:55:38 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:01:05 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	ft_init_var(t_game *game, int x)
 	camera_x = 2 * x / (double) WIN_W - 1;
 	game->ray->raydirX = game->ray->dirX + game->ray->planeX * camera_x;
 	game->ray->raydirY = game->ray->dirY + game->ray->planeY * camera_x;
-	game->ray->mapX = game->ray->posX;
-	game->ray->mapY = game->ray->posY;
+	game->ray->mapX = game->player.posx;
+	game->ray->mapY = game->player.posy;
 	game->ray->deltaX = 1 / game->ray->raydirX;
 	game->ray->deltaY = 1 / game->ray->raydirY;
 	// game->ray->deltaX = sqrt(1 + (game->ray->raydirY * game->ray->raydirY) / (game->ray->raydirX * game->ray->raydirX));
