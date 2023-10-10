@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 14:09:57 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:24:39 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	free_game(t_game *game, int is_map)
 			i++;
 		}
 		free(game->tab_map);
+		free(game->data);
 	}
-	free(game->data);
 	free(game->ray);
 }
 

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/09 16:30:15 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:03:46 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	game_file(t_game *game)
 	texture_exist(game);
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
+	if (game->tab_map == NULL)
+		map_error(game, 0);
 }
 
 void	game_init(t_game *game, char *arg)

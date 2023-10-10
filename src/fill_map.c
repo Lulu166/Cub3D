@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 12:15:08 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:32:58 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ char	*find_map(t_game *game, int fd)
 	return (NULL);
 }
 
-static void	free_val_alloc(char *line, char **map_tab)
-{
-	free(line);
-	free_tab(map_tab);
-}
-
 char	**allocate_map(t_game *game, int fd)
 {
 	int		i;
@@ -93,5 +87,5 @@ char	**allocate_map(t_game *game, int fd)
 		if (line == NULL)
 			return (map_tab[i] = NULL, map_tab);
 	}
-	return (map_error(game, 1), NULL);
+	return (free(map_tab), NULL);
 }

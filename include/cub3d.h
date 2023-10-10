@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:29:38 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:25:20 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_game {
 	t_player	player;
 	t_data		*data;
 	t_ray		*ray;
+	int			is_map;
 	char		*map;
 	char		**tab_map;
 	int			map_size;
@@ -162,12 +163,13 @@ void	init_ray_struct(t_game *g);
 int		get_size(t_game *game);
 int		texture_exist(t_game *game);
 void	free_tab(char **split);
+void	free_val_alloc(char *line, char **split_line);
+int		to_skip(char *line);
 
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
 void	throw_ray(t_game *game, double x_start, double y_start, double angle);
-
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);

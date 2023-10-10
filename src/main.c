@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:04:03 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:10:18 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void	check_extension(t_game *game, char *str)
 				if (str[--i] == '.')
 					return ;
 	map_error(game, 0);
+}
+
+int	check_name(char	*name)
+{
+	int	i;
+
+	i = ft_strlen(name);
+	if (name[--i] == 'b')
+		if (name[--i] == 'u')
+			if (name[--i] == 'c')
+				if (name[--i] == '.')
+					return (1);
+	return (0);
 }
 
 int	texture_exist(t_game *game)
@@ -75,20 +88,6 @@ int	get_size(t_game *game)
 	}
 	close(fd);
 	return (size);
-}
-
-
-int	check_name(char	*name)
-{
-	int	i;
-
-	i = ft_strlen(name);
-	if (name[--i] == 'b')
-		if (name[--i] == 'u')
-			if (name[--i] == 'c')
-				if (name[--i] == '.')
-					return (1);
-	return (0);
 }
 
 int	main(int argc, char **argv)

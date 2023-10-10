@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/09 13:58:02 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/10 16:24:22 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LIST_SRC =	main.c \
 			init.c \
 			ray_casting.c \
 			utils.c \
+			utils1.c \
 			fill_texture.c \
 			fill_map.c \
 			parse_rgb.c \

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:35:43 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:09:17 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:31:51 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ void	free_tab(char **split)
 		free(split[i++]);
 	free(split);
 	return ;
+}
+
+void	free_val_alloc(char *line, char **split_line)
+{
+	free(line);
+	free_tab(split_line);
 }

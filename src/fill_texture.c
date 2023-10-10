@@ -6,32 +6,11 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:14:42 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:42:06 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-char	*supp_space(char *line, int to_supress)
-{
-	int		i;
-	char	*cpy;
-
-	i = 0;
-	while (line[to_supress] == ' ')
-		to_supress++;
-	cpy = malloc(sizeof(char) * (ft_strlen(line) - to_supress) + 1);
-	if (!cpy)
-		return (NULL);
-	while (line[to_supress] && line[to_supress] != '\n')
-	{
-		cpy[i] = line[to_supress];
-		i++;
-		to_supress++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
-}
 
 int	check_rgb(t_game *game, char **line)
 {
@@ -76,10 +55,31 @@ int	check_texture(t_game *g, char **line)
 	return (0);
 }
 
-static void	free_val_alloc(char *line, char **split_line)
+int	all_check(t_game *game, char **split_line, int *nb, char *line)
 {
-	free(line);
-	free_tab(split_line);
+	if (check_texture(game, split_line))
+		(*nb)++;
+	else if (check_rgb(game, split_line))
+		(*nb)++;
+	if (*nb == 6)
+		return (free_val_alloc(line, split_line), 1);
+	return (0);
+}
+
+char	*pass_empty(t_game *game, char *line, int fd)
+{
+	line = get_next_line(fd);
+	if (line == NULL)
+		map_error(game, 0);
+	while (to_skip(line) == 0)
+	{
+		game->count++;
+		free(line);
+		line = get_next_line(fd);
+		if (line == NULL)
+			map_error(game, 0);
+	}
+	return (line);
 }
 
 void	allocate_texture(t_game *game, int fd)
@@ -90,21 +90,20 @@ void	allocate_texture(t_game *game, int fd)
 
 	nb = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+		map_error(game, 0);
+	line = pass_empty(game, line, fd);
 	split_line = ft_split_charset(line, " \t\n\r\v\f");
 	game->count++;
 	while (nb < 6 && split_line)
 	{
 		if (split_line == NULL)
-			return ;
+			map_error(game, 0);
 		else if (split_line[0][0] != '\n')
-		{
-			if (check_texture(game, split_line))
-				nb++;
-			else if (check_rgb(game, split_line))
-				nb++;
-		}
+			if (all_check(game, split_line, &nb, line) == 1)
+				return ;
 		free_val_alloc(line, split_line);
-		line = get_next_line(fd);
+		line = pass_empty(game, line, fd);
 		split_line = ft_split_charset(line, " \t\n\r\v\f");
 		game->count++;
 	}

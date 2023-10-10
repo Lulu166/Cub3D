@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/09 16:30:59 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:51:29 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	throw_ray(t_game *g, double x_start, double y_start, double angle)
 	double	t;
 
 	t = 0;
-	
+
 	g->ray->dirX = x_start + t * g->cos_angle;
     g->ray->dirY = y_start + t * g->sin_angle;
-	printf("cos = %f , sin = %f\n", cos(g->angle) , sin(g->angle));
+	//printf("cos = %f , sin = %f\n", cos(g->angle) , sin(g->angle));
 	while (g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
 	{
 		if (g->tab_map[(int) (y_start / 16) ][(int) (x_start / 16)] == '1')
