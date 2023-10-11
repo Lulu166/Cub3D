@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 13:46:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:29:44 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	hook_reload(t_game *game)
 {
+	can_move(game);
+	can_turn(game);
 	mlx_destroy_image(game->screen.mlx, game->data->img);
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
@@ -40,6 +42,7 @@ void	window_init(t_game *game)
 			&game->data->len, &game->data->endian);
 	mlx_hook(game->screen.win, 17, 0L, close_window, game);
 	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
+	mlx_hook(game->screen.win, 3, 1L << 1, key_release, game);
 	mlx_loop_hook(game->screen.mlx, hook_reload, game);
 	mlx_loop(game->screen.mlx);
 }
