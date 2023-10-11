@@ -1,1 +1,1 @@
-./cub3D ../test.cub pas de message d'erreur
+static char du xpm probleme

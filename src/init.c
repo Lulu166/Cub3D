@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/10 16:43:48 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:43:47 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,32 @@ void	game_init(t_game *game, char *arg)
 
 void    init_ray_struct(t_game *g)
 {
-    g->ray = malloc(sizeof(t_ray));
-    if (!g->ray)
-        return  ;
-    g->ray->posX = g->player.posx;
-    g->ray->posY = g->player.posy;
-    g->ray->dirX = -1;
-    g->ray->dirY = 0;
-    g->ray->time = 0;
-    g->ray->old_time = 0;
-    g->ray->planeX = 0;
-    g->ray->planeY = 0.66;
-    g->ray->raydirX = 0;
-    g->ray->raydirY = 0;
-    g->ray->mapX = 0;
+	g->ray = malloc(sizeof(t_ray));
+	if (!g->ray)
+		return ;
+	g->ray->posX = g->player.posx;
+	g->ray->posY = g->player.posy;
+	g->ray->dirX = -1;
+	g->ray->dirY = 0;
+	g->ray->time = 0;
+	g->ray->old_time = 0;
+	g->ray->planeX = 0;
+	g->ray->planeY = 0.66;
+	g->ray->raydirX = 0;
+	g->ray->raydirY = 0;
+	g->ray->mapX = 0;
 	g->ray->x = 1;
-    g->ray->mapY = 0;
-    g->ray->lengthray_X = 0;
-    g->ray->lengthray_Y = 0;
-    g->ray->time = 0;
-    g->ray->old_time = 0;
-    g->ray->side = 0;
-    g->ray->hit = 0;
-    g->ray->stepX = 0;
-    g->ray->stepY = 0;
-    g->ray->deltaX = 0;
-    g->ray->deltaY = 0;
-    g->ray->DrawEnd = 0;
-    g->ray->DrawStart = 0;
+	g->ray->mapY = 0;
+	g->ray->lengthray_X = 0;
+	g->ray->lengthray_Y = 0;
+	g->ray->time = 0;
+	g->ray->old_time = 0;
+	g->ray->side = 0;
+	g->ray->hit = 0;
+	g->ray->stepX = 0;
+	g->ray->stepY = 0;
+	g->ray->deltaX = 0;
+	g->ray->deltaY = 0;
+	g->ray->DrawEnd = 0;
+	g->ray->DrawStart = 0;
 }

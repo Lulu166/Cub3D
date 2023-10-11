@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/09 16:31:12 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:25:15 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,15 @@ int	map_closed(t_game *game)
 	int	i;
 	int	j;
 
-	i = -1;
-	while (game->tab_map[++i])
+	i = 0;
+	while (game->tab_map[i] && game->tab_map[i][0] != '\0')
 	{
 		j = 0;
 		if (game->tab_map[i][j] == ' ')
 			skip_space(game, i, &j);
 		if (game->tab_map[i][j] != '\n')
 			algo_parse(game, i, j);
+		i++;
 	}
 	return (0);
 }

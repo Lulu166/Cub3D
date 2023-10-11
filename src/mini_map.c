@@ -6,26 +6,25 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/10 16:43:39 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:44:47 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
 double	throw_ray(t_game *g, double x_start, double y_start, double angle)
 {
 	double	t;
 	double	dist;
-	
+
 	dist = 0;
 	t = 0;
 	g->ray->dirX = x_start + t * g->cos_angle;
-    g->ray->dirY = y_start + t * g->sin_angle;
+	g->ray->dirY = y_start + t * g->sin_angle;
 	while (g->tab_map[(int)(g->ray->dirY) / 16][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
 	{
-		if (g->tab_map[(int) (y_start / 16) ][(int) (x_start / 16)] == '1')
-			break;
+		if (g->tab_map[(int)(y_start / 16)][(int)(x_start / 16)] == '1')
+			break ;
 		t += 1;
 		g->ray->dirX = x_start + t * cos(angle) / 10;
 		g->ray->dirY = y_start + t * sin(angle) / 10;

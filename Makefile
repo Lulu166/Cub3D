@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/10 16:24:22 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/11 13:47:34 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ DIR_INC = ./include/
 MLX_DIR = ./minilibx-linux
 
 LIST_SRC =	main.c \
+			file.c \
 			init.c \
 			ray_casting.c \
 			utils.c \
@@ -39,6 +40,7 @@ LIST_SRC =	main.c \
 			hooks.c \
 			movement.c \
 			pix.c \
+			draw3D.c \
 			error.c \
 
 LIST_INC = cub3d.h

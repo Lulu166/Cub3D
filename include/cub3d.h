@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/10 16:43:22 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:47:54 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ typedef struct s_game {
 }	t_game;
 
 /***************TEXTURE***************/
+int		check_name(char	*name);
 void	allocate_texture(t_game *game, int fd);
 int		valid_line(char *line);
 char	*supp_space(char *line, int to_supress);
@@ -167,6 +168,7 @@ int		texture_exist(t_game *game);
 void	free_tab(char **split);
 void	free_val_alloc(char *line, char **split_line);
 int		to_skip(char *line);
+int		map_size(t_game *game);
 
 /***************RAYCASTING***************/
 
@@ -203,6 +205,7 @@ int		can_turn(t_game *game);
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
 void	draw_square(t_game *game, int height, int len, int color);
 void	draw_circle(t_game *game, int y, int x, int color);
+void	draw_map(t_game *game);
 
 /***************ERROR***************/
 void	map_error(t_game *game, int is_map);

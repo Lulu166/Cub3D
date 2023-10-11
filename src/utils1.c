@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:24:02 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/10 16:24:52 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:45:16 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ char	*supp_space(char *line, int to_supress)
 	}
 	cpy[i] = '\0';
 	return (cpy);
+}
+
+int	map_size(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->tab_map[i])
+		i++;
+	return (i);
 }

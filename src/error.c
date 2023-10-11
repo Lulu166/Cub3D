@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/10 13:24:39 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:39:08 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_game(t_game *game, int is_map)
 	free(game->tex.so);
 	free(game->tex.ea);
 	free(game->tex.we);
-	if (is_map == 1)
+	if (is_map >= 1)
 	{
 		i = 0;
 		while (game->tab_map[i])
@@ -29,9 +29,12 @@ void	free_game(t_game *game, int is_map)
 			i++;
 		}
 		free(game->tab_map);
-		free(game->data);
 	}
-	free(game->ray);
+	if (is_map >= 2)
+	{
+		free(game->data);
+		free(game->ray);
+	}
 }
 
 void	free_mlx(t_game *game)
@@ -52,6 +55,6 @@ void	map_error(t_game *game, int is_map)
 void	free_for_end(t_game *game)
 {
 	free_mlx(game);
-	free_game(game, 1);
+	free_game(game, 2);
 	exit (0);
 }
