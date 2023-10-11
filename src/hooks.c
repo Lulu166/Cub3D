@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:50:55 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 16:26:12 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:47:03 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,17 @@ int	key_press(int keycode, t_game *game)
 
 int	key_release(int keycode, t_game *game)
 {
-	(void)keycode;
-	if (game->player.right == 1)
+	if (keycode == D_LOWER_KEY)
 		game->player.right = 0;
-	if (game->player.left == 1)
+	if (keycode == A_LOWER_KEY)
 		game->player.left = 0;
-	if (game->player.top == 1)
+	if (keycode == W_LOWER_KEY)
 		game->player.top = 0;
-	if (game->player.down == 1)
+	if (keycode == S_LOWER_KEY)
 		game->player.down = 0;
-	if (game->player.rotLeft == 1)
+	if (keycode == LEFT_ARROW_KEY)
 		game->player.rotLeft = 0;
-	if (game->player.rotRight == 1)
+	if (keycode == RIGHT_ARROW_KEY)
 		game->player.rotRight = 0;
 	return (0);
 }
