@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 13:44:47 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:48:03 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ double	throw_ray(t_game *g, double x_start, double y_start, double angle)
 
 	dist = 0;
 	t = 0;
-	g->ray->dirX = x_start + t * g->cos_angle;
-	g->ray->dirY = y_start + t * g->sin_angle;
+	g->ray->dirX = x_start + t * cos(angle);
+	g->ray->dirY = y_start + t * sin(angle);
 	while (g->tab_map[(int)(g->ray->dirY) / 16][(int) g->ray->dirX / 16] && g->tab_map[(int) g->ray->dirY / 16 ][(int) g->ray->dirX / 16] != '1')
 	{
 		if (g->tab_map[(int)(y_start / 16)][(int)(x_start / 16)] == '1')
@@ -41,7 +41,7 @@ void	mini_line(t_game *game, int i, int j)
 		draw_square(game, game->height, game->lenght, game->tex.c);
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, game->tex.f);
-	// printf("x= %f, y = %f\n", game->player.posx / 16, game->player.posy / 16);
+	printf("x= %d, y = %d\n", (int)game->player.posx / 16, (int)game->player.posy / 16);
 	draw_circle
 		(game, game->player.posy, game->player.posx, game->player.color);
 	game->lenght += 16;

@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/10 16:39:46 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:52:08 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,48 @@ int	can_move(t_game *g)
 {
 	if (g->player.top == 1)
 	{
-		// printf("posy = %d, posx = %d\n", (int)g->player.posy / 16, (int)g->player.posx / 16);
-		if (g->tab_map[((int)g->player.posy) / 16][(int) g->player.posx / 16] != '1')
+		if (g->tab_map[((int)g->player.posy) / 16 - 1][(int) g->player.posx / 16] != '1')
 		{
 			g->player.posx += cosf(g->angle) * 2;
 			g->player.posy += sinf(g->angle) * 2;
+			g->player.top = 0;
 		}
-		g->player.top = 0;
+		else
+			g->player.top = 0;
 	}
 	if (g->player.down == 1)
 	{
-		g->player.posx -= cosf(g->angle) * 2;
-		g->player.posy -= sinf(g->angle) * 2;
-		g->player.down = 0;
+		if (g->tab_map[((int)g->player.posy) / 16][(int) g->player.posx / 16] != '1')
+		{
+			g->player.posx -= cosf(g->angle) * 2;
+			g->player.posy -= sinf(g->angle) * 2;
+			g->player.down = 0;
+		}
+		else
+			g->player.down = 0;
 
 	}
 	if (g->player.left == 1)
 	{
-		g->player.posx += sinf(g->angle) * 2;
-		g->player.posy -= cosf(g->angle) * 2;
-		g->player.left = 0;
+		if (g->tab_map[((int)g->player.posy) / 16][((int) g->player.posx)/ 16] != '1')
+		{
+			g->player.posx += sinf(g->angle) * 2;
+			g->player.posy -= cosf(g->angle) * 2;
+			g->player.left = 0;
+		}
+		else
+			g->player.left = 0;
 	}
 	if (g->player.right == 1)
 	{
-
-		g->player.posx -= (sinf(g->angle)) * 2;
-		g->player.posy += (cosf(g->angle)) * 2;
-		g->player.right = 0;
+		if (g->tab_map[((int)g->player.posy) / 16][((int) g->player.posx) / 16] != '1')
+		{
+			g->player.posx -= (sinf(g->angle)) * 2;
+			g->player.posy += (cosf(g->angle)) * 2;
+			g->player.right = 0;
+		}
+		else
+			g->player.left = 0;
 	}
 	return (0);
 }
