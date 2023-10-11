@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/11 13:47:54 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:56:44 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ void	game_init(t_game *game, char *arg);
 /***************HOOKS***************/
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
+int		key_release(int keycode, t_game *game);
 
 /***************MOVEMENT***************/
 int		can_move(t_game *game);
