@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw3D.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 16:29:46 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:39:51 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	draw_ceilling_floor(t_game *game, int *y, int y_max, int color)
 	}
 }
 
-void	draw_all(t_game *game, double dist)
+void	draw_all(t_game *game, float dist)
 {
 	int		y;
-	double	wall_size;
-	double	half_size;
+	float	wall_size;
+	float	half_size;
 
 	y = 0;
 	if (dist == 0)
@@ -49,7 +49,7 @@ void	draw_all(t_game *game, double dist)
 void	draw_map(t_game *game)
 {
 	int		y;
-	double	dist;
+	float	dist;
 
 	y = 0;
 	init_ray_struct(game);

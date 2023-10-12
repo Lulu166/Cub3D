@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/11 15:56:44 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:39:43 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ typedef struct s_player {
 	enum e_position	pos;
 	int				x;
 	int				y;
-	double			posx;
-	double			posy;
+	float			posx;
+	float			posy;
 	int				color;
 	int				nb_p;
 	int				left;
@@ -111,14 +111,8 @@ typedef struct s_ray {
 	int	mapX;
 	int	mapY;
 	int	x;
-	double dirX;
-	double dirY;
-	double planeX;
-	double planeY;
-	double raydirX;
-	double raydirY;
-	double lengthray_X;
-	double lengthray_Y;
+	float dirX;
+	float dirY;
 	double	dist;
 	double deltaX;
 	double deltaY;
@@ -146,10 +140,10 @@ typedef struct s_game {
 	int			count;
 	int			lenght;
 	int			height;
-	double		angle;
-	double		shift;
-	double		sin_angle;
-	double		cos_angle;
+	float		angle;
+	float		shift;
+	float		sin_angle;
+	float		cos_angle;
 	int			mini_map;
 }	t_game;
 
@@ -173,7 +167,7 @@ int		map_size(t_game *game);
 /***************RAYCASTING***************/
 
 void	ray_casting(t_game *game);
-double	throw_ray(t_game *game, double x_start, double y_start, double angle);
+float	throw_ray(t_game *game, float x_start, float y_start, float angle);
 
 
 /***************MAP***************/

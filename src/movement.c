@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 17:12:36 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:03:23 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	can_move(t_game *g)
 {
 	if (g->player.top == 1)
 	{
-		if (g->tab_map[(((int)g->player.posy) >> 4)][((int) g->player.posx >> 4) + 1] != '1')
+		if (g->tab_map[(((int)g->player.posy) >> 4)][(((int) g->player.posx - 5) >> 4) + 1] != '1')
 		{
 			g->player.posx += cosf(g->angle) * 4;
 			g->player.posy += sinf(g->angle) * 4;
