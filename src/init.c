@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/11 13:43:47 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:12:55 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	game_file(t_game *game)
 	fd = open(game->map, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		exit (1);
 	}
 	allocate_texture(game, fd);
@@ -27,7 +27,7 @@ void	game_file(t_game *game)
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
 	if (game->tab_map == NULL)
-		map_error(game, 0);
+		map_error(game, 0, 0);
 }
 
 void	game_init(t_game *game, char *arg)
@@ -54,7 +54,7 @@ void    init_ray_struct(t_game *g)
 {
 	g->ray = malloc(sizeof(t_ray));
 	if (!g->ray)
-		return ;
+		map_error(g, 2, 3);
 	g->ray->posX = g->player.posx;
 	g->ray->posY = g->player.posy;
 	g->ray->dirX = -1;

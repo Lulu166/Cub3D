@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 17:18:42 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:13:04 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	can_turn(t_game *game)
 		game->angle -= M_PI / 24;
 		if (game->angle < 0)
 			game->angle = 2 * M_PI;
-		//game->player.rotLeft = 0;
 
 	}
 	if (game->player.rotRight == 1)
@@ -56,7 +55,32 @@ int	can_turn(t_game *game)
 		game->angle += M_PI / 24;
 		if (game->angle > 2 * M_PI)
 			game->angle = 0;
-		//game->player.rotRight = 0;
+	}
+	return (0);
+}
+
+int	can_mouse(t_game *game)
+{
+	if (game->player.click_right == 0)
+	{
+		if (game->player.mouse_left == 1)
+		{
+			game->angle -= M_PI / 24;
+			if (game->angle < 0)
+				game->angle = 2 * M_PI;
+			game->player.mouse_left = 0;
+			mlx_mouse_move
+				(game->screen.mlx, game->screen.win, WIN_W / 2, WIN_H / 2);
+		}
+		else if (game->player.mouse_right == 1)
+		{
+			game->angle += M_PI / 24;
+			if (game->angle > 2 * M_PI)
+				game->angle = 0;
+			game->player.mouse_right = 0;
+			mlx_mouse_move
+				(game->screen.mlx, game->screen.win, WIN_W / 2, WIN_H / 2);
+		}
 	}
 	return (0);
 }

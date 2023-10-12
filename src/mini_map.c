@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 17:16:41 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:13:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ double	throw_ray(t_game *g, double x_start, double y_start, double angle)
 	while (1)
 	{
 		if (g->tab_map[(int) g->ray->dirY >> 4][(int) g->ray->dirX >> 4] == '1')
-			break;
+			break ;
 		t += 1;
 		g->ray->dirX = x_start + t * cos(angle) / 10;
 		g->ray->dirY = y_start + t * sin(angle) / 10;

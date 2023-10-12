@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/11 12:58:24 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:12:58 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		return (printf("Error\n"), 1);
+		return (ft_printf("Error\n"), 1);
 	else if (check_name(argv[1]) == 0)
-		return (printf("Error\n"), 1);
+		return (ft_printf("Error\n"), 1);
 	game_init(&game, argv[1]);
 	return (0);
 }

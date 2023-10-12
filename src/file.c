@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:57:54 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/11 13:43:18 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:12:43 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_extension(t_game *game, char *str)
 			if (str[--i] == 'x')
 				if (str[--i] == '.')
 					return ;
-	map_error(game, 0);
+	map_error(game, 0, 0);
 }
 
 int	check_name(char	*name)
@@ -46,13 +46,13 @@ int	is_directory(t_game *game, char *texture)
 	if (fd != -1)
 	{
 		close(fd);
-		map_error(game, 0);
+		map_error(game, 0, 0);
 	}
 	fd = open(game->tex.no, O_RDONLY);
 	if (fd == -1)
 	{
 		close(fd);
-		map_error(game, 0);
+		map_error(game, 0, 0);
 	}
 	close(fd);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/10 15:02:13 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:13:09 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	parse_rgb(t_game *game, char *split)
 
 	i = -1;
 	if (split == NULL || split[0] == '\n')
-		map_error(game, 0);
+		map_error(game, 0, 0);
 	while (split[++i] != '\n' && split[i] != '\0')
 		if (ft_isdigit(split[i]) == 0)
-			map_error(game, 0);
+			map_error(game, 0, 0);
 }
 
 int	convert_value(int *tab)
@@ -74,7 +74,7 @@ int	allocate_rgb(t_game *game, char *line)
 	tmp = malloc(sizeof(int) * 4);
 	cpy = supp_space(line, 0);
 	if (!cpy)
-		map_error(game, 0);
+		map_error(game, 0, 0);
 	split = ft_split(cpy, ',');
 	i = -1;
 	while (++i < 3)
@@ -82,10 +82,10 @@ int	allocate_rgb(t_game *game, char *line)
 		parse_rgb(game, split[i]);
 		tmp[i] = ft_atoi(split[i]);
 		if (tmp[i] > 255 || tmp[i] < 0)
-			map_error(game, 0);
+			map_error(game, 0, 0);
 	}
 	if (split[i])
-		map_error(game, 0);
+		map_error(game, 0, 0);
 	hexa = rgb_to_hexa(tmp);
 	free_tab(split);
 	free(cpy);
