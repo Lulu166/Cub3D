@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/12 17:12:55 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:32:23 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,9 @@ void    init_ray_struct(t_game *g)
 	g->ray->dirY = 0;
 	g->ray->time = 0;
 	g->ray->old_time = 0;
-	g->ray->planeX = 0;
-	g->ray->planeY = 0.66;
-	g->ray->raydirX = 0;
-	g->ray->raydirY = 0;
 	g->ray->mapX = 0;
 	g->ray->x = 1;
 	g->ray->mapY = 0;
-	g->ray->lengthray_X = 0;
-	g->ray->lengthray_Y = 0;
 	g->ray->time = 0;
 	g->ray->old_time = 0;
 	g->ray->side = 0;

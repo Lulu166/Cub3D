@@ -6,16 +6,16 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/12 17:13:01 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:32:36 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-double	throw_ray(t_game *g, double x_start, double y_start, double angle)
+float	throw_ray(t_game *g, float x_start, float y_start, float angle)
 {
-	double	t;
-	double	dist;
+	float	t;
+	float	dist;
 
 	dist = 0;
 	t = 0;
@@ -23,15 +23,15 @@ double	throw_ray(t_game *g, double x_start, double y_start, double angle)
 	g->ray->dirY = y_start + t * sin(angle);
 	while (1)
 	{
-		if (g->tab_map[(int) g->ray->dirY >> 4][(int) g->ray->dirX >> 4] == '1')
-			break ;
+		if (g->tab_map[((int) g->ray->dirY >> 4)][((((int) g->ray->dirX)) >> 4)] == '1' || g->tab_map[((int) g->ray->dirY >> 4)][(int) (g->ray->dirX) >> 4] == '1' || g->tab_map[(int)(g->ray->dirY + 1) >> 4][(int) g->ray->dirX >> 4] == '1')
+			break;
 		t += 1;
 		g->ray->dirX = x_start + t * cos(angle) / 10;
 		g->ray->dirY = y_start + t * sin(angle) / 10;
 		dist += 0.2;
 		my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
 	}
-	// printf(" x = %f, y = %f", g->ray->dirX / 16, g->ray->dirY / 16);
+	// printf(" x = %f, y = %f\n", g->ray->dirX, g->ray->dirY);
 	return (dist);
 }
 
