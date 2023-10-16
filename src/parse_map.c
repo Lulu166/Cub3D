@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/12 17:13:06 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:14:14 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	algo_parse(t_game *game, int i, int j)
 	{
 		if (skip_wall(game, i, &j) == 2)
 			break ;
-		if (game->tab_map[i][j] == '0')
+		if (game->tab_map[i][j] == '0' || is_player(game, i, j))
 			skip_empty(game, i, &j);
 		else if (game->tab_map[i][j] == ' ')
 			if (skip_space(game, i, &j) == 2)
