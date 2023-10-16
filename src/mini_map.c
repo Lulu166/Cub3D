@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/12 17:32:36 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:14:05 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ float	throw_ray(t_game *g, float x_start, float y_start, float angle)
 		g->ray->dirX = x_start + t * cos(angle) / 10;
 		g->ray->dirY = y_start + t * sin(angle) / 10;
 		dist += 0.2;
-		my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
+		//my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
 	}
-	// printf(" x = %f, y = %f\n", g->ray->dirX, g->ray->dirY);
 	return (dist);
 }
 
@@ -41,10 +40,24 @@ void	mini_line(t_game *game, int i, int j)
 		draw_square(game, game->height, game->lenght, game->tex.c);
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, game->tex.f);
-	// printf("x= %d, y = %d\n", (int)game->player.posx / 16, (int)game->player.posy / 16);
-	draw_circle
-		(game, game->player.posy, game->player.posx, game->player.color);
 	game->lenght += 16;
+}
+
+void	mini_border(t_game *game)
+{
+	game->height = 0;
+	game->lenght = 0;
+	while (game->height <= 188)
+	{
+		game->lenght = 0;
+		while (game->lenght <= 188)
+		{
+			draw_square(game, game->height, game->lenght, 000000);
+			game->lenght += 16;
+		}
+		game->height += 16;
+	}
+
 }
 
 void	mini_map(t_game *game)
@@ -52,15 +65,24 @@ void	mini_map(t_game *game)
 	int	i;
 	int	j;
 
-	i = 0;
-	game->height = 0;
-	while (game->tab_map[i])
+	mini_border(game);
+	i = (game->player.posy / 16) - 5;
+	if (i <= 0)
+		i = 0;
+	game->height = 8;
+	while (game->tab_map[i] && game->height < 180)
 	{
-		game->lenght = 0;
-		j = 0;
-		while (game->tab_map[i][j])
+		j = (game->player.posx / 16) - 5;
+		if (j <= 0)
+			j = 0;
+		game->lenght = 8;
+		while (game->tab_map[i][j] && game->lenght < 180)
+		{
 			mini_line(game, i, j++);
-		i++;
+		}
 		game->height += 16;
+		i++;
 	}
+	draw_circle
+		(game, 80, 80, game->player.color);
 }
