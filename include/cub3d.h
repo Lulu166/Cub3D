@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 11:17:48 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:34:34 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void	draw_circle(t_game *game, int y, int x, int color);
 void	draw_map(t_game *game);
 
 /***************ERROR***************/
-void	map_error(t_game *game, int is_map, int is_mlx);
+void	map_error(t_game *game, int is_map, int is_mlx, int message);
 void	free_for_end(t_game *game);
 
 #endif

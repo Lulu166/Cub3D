@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/16 15:33:19 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:47:48 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	game_file(t_game *game)
 	game->tab_map = allocate_map(game, fd);
 	close(fd);
 	if (game->tab_map == NULL)
-		map_error(game, 0, 0);
+		map_error(game, 0, 0, 2);
 }
 
 void	game_init(t_game *game, char *arg)
@@ -52,9 +52,6 @@ void	game_init(t_game *game, char *arg)
 
 void    init_ray_struct(t_game *g)
 {
-	g->ray = malloc(sizeof(t_ray));
-	if (!g->ray)
-		map_error(g, 2, 3);
 	g->ray->posX = g->player.posx;
 	g->ray->posY = g->player.posy;
 	g->ray->dirX = -1;

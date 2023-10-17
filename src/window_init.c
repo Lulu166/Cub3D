@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:13:26 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:50:04 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,24 @@ void	window_init(t_game *game)
 {
 	game->data = (t_data *)malloc(sizeof(t_data));
 	if (!game->data)
-		map_error(game, 1, 0);
+		map_error(game, 1, 0, 0);
+	game->ray = malloc(sizeof(t_ray));
+	if (!game->ray)
+		map_error(game, 2, 3, 0);
 	game->screen.mlx = mlx_init();
 	if (!game->screen.mlx)
-		map_error(game, 2, 0);
+		map_error(game, 2, 0, 4);
 	game->screen.win = mlx_new_window(game->screen.mlx, WIN_H, WIN_W, "Cub3D");
 	if (!game->screen.win)
-		map_error(game, 2, 1);
+		map_error(game, 2, 1, 4);
 	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
 	if (!game->data->img)
-		map_error(game, 2, 2);
+		map_error(game, 2, 2, 4);
 	game->data->addr = mlx_get_data_addr
 		(game->data->img, &game->data->bpr,
 			&game->data->len, &game->data->endian);
 	if (!game->data->addr)
-		map_error(game, 2, 3);
+		map_error(game, 2, 3, 4);
 	mlx_hook(game->screen.win, 17, 0L, close_window, game);
 	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
 	mlx_hook(game->screen.win, 6, 1L << 6, mouse_hook, game);

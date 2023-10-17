@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:09:44 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/12 17:13:19 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:11:30 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	draw_circle(t_game *game, int y, int x, int color)
 	float	dst;
 
 	i = 0;
-	while (i <= 20)
+	while (i <= 16)
 	{
 		j = 0;
-		while (j <= 20)
+		while (j <= 16)
 		{
 			dst = sqrt(pow((i - 10), 2) + pow((j - 10), 2));
 			if (dst < 5)
@@ -54,11 +54,11 @@ void	draw_square(t_game *game, int height, int len, int color)
 	i = 0;
 	pix_h = height;
 	pix_l = len;
-	while (i < 16)
+	while (i < 15)
 	{
 		j = 0;
 		pix_l = len;
-		while (j < 16)
+		while (j < 15)
 		{
 			my_mlx_pixel_put(game->data, pix_l, pix_h, color);
 			pix_l++;
