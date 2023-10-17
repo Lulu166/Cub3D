@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:35:43 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/16 16:16:25 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:10:39 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	skip_space(t_game *game, int i, int *j)
 		(*j)++;
 	if (game->tab_map[i][*j] == '\n')
 		return (2);
-	if (game->tab_map[i][*j] != '1')
+	if (game->tab_map[i][*j] != '\0')
+		return (2);
+	if (game->tab_map[i][*j] != '1' && game->tab_map[i][*j] != '\0')
 		map_error(game, 1, 0);
 	return (0);
 }
