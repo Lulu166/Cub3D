@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/16 11:31:27 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:02:53 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ void	draw_all(t_game *game, float dist)
 
 void	draw_map(t_game *game)
 {
-	int		y;
 	float	dist;
 
-	y = 0;
 	init_ray_struct(game);
 	while (game->ray->x < WIN_W)
 	{

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/16 16:14:14 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:14:42 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	init_player(t_game *game, int i, int j)
 	game->player.mouse_right = 0;
 	game->player.click_left = 0;
 	game->player.click_right = 0;
+	game->player.rotLeft = 0;
+	game->player.rotRight = 0;
 	game->tab_map[i][j] = '0';
 }
 
@@ -56,7 +58,7 @@ int	player_pos(t_game *game)
 
 void	algo_parse(t_game *game, int i, int j)
 {
-	if (game->tab_map[i][j] != '1')
+	if (game->tab_map[i][j] != '1' && game->tab_map[i][j] != '\0')
 		map_error(game, 1, 0);
 	while (game->tab_map[i][j])
 	{

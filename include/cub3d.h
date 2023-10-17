@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/12 17:32:06 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:02:36 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 # define EMPTY 0
 # define WALL 1
-# define WIN_H 1480
-# define WIN_W 1480
+# define WIN_H 1080
+# define WIN_W 1080
 
 # ifdef __APPLE__
 #  define LEFT_ARROW_KEY 123
