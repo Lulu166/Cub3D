@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:48:43 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:55:46 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,15 @@ int	allocate_rgb(t_game *game, char *line)
 	int		hexa;
 
 	tmp = malloc(sizeof(int) * 4);
+	if (!tmp)
+		map_error(game, 0, 0, 2);
 	cpy = supp_space(line, 0);
 	if (!cpy)
+	{
+		free(line);
+		close(game->fd);
 		map_error(game, 0, 0, 3);
+	}
 	split = ft_split(cpy, ',');
 	i = -1;
 	while (++i < 3)

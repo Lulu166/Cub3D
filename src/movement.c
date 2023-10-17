@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:20:12 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:43:29 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,25 @@ int	can_move(t_game *g)
 	{
 		if (g->tab_map[(((int)g->player.posy) >> 4)][(((int) g->player.posx - 5) >> 4) + 1] != '1')
 		{
-			g->player.posx += cosf(g->angle) * 4;
-			g->player.posy += sinf(g->angle) * 4;
+			g->player.posx += cosf(g->angle) * 3;
+			g->player.posy += sinf(g->angle) * 3;
 		}
 	}
 	if (g->player.down == 1)
 	{
-		g->player.posx -= cosf(g->angle) * 4;
-		g->player.posy -= sinf(g->angle) * 4;
+		g->player.posx -= cosf(g->angle) * 3;
+		g->player.posy -= sinf(g->angle) * 3;
 	}
 	if (g->player.left == 1)
 	{
-		g->player.posx += sinf(g->angle) * 4;
-		g->player.posy -= cosf(g->angle) * 4;
+		g->player.posx += sinf(g->angle) * 3;
+		g->player.posy -= cosf(g->angle) * 3;
 	}
 	if (g->player.right == 1)
 	{
 
-		g->player.posx -= (sinf(g->angle)) * 4;
-		g->player.posy += (cosf(g->angle)) * 4;
+		g->player.posx -= (sinf(g->angle)) * 3;
+		g->player.posy += (cosf(g->angle)) * 3;
 	}
 	return (0);
 }

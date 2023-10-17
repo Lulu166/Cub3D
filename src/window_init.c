@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:50:04 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:40:15 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ int	hook_reload(t_game *game)
 	return (0);
 }
 
+void	game_loop(t_game *game)
+{
+	mlx_hook(game->screen.win, 17, 0L, close_window, game);
+	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
+	mlx_hook(game->screen.win, 6, 1L << 6, mouse_hook, game);
+	mlx_mouse_hook(game->screen.win, mouse_click, game);
+	mlx_hook(game->screen.win, 3, 1L << 1, key_release, game);
+	mlx_loop_hook(game->screen.mlx, hook_reload, game);
+	mlx_loop(game->screen.mlx);
+}
+
 void	window_init(t_game *game)
 {
 	game->data = (t_data *)malloc(sizeof(t_data));
@@ -35,7 +46,7 @@ void	window_init(t_game *game)
 		map_error(game, 1, 0, 0);
 	game->ray = malloc(sizeof(t_ray));
 	if (!game->ray)
-		map_error(game, 2, 3, 0);
+		map_error(game, 2, 0, 0);
 	game->screen.mlx = mlx_init();
 	if (!game->screen.mlx)
 		map_error(game, 2, 0, 4);
@@ -50,11 +61,5 @@ void	window_init(t_game *game)
 			&game->data->len, &game->data->endian);
 	if (!game->data->addr)
 		map_error(game, 2, 3, 4);
-	mlx_hook(game->screen.win, 17, 0L, close_window, game);
-	mlx_hook(game->screen.win, 2, 1L << 0, key_press, game);
-	mlx_hook(game->screen.win, 6, 1L << 6, mouse_hook, game);
-	mlx_mouse_hook(game->screen.win, mouse_click, game);
-	mlx_hook(game->screen.win, 3, 1L << 1, key_release, game);
-	mlx_loop_hook(game->screen.mlx, hook_reload, game);
-	mlx_loop(game->screen.mlx);
+	game_loop(game);
 }

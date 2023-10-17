@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 12:33:08 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:45:25 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ void	draw_map(t_game *game)
 		game->cos_angle = cosf((game->shift * (M_PI / 3)) + game->angle);
 		game->sin_angle = -sinf((game->shift * (M_PI / 3) + game->angle));
 		game->shift = (game->shift - 1.5) * (M_PI / 3);
-		dist = throw_ray(game, game->player.posx + 10, game->player.posy + 10, game->angle + game->shift);
+		dist = throw_ray
+			(game, game->player.posx + 10,
+				game->player.posy + 10, game->angle + game->shift);
 		draw_all(game, dist);
 		game->ray->x++;
 	}

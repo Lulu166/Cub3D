@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:09:44 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 13:11:30 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:21:28 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	draw_square(t_game *game, int height, int len, int color)
 	i = 0;
 	pix_h = height;
 	pix_l = len;
-	while (i < 15)
+	while (i < 16)
 	{
 		j = 0;
 		pix_l = len;
-		while (j < 15)
+		while (j < 16)
 		{
 			my_mlx_pixel_put(game->data, pix_l, pix_h, color);
 			pix_l++;

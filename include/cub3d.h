@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 12:34:34 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:49:16 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ typedef struct s_game {
 	t_player	player;
 	t_data		*data;
 	t_ray		*ray;
+	int			fd;
 	int			is_map;
 	char		*map;
 	char		**tab_map;

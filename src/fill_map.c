@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 11:46:32 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:00:04 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	*find_map(t_game *game, int fd)
 	int		i;
 
 	line = get_next_line(fd);
+	if (line == NULL)
+		map_error(game, 0, 0, 2);
 	game->count++;
 	while (1)
 	{
@@ -71,7 +73,11 @@ char	**allocate_map(t_game *game, int fd)
 	line = find_map(game, fd);
 	map_tab = calloc((game->map_size - game->count) + 2, sizeof(char *));
 	if (map_tab == NULL)
+	{
+		free(line);
+		close(fd);
 		map_error(game, 0, 0, 0);
+	}
 	while (line)
 	{
 		if (check_line(line) == 1)
