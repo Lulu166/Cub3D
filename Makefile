@@ -6,21 +6,25 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/12 17:32:56 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/23 10:50:30 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-CFLAGS = -Wall -Wextra -Werror -g3  #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
 
-CC = cc
+R_BONUS	= 	no
 
-DIR_SRC = ./src/
+RMF		=	rm -rf
+
+CC 		= cc
+
+DIR_SRC = ./mandatory/src/
 
 DIR_OBJ = ./.obj/
 
-DIR_INC = ./include/
+DIR_INC = ./mandatory/include/
 
 MLX_DIR = ./minilibx-linux
 
