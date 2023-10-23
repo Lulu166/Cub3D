@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/17 16:50:07 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:31:16 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	game_file(t_game *game)
 
 void	game_init(t_game *game, char *arg)
 {
-	game->angle = 0; // a changer en fonction de l'orientation
+	game->angle = 0;
 	game->sin_angle = sin(game->angle);
 	game->cos_angle = cos(game->angle);
 	game->count = 0;

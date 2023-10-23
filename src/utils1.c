@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:24:02 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 14:58:27 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:16:40 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,33 @@ int	map_size(t_game *game)
 	while (game->tab_map[i])
 		i++;
 	return (i);
+}
+
+int	convert_value(int *tab)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	while (i < 3)
+		res = (res << 8) | tab[i++];
+	return (res);
+}
+
+int	to_hexa(int nb)
+{
+	int	hexa;
+	int	base;
+	int	tmp;
+
+	base = 1;
+	hexa = 0;
+	while (nb > 0)
+	{
+		tmp = nb % 16;
+		hexa = hexa + tmp * base;
+		nb = nb / 16;
+		base = base * 16;
+	}
+	return (hexa);
 }

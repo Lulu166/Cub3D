@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 16:55:46 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:18:25 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,6 @@ void	parse_rgb(t_game *game, char *split)
 			map_error(game, 0, 0, 3);
 }
 
-int	convert_value(int *tab)
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	while (i < 3)
-		res = (res << 8) | tab[i++];
-	return (res);
-}
-
-int	to_hexa(int nb)
-{
-	int	hexa;
-	int	base;
-	int	tmp;
-
-	base = 1;
-	hexa = 0;
-	while (nb > 0)
-	{
-		tmp = nb % 16;
-		hexa = hexa + tmp * base;
-		nb = nb / 16;
-		base = base * 16;
-	}
-	return (hexa);
-}
-
 int	rgb_to_hexa(int *tmp)
 {
 	int		hexa;
@@ -63,25 +34,10 @@ int	rgb_to_hexa(int *tmp)
 	return (hexa);
 }
 
-int	allocate_rgb(t_game *game, char *line)
+int	split_to_hexa(t_game *game, int hexa, char **split, int *tmp)
 {
-	char	*cpy;
-	char	**split;
-	int		*tmp;
-	int		i;
-	int		hexa;
+	int	i;
 
-	tmp = malloc(sizeof(int) * 4);
-	if (!tmp)
-		map_error(game, 0, 0, 2);
-	cpy = supp_space(line, 0);
-	if (!cpy)
-	{
-		free(line);
-		close(game->fd);
-		map_error(game, 0, 0, 3);
-	}
-	split = ft_split(cpy, ',');
 	i = -1;
 	while (++i < 3)
 	{
@@ -93,6 +49,29 @@ int	allocate_rgb(t_game *game, char *line)
 	if (split[i])
 		map_error(game, 0, 0, 3);
 	hexa = rgb_to_hexa(tmp);
+	return (hexa);
+}
+
+int	allocate_rgb(t_game *game, char *line)
+{
+	char	*cpy;
+	char	**split;
+	int		*tmp;
+	int		hexa;
+
+	hexa = -1;
+	tmp = malloc(sizeof(int) * 4);
+	if (!tmp)
+		map_error(game, 0, 0, 2);
+	cpy = supp_space(line, 0);
+	if (!cpy)
+	{
+		free(line);
+		close(game->fd);
+		map_error(game, 0, 0, 3);
+	}
+	split = ft_split(cpy, ',');
+	hexa = split_to_hexa(game, hexa, split, tmp);
 	free_tab(split);
 	free(cpy);
 	return (hexa);

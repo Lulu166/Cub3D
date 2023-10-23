@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 16:49:16 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:22:49 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,10 @@ void	free_tab(char **split);
 void	free_val_alloc(char *line, char **split_line);
 int		to_skip(char *line);
 int		map_size(t_game *game);
+int		to_hexa(int nb);
+int		convert_value(int *tab);
 
 /***************RAYCASTING***************/
-
 void	ray_casting(t_game *game);
 float	throw_ray(t_game *game, float x_start, float y_start, float angle);
 
