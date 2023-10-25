@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 16:52:22 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:03:33 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	error_message(int message)
 
 void	map_error(t_game *game, int is_map, int is_mlx, int message)
 {
+	if (is_map == 0)
+		close(game->fd);
 	ft_printf("Error\n");
 	error_message(message);
 	free_game(game, is_map, is_mlx);

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/18 10:22:49 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:36:12 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_player {
 	int				top;
 	int				right;
 	int				down;
+	char			orientation;
 	int				rotLeft;
 	int				rotRight;
 	int				mouse_right;
@@ -140,6 +141,8 @@ typedef struct s_game {
 	t_data		*data;
 	t_ray		*ray;
 	int			fd;
+	char		*line;
+	char		**split_line;
 	int			is_map;
 	char		*map;
 	char		**tab_map;

@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 12:57:54 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:45:51 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:24:51 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@ int	is_directory(t_game *game, char *texture)
 
 	fd = open(texture, __O_DIRECTORY);
 	if (fd != -1)
-	{
-		close(fd);
 		map_error(game, 0, 0, 1);
-	}
-	fd = open(game->tex.no, O_RDONLY);
+	fd = open(texture, O_RDONLY);
 	if (fd == -1)
-	{
-		close(fd);
 		map_error(game, 0, 0, 1);
-	}
 	close(fd);
 	return (0);
 }

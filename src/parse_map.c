@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 14:40:53 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:35:49 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	init_player(t_game *game, int i, int j)
 {
+	if (game->tab_map[i][j] == 'N')
+		game->player.orientation = 'N';
+	else if (game->tab_map[i][j] == 'S')
+		game->player.orientation = 'S';
+	else if (game->tab_map[i][j] == 'E')
+		game->player.orientation = 'E';
+	else if (game->tab_map[i][j] == 'W')
+		game->player.orientation = 'W';
 	game->player.color = 0xFFD700;
 	game->player.nb_p++;
 	game->player.x = j;
