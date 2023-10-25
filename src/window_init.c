@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 11:13:26 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:52:08 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	hook_reload(t_game *game)
 	can_turn(game);
 	can_mouse(game);
 	mlx_destroy_image(game->screen.mlx, game->data->img);
-	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_W, WIN_H);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	draw_map(game);
 	if (game->mini_map == 1)
@@ -36,15 +36,16 @@ void	window_init(t_game *game)
 	game->screen.mlx = mlx_init();
 	if (!game->screen.mlx)
 		map_error(game, 2, 0);
-	game->screen.win = mlx_new_window(game->screen.mlx, WIN_H, WIN_W, "Cub3D");
+	game->screen.win = mlx_new_window(game->screen.mlx, WIN_W, WIN_H, "Cub3D");
 	if (!game->screen.win)
 		map_error(game, 2, 1);
-	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_W, WIN_H);
 	if (!game->data->img)
 		map_error(game, 2, 2);
 	game->data->addr = mlx_get_data_addr
 		(game->data->img, &game->data->bpr,
 			&game->data->len, &game->data->endian);
+	
 	if (!game->data->addr)
 		map_error(game, 2, 3);
 	mlx_hook(game->screen.win, 17, 0L, close_window, game);

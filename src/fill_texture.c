@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/12 17:12:49 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:46:36 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*pass_empty(t_game *game, char *line, int fd)
 		map_error(game, 0, 0);
 	while (to_skip(line) == 0)
 	{
-		game->count++;
+		game->line_count++;
 		free(line);
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -92,7 +92,7 @@ void	allocate_texture(t_game *game, int fd)
 	line = NULL;
 	line = pass_empty(game, line, fd);
 	split_line = ft_split_charset(line, " \t\n\r\v\f");
-	game->count++;
+	game->line_count++;
 	while (nb < 6 && split_line)
 	{
 		if (split_line == NULL)
@@ -103,7 +103,7 @@ void	allocate_texture(t_game *game, int fd)
 		free_val_alloc(line, split_line);
 		line = pass_empty(game, line, fd);
 		split_line = ft_split_charset(line, " \t\n\r\v\f");
-		game->count++;
+		game->line_count++;
 	}
 	free_val_alloc(line, split_line);
 }

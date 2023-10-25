@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/12 17:12:46 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:45:39 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*find_map(t_game *game, int fd)
 	int		i;
 
 	line = get_next_line(fd);
-	game->count++;
+	game->line_count++;
 	while (1)
 	{
 		while (line && line[0] == '\n')
@@ -47,7 +47,7 @@ char	*find_map(t_game *game, int fd)
 			line = get_next_line(fd);
 			if (line == NULL)
 				return (NULL);
-			game->count++;
+			game->line_count++;
 		}
 		i = -1;
 		while (line[++i])
@@ -69,7 +69,7 @@ char	**allocate_map(t_game *game, int fd)
 
 	i = 0;
 	line = find_map(game, fd);
-	map_tab = calloc((game->map_size - game->count) + 2, sizeof(char *));
+	map_tab = calloc((game->map_size - game->line_count) + 2, sizeof(char *));
 	if (map_tab == NULL)
 		map_error(game, 0, 0);
 	while (line)

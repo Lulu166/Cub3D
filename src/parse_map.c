@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/17 11:14:42 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:59:18 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,20 @@ int	parse_map(t_game *game)
 		map_error(game, 1, 0);
 	if (player_pos(game) == 0)
 		map_error(game, 1, 0);
+	if (!fill_column_count(game))
+		map_error(game, 1 ,0);
 	return (0);
+}
+
+int	fill_column_count(t_game *game)
+{
+	int	i;
+
+	i = -1;
+	game->column_count = malloc(sizeof(int) * game->line_count);
+	if (!game->column_count)
+		return (0);
+	while (++i < game->line_count)
+		game->column_count[i] = ft_strlen(game->tab_map[i]);
+	return (1);
 }
