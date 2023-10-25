@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 17:05:41 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:08:51 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:11:10 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	hook_reload(t_game *game)
 	can_turn(game);
 	can_mouse(game);
 	mlx_destroy_image(game->screen.mlx, game->data->img);
-	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_W, WIN_H);
 	mlx_clear_window(game->screen.mlx, game->screen.win);
 	draw_map(game);
 	if (game->mini_map == 1)
@@ -49,11 +49,11 @@ void	window_init(t_game *game)
 		map_error(game, 2, 0, 0);
 	game->screen.mlx = mlx_init();
 	if (!game->screen.mlx)
-		map_error(game, 2, 0, 4);
-	game->screen.win = mlx_new_window(game->screen.mlx, WIN_H, WIN_W, "Cub3D");
+		map_error(game, 2, 0, 0);
+	game->screen.win = mlx_new_window(game->screen.mlx, WIN_W, WIN_H, "Cub3D");
 	if (!game->screen.win)
-		map_error(game, 2, 1, 4);
-	game->data->img = mlx_new_image(game->screen.mlx, WIN_H, WIN_W);
+		map_error(game, 2, 1, 0);
+	game->data->img = mlx_new_image(game->screen.mlx, WIN_W, WIN_H);
 	if (!game->data->img)
 		map_error(game, 2, 2, 4);
 	game->data->addr = mlx_get_data_addr

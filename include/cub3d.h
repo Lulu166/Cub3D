@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 12:36:12 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:09:55 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define EMPTY 0
 # define WALL 1
 # define WIN_H 1080
-# define WIN_W 1080
+# define WIN_W 1920
 
 # ifdef __APPLE__
 #  define LEFT_ARROW_KEY 123
@@ -50,6 +50,7 @@
 //# include <../mlx/mlx.h>
 # include <../minilibx-linux/mlx.h>
 # include <X11/X.h>
+#include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -91,6 +92,16 @@ typedef struct s_texture {
 	int		c;
 }	t_texture;
 
+typedef	struct	s_pointf {
+	float	x;
+	float	y;
+}	t_pointf;
+
+typedef	struct	s_point {
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_player {
 	enum e_position	pos;
 	int				x;
@@ -113,23 +124,20 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_ray {
-	double posX;
-	double posY;
+	double	posX;
+	double	posY;
+	float	dist;
+	bool	horizontal;
+	float	opposit;
+	float	adjacent;
+	float	ray_angle;
 	int	mapX;
 	int	mapY;
 	int	x;
 	float dirX;
 	float dirY;
-	double	dist;
-	double deltaX;
-	double deltaY;
-	int		stepX;
-	int		stepY;
 	int		hit;
 	int		side;
-	double	perpWallDist;
-	int		DrawStart;
-	int		DrawEnd;
 	double time;
 	double old_time;
 }	t_ray;
@@ -145,9 +153,11 @@ typedef struct s_game {
 	char		**split_line;
 	int			is_map;
 	char		*map;
+	int			*column_count;
+	float		collision[2];
 	char		**tab_map;
 	int			map_size;
-	int			count;
+	int			line_count;
 	int			lenght;
 	int			height;
 	float		angle;
@@ -177,9 +187,16 @@ int		to_hexa(int nb);
 int		convert_value(int *tab);
 
 /***************RAYCASTING***************/
-void	ray_casting(t_game *game);
-float	throw_ray(t_game *game, float x_start, float y_start, float angle);
 
+void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h);
+float   check_vertical(t_game *game, t_pointf *xy);
+float   check_horizontal(t_game *game, t_pointf *xy);
+int		fill_column_count(t_game *game);
+float	horizontal_pos(t_game *game, t_pointf *xy);
+float	horizontal_neg(t_game *game, t_pointf *xy);
+float	vertical_pos(t_game *game, t_pointf *xy);
+float	vertical_neg(t_game *game, t_pointf *xy);
+int		set_start_value(t_game *game);
 
 /***************MAP***************/
 char	**allocate_map(t_game *game, int fd);

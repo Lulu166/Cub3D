@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 13:55:32 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:12:06 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*pass_empty(t_game *game, int fd)
 		map_error(game, 0, 0, 3);
 	while (to_skip(game->line) == 0)
 	{
-		game->count++;
+		game->line_count++;
 		free(game->line);
 		game->line = get_next_line(fd);
 		if (game->line == NULL)
@@ -97,7 +97,7 @@ void	allocate_texture(t_game *game, int fd)
 	game->line = NULL;
 	game->line = pass_empty(game, fd);
 	game->split_line = ft_split_charset(game->line, " \t\n\r\v\f");
-	game->count++;
+	game->line_count++;
 	while (nb < 6 && game->split_line)
 	{
 		if (game->split_line == NULL)
@@ -108,7 +108,7 @@ void	allocate_texture(t_game *game, int fd)
 		free_val_alloc(game->line, game->split_line);
 		game->line = pass_empty(game, fd);
 		game->split_line = ft_split_charset(game->line, " \t\n\r\v\f");
-		game->count++;
+		game->line_count++;
 	}
 	free_val_alloc(game->line, game->split_line);
 }

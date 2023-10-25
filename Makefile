@@ -6,13 +6,13 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/25 13:53:41 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/25 16:12:48 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-CFLAGS = -Wall -Wextra -Werror -g3  #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3  -fsanitize=address
 
 CC = cc
 
@@ -42,6 +42,8 @@ LIST_SRC =	main.c \
 			movement.c \
 			pix.c \
 			draw3D.c \
+			check_horizontal.c \
+			check_vertical.c \
 			error.c \
 
 LIST_INC = cub3d.h
