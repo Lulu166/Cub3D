@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/23 14:45:39 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:29:02 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ char	*find_map(t_game *game, int fd)
 	return (NULL);
 }
 
+char	*parse_line(t_game *game, char *line, char **map_tab, int i)
+{
+	if (check_line(line) == 1)
+		map_tab[i] = ft_strdup(line);
+	else
+	{
+		free_val_alloc(line, map_tab);
+		map_error(game, 0, 0, 2);
+	}
+	return (map_tab[i]);
+}
+
 char	**allocate_map(t_game *game, int fd)
 {
 	int		i;
@@ -71,16 +83,14 @@ char	**allocate_map(t_game *game, int fd)
 	line = find_map(game, fd);
 	map_tab = calloc((game->map_size - game->line_count) + 2, sizeof(char *));
 	if (map_tab == NULL)
-		map_error(game, 0, 0);
+	{
+		free(line);
+		close(fd);
+		map_error(game, 0, 0, 0);
+	}
 	while (line)
 	{
-		if (check_line(line) == 1)
-			map_tab[i] = ft_strdup(line);
-		else
-		{
-			free_val_alloc(line, map_tab);
-			map_error(game, 0, 0);
-		}
+		map_tab[i] = parse_line(game, line, map_tab, i);
 		i++;
 		free(line);
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:09:44 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/17 12:48:11 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:30:33 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	draw_circle(t_game *game, int y, int x, int color)
 	float	dst;
 
 	i = 0;
-	while (i <= 20)
+	while (i <= 16)
 	{
 		j = 0;
-		while (j <= 20)
+		while (j <= 16)
 		{
 			dst = sqrt(pow((i - 10), 2) + pow((j - 10), 2));
 			if (dst < 5)

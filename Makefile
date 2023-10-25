@@ -6,7 +6,7 @@
 #    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/23 16:00:39 by chsiffre         ###   ########.fr        #
+#    Updated: 2023/10/25 14:30:59 by chsiffre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ LIST_SRC =	main.c \
 			window_init.c \
 			mini_map.c \
 			hooks.c \
+			mouse.c \
 			movement.c \
 			pix.c \
 			draw3D.c \

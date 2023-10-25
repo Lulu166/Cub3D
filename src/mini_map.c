@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 14:18:34 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:29:48 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,12 @@
 void	mini_line(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j] == '0')
-		draw_square(game, game->height, game->lenght, game->tex.c);
+		draw_square(game, game->height, game->lenght, 0x808080);
 	else if (game->tab_map[i][j] == '1')
-		draw_square(game, game->height, game->lenght, game->tex.f);
+		draw_square(game, game->height, game->lenght, 0xB03030);
+	draw_circle
+	(game, game->player.posy - 3, game->player.posx - 3, game->player.color);
 	game->lenght += 16;
-}
-
-void	mini_border(t_game *game)
-{
-	game->height = 0;
-	game->lenght = 0;
-	while (game->height <= 188)
-	{
-		game->lenght = 0;
-		while (game->lenght <= 188)
-		{
-			draw_square(game, game->height, game->lenght, 000000);
-			game->lenght += 16;
-		}
-		game->height += 16;
-	}
-
 }
 
 void	mini_map(t_game *game)
@@ -68,24 +53,15 @@ void	mini_map(t_game *game)
 	int	i;
 	int	j;
 
-	mini_border(game);
-	i = (game->player.posy / 16) - 5;
-	if (i <= 0)
-		i = 0;
-	game->height = 8;
-	while (game->tab_map[i] && game->height < 180)
+	i = 0;
+	game->height = 0;
+	while (game->tab_map[i] && game->height <= WIN_H)
 	{
-		j = (game->player.posx / 16) - 5;
-		if (j <= 0)
-			j = 0;
-		game->lenght = 8;
-		while (game->tab_map[i][j] && game->lenght < 180)
-		{
+		game->lenght = 0;
+		j = 0;
+		while (game->tab_map[i][j] && game->lenght <= WIN_W)
 			mini_line(game, i, j++);
-		}
-		game->height += 16;
 		i++;
+		game->height += 16;
 	}
-	draw_circle
-		(game, 80, 80, game->player.color);
 }

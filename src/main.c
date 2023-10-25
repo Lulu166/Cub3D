@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:18 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/12 17:12:58 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:49:49 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	get_size(t_game *game)
 {
-	int		fd;
 	char	*line;
 	int		size;
 
 	size = 0;
-	fd = open(game->map, O_RDONLY);
-	if (fd == -1)
+	game->fd = open(game->map, O_RDONLY);
+	if (game->fd == -1)
 		return (-1);
-	line = get_next_line(fd);
+	line = get_next_line(game->fd);
 	if (line == NULL)
 		return (-1);
 	while (line)
@@ -30,10 +29,10 @@ int	get_size(t_game *game)
 		if (line == NULL)
 			return (-1);
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(game->fd);
 		size++;
 	}
-	close(fd);
+	close(game->fd);
 	return (size);
 }
 

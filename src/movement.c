@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 14:18:50 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:35:28 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void move_up(t_game *g)
 	added_value_x = cosf(g->angle);
 	map_y = g->player.posy - added_value_y;
 	map_x = g->player.posx + added_value_x;
-	printf("y = %f,  x = %f\n", g->player.posy / 16, g->player.posx / 16);
+	//printf("y = %f,  x = %f\n", g->player.posy / 16, g->player.posx / 16);
 	if (g->tab_map[(int)(((map_y) / 16))][(int)(((map_x) / 16))] != '1' && \
 		g->tab_map[(int)(((map_y) / 16))][(int)(((map_x) / 16))] != '1')
 	{

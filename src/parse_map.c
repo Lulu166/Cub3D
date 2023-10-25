@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 12:59:18 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:07:37 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	player_pos(t_game *game)
 void	algo_parse(t_game *game, int i, int j)
 {
 	if (game->tab_map[i][j] != '1' && game->tab_map[i][j] != '\0')
-		map_error(game, 1, 0);
+		map_error(game, 1, 0, 2);
 	while (game->tab_map[i][j])
 	{
 		if (skip_wall(game, i, &j) == 2)
@@ -93,11 +93,11 @@ int	map_closed(t_game *game)
 int	parse_map(t_game *game)
 {
 	if (map_closed(game))
-		map_error(game, 1, 0);
+		map_error(game, 1, 0, 2);
 	if (player_pos(game) == 0)
-		map_error(game, 1, 0);
+		map_error(game, 1, 0, 2);
 	if (!fill_column_count(game))
-		map_error(game, 1 ,0);
+		map_error(game, 1 ,0, 2);
 	return (0);
 }
 
@@ -109,7 +109,7 @@ int	fill_column_count(t_game *game)
 	game->column_count = malloc(sizeof(int) * game->line_count);
 	if (!game->column_count)
 		return (0);
-	while (++i < game->line_count)
+	while (++i < map_size(game))
 		game->column_count[i] = ft_strlen(game->tab_map[i]);
 	return (1);
 }

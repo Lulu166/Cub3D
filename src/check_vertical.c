@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:30:37 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 12:57:21 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:02:24 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ float   vertical_pos(t_game *game, t_pointf *xy)
 	xy->y = game->ray->posY + depth_y * game->sin_angle;
 	delta_depth = (16 / game->cos_angle) * game->sin_angle;
 	while ((xy->x / 16) > 0 && (xy->y / 16) > 0 && \
-	(xy->y / 16) < game->line_count && \
-	(xy->x / 16) < game->column_count[(int)(xy->y) >> 4] && \
-	(game->tab_map[(int)(xy->y) >> 4][(int)(xy->x) >> 4] != '1'))
+	(xy->y / 16) < map_size(game) && \
+	(xy->x / 16) < game->column_count[(int)(xy->y) / 16] && \
+	(game->tab_map[(int)(xy->y) / 16][(int)(xy->x) / 16] != '1'))
 	{
 		xy->y += delta_depth;
 		xy->x += 16;
@@ -64,9 +64,9 @@ float   vertical_neg(t_game *game, t_pointf *xy)
 	xy->y = game->ray->posY + depth_y * game->sin_angle;
 	delta_depth = (16 / -game->cos_angle) * game->sin_angle;
 	while (((xy->x - 0.000000001) / 16) > 0 && ((xy->y - 0.000000001) / 16) > 0 && \
-	((xy->y - 0.000000001) / 16) < game->line_count && \
-	((xy->x - 0.000000001) / 16) < game->column_count[(int)((xy->y - 0.000000001)) >> 4] && \
-	(game->tab_map[(int)((xy->y - 0.000000001)) >> 4][(int)((xy->x - 0.000000001)) >> 4] != '1'))
+	((xy->y - 0.000000001) / 16) < map_size(game) && \
+	((xy->x - 0.000000001) / 16) < game->column_count[(int)((xy->y - 0.000000001)) / 16] && \
+	(game->tab_map[(int)((xy->y - 0.000000001)) / 16][(int)((xy->x - 0.000000001)) / 16] != '1'))
 	{
 		xy->y += delta_depth;
 		xy->x -= 16;

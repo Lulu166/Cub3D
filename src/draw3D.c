@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 14:18:44 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:40:14 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	draw_map(t_game *game)
 	game->ray->opposit = WIN_W / 2;
 	game->ray->adjacent = game->ray->opposit / tan(M_PI / 6);
 	game->ray->ray_angle = (M_PI / 6) + game->angle;
-	while (i < WIN_W)
+	while (i <= WIN_W)
 	{
 		init_ray(game, &xy_v, &xy_h);
 		dist_h = check_horizontal(game, &xy_h);
@@ -78,6 +78,7 @@ void	draw_map(t_game *game)
 		game->ray->opposit--;
 		game->ray->ray_angle = atanf(game->ray->opposit / game->ray->adjacent) + game->angle;
 	}
+	// printf("dist h = %f\n, dist v = %f", dist_h, dist_v);
 }
 static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i)
 {

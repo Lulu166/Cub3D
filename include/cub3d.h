@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 11:11:43 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:31:27 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct s_game {
 	t_player	player;
 	t_data		*data;
 	t_ray		*ray;
+	int			fd;
 	int			is_map;
 	char		*map;
 	int			*column_count;
@@ -179,6 +180,8 @@ void	free_tab(char **split);
 void	free_val_alloc(char *line, char **split_line);
 int		to_skip(char *line);
 int		map_size(t_game *game);
+int		to_hexa(int nb);
+int		convert_value(int *tab);
 
 /***************RAYCASTING***************/
 
@@ -228,7 +231,7 @@ void	draw_circle(t_game *game, int y, int x, int color);
 void	draw_map(t_game *game);
 
 /***************ERROR***************/
-void	map_error(t_game *game, int is_map, int is_mlx);
+void	map_error(t_game *game, int is_map, int is_mlx, int message);
 void	free_for_end(t_game *game);
 
 #endif

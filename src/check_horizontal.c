@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:30:32 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 14:19:17 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:01:40 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ float horizontal_pos(t_game *game, t_pointf *xy)
 	xy->x = game->ray->posX + depth_x * game->cos_angle + 0.000000001;
 	delta_depth = (16 / -game->sin_angle) * game->cos_angle;
 	while (((xy->x - 0.000000001) / 16)  > 0 && ((xy->y - 0.000000001) / 16)  > 0 && \
-	((xy->y - 0.000000001) / 16)  < game->line_count && \
-	((xy->x - 0.000000001) / 16)  < game->column_count[(int)((xy->y - 0.000000001)) >> 4] && \
-	(game->tab_map[(int)((xy->y - 0.000000001)) >> 4][(int)((xy->x - 0.000000001)) >> 4] != '1'))
+	((xy->y - 0.000000001) / 16)  < map_size(game) && \
+	((xy->x - 0.000000001) / 16)  < game->column_count[(int)((xy->y - 0.000000001)) / 16] && \
+	(game->tab_map[(int)((xy->y - 0.000000001)) / 16][(int)((xy->x - 0.000000001)) / 16] != '1'))
 	{
 		xy->x += delta_depth;
 		xy->y -= 16;
@@ -63,9 +63,9 @@ float horizontal_neg(t_game *game, t_pointf *xy)
 	xy->x = game->ray->posX + depth_x * game->cos_angle;
 	delta_depth = (16 / game->sin_angle) * game->cos_angle;
 	while ((xy->x / 16) > 0 && (xy->y / 16) > 0 && \
-	(xy->y / 16) < game->line_count && \
-	(xy->x / 16) < game->column_count[(int)(xy->y) >> 4] && \
-	(game->tab_map[(int)(xy->y) >> 4][(int)(xy->x) >> 4] != '1'))
+	(xy->y / 16) < map_size(game) && \
+	(xy->x / 16) < game->column_count[(int)(xy->y) / 16] && \
+	(game->tab_map[(int)(xy->y) / 16][(int)(xy->x) / 16] != '1'))
 	{
 		xy->x += delta_depth;
 		xy->y += 16;
