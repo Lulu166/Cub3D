@@ -6,87 +6,154 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/25 16:12:48 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/25 16:19:43 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+# ---- Variables ---- #
 
-CFLAGS = -Wall -Wextra -Werror -g3  -fsanitize=address
+NAME			=	cub3D
 
-CC = cc
+R_BONUS			= 	no
 
-DIR_SRC = ./src/
+RMF				=	rm -rf
 
-DIR_OBJ = ./.obj/
+# ---- Libraries ---- #
 
-DIR_INC = ./include/
+DIR_LIB			=	libft/
 
-MLX_DIR = ./minilibx-linux
+LIB				=	$(DIR_LIB)libft.a
 
-LIST_SRC =	main.c \
-			file.c \
-			init.c \
-			ray_casting.c \
-			utils.c \
-			utils1.c \
-			fill_texture.c \
-			fill_map.c \
-			parse_rgb.c \
-			parse_map.c \
-			parse_utils.c \
-			window_init.c \
-			mini_map.c \
-			hooks.c \
-			mouse.c \
-			movement.c \
-			pix.c \
-			draw3D.c \
-			check_horizontal.c \
-			check_vertical.c \
-			error.c \
+DIR_MLX			= 	minilibx-linux/
 
-LIST_INC = cub3d.h
+# ---- Directories  mandatory ---- #
 
-LIST_OBJ = ${LIST_SRC:.c=.o}
+DIR_HEADERS		=	mandatory/headers/
 
-SRC = $(addprefix $(DIR_SRC), $(LIST_SRC))
+HEADERS			= 	$(DIR_HEADERS)cub3D.h \
+					$(DIR_LIB)libft.h
+				
+DIR_MANDATORY	=	mandatory/sources/
 
-OBJ = $(addprefix $(DIR_OBJ), $(LIST_OBJ))
+MANDATORY		=	$(DIR_MANDATORY)main.c \
+					$(DIR_MANDATORY)file.c \
+					$(DIR_MANDATORY)init.c \
+					$(DIR_MANDATORY)ray_casting.c \
+					$(DIR_MANDATORY)utils.c \
+					$(DIR_MANDATORY)utils1.c \
+					$(DIR_MANDATORY)fill_texture.c \
+					$(DIR_MANDATORY)fill_map.c \
+					$(DIR_MANDATORY)parse_rgb.c \
+					$(DIR_MANDATORY)parse_map.c \
+					$(DIR_MANDATORY)parse_utils.c \
+					$(DIR_MANDATORY)window_init.c \
+					$(DIR_MANDATORY)mini_map.c \
+					$(DIR_MANDATORY)hooks.c \
+					$(DIR_MANDATORY)mouse.c \
+					$(DIR_MANDATORY)movement.c \
+					$(DIR_MANDATORY)pix.c \
+					$(DIR_MANDATORY)draw3D.c \
+					$(DIR_MANDATORY)check_horizontal.c \
+					$(DIR_MANDATORY)check_vertical.c \
+					$(DIR_MANDATORY)error.c \
 
-INC = $(addprefix $(DIR_INC), $(LIST_INC))
+# ---- Directories  bonus ---- #
 
-DIR_LIBFT = libft
+DIR_H_BONUS		=	bonus/headers/
 
-DIR_MLX = minilibx-linux
+H_BONUS			= 	$(DIR_H_BONUS)cub3D.h \
+					$(DIR_LIB)libft.h
 
-MLX = mlx.a
+DIR_BONUS		=	bonus/sources/
 
-LIBFT = libft/libft.a
+BONUS			=	$(DIR_BONUS)main.c \
+					$(DIR_BONUS)main.c \
+					$(DIR_BONUS)file.c \
+					$(DIR_BONUS)init.c \
+					$(DIR_BONUS)ray_casting.c \
+					$(DIR_BONUS)utils.c \
+					$(DIR_BONUS)utils1.c \
+					$(DIR_BONUS)fill_texture.c \
+					$(DIR_BONUS)fill_map.c \
+					$(DIR_BONUS)parse_rgb.c \
+					$(DIR_BONUS)parse_map.c \
+					$(DIR_BONUS)parse_utils.c \
+					$(DIR_BONUS)window_init.c \
+					$(DIR_BONUS)mini_map.c \
+					$(DIR_BONUS)hooks.c \
+					$(DIR_BONUS)mouse.c \
+					$(DIR_BONUS)movement.c \
+					$(DIR_BONUS)pix.c \
+					$(DIR_BONUS)draw3D.c \
+					$(DIR_BONUS)check_horizontal.c \
+					$(DIR_BONUS)check_vertical.c \
+					$(DIR_BONUS)error.c \
+					
+DIR_OBJS	    =	.objs/
 
-all : $(NAME)
+# ---- Flags ---- #
 
-$(DIR_OBJ) :
-	mkdir -p $(DIR_OBJ)
+ifeq ($(R_BONUS), no)
+CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_HEADERS)
+else
+CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_H_BONUS)
+endif
 
-$(LIBFT) : $(DIR_LIBFT)
-	$(MAKE) -C $(DIR_LIBFT)
+# ---- MLX ---- #
 
-$(DIR_OBJ)%.o : $(DIR_SRC)%.c $(INC)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_INC) -I $(DIR_MLX)
+MLX_FLAGS		=	-L$(DIR_MLX) -lm
 
-$(NAME) : $(DIR_OBJ) $(OBJ) $(INC) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
+MLX_FLAGS 	+= -lmlx -lX11 -lXext -L$(DIR_MLX)
 
-bonus :
-	$(MAKE) -C bonus
+# ---- Directory  objs ---- #
+
+ifeq ($(R_BONUS), no)
+OBJS		=	$(addprefix $(DIR_OBJS),$(MANDATORY:.c=.o))
+else
+OBJS		=	$(addprefix $(DIR_OBJS),$(BONUS:.c=.o))
+endif
+
+# ====================== RULES ====================== #
+
+# ---- Compilation rules ---- #
+
+all:		
+			${MAKE} lib
+			${MAKE} ${NAME}
+
+${NAME}:	$(LIB) ${OBJS}
+			make -C $(DIR_MLX)
+			$(CC) $(CFLAGS) $(OBJS) $(LIB) $(MLX_FLAGS) -o $(NAME)
+
+ifeq ($(R_BONUS), no)
+$(DIR_OBJS)%.o: %.c	$(HEADERS)
+			@ mkdir -p ${dir $@}
+			$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_HEADERS)
+else
+$(DIR_OBJS)%.o: %.c	$(H_BONUS)
+			@ mkdir -p ${dir $@}
+			$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_H_BONUS)
+endif
+
+# ---- Library rule ---- #
+
+$(LIB) :
+			$(MAKE) -C $(DIR_LIB)
+						
+bonus:
+			$(MAKE) R_BONUS=yes
+
+# ---- Clean rules ---- #
 
 clean:
-	rm -rf $(DIR_OBJ)
+			$(MAKE) -C $(DIR_LIB) clean
+			$(RMF) $(DIR_OBJS)
 
-fclean : clean
-	rm -rf $(NAME)
+fclean:		clean
+			$(MAKE) -C $(DIR_LIB) fclean
+			$(RMF)  $(NAME)
+			
+re :		fclean 
+			$(MAKE) all
 
-re : fclean $(NAME)
-
-.PHONY : clean fclean re all bonus
+.PHONY :	all lib clean fclean  bonus re
