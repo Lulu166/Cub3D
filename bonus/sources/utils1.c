@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 16:24:02 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Created: 2023/10/31 16:17:29 by luhumber          #+#    #+#             */
+/*   Updated: 2023/10/31 16:17:31 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ int	to_hexa(int nb)
 	hexa = 0;
 	while (nb > 0)
 	{
-		tmp = nb % 16;
+		tmp = nb % 32;
 		hexa = hexa + tmp * base;
-		nb = nb / 16;
-		base = base * 16;
+		nb = nb / 32;
+		base = base * 32;
 	}
 	return (hexa);
 }

@@ -6,36 +6,57 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:23:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
 
-// float	throw_ray(t_game *g, float x_start, float y_start, float angle)
-// {
-// 	t_pointf	first_xy;
-// 	t_pointf	step;
-// 	t_point		xy;
-// 	float		dist;
-	
-// 	dist = 0;
-// 	xy.x = x_start + step.x * g->cos_angle;
-// 	xy.y = y_start + step.y * g->sin_angle;
-// 	first_xy.x = xy.x;
-// 	first_xy.y = xy.y;
-// 	while (1)
-// 	{
-// 		if (g->tab_map[((int) g->ray->dirY >> 4)][((((int) g->ray->dirX)) >> 4)] == '1' || g->tab_map[((int) g->ray->dirY >> 4)][(int) (g->ray->dirX) >> 4] == '1' || g->tab_map[(int)(g->ray->dirY + 1) >> 4][(int) g->ray->dirX >> 4] == '1')
-// 			break;
-// 		step.x += 1;
-// 		xy.x = x_start + step.x * g->cos_angle / 10;
-// 		step.y += 1;
-// 		xy.y = y_start + step.y * g->sin_angle / 10;
-// 		//my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
-// 	}
-// 	return (dist);
-// }
+void	draw_circle(t_game *game, int y, int x, int color)
+{
+	int		i;
+	int		j;
+	float	dst;
+
+	i = 0;
+	while (i <= 32)
+	{
+		j = 0;
+		while (j <= 32)
+		{
+			dst = sqrt(pow((i - 10), 2) + pow((j - 10), 2));
+			if (dst < 5)
+				my_mlx_pixel_put(game->data, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_square(t_game *game, int height, int len, int color)
+{
+	int	pix_h;
+	int	pix_l;
+	int	i;
+	int	j;
+
+	i = 0;
+	pix_h = height;
+	pix_l = len;
+	while (i < 32)
+	{
+		j = 0;
+		pix_l = len;
+		while (j < 32)
+		{
+			my_mlx_pixel_put(game->data, pix_l, pix_h, color);
+			pix_l++;
+			j++;
+		}
+		pix_h++;
+		i++;
+	}
+}
 
 void	mini_line(t_game *game, int i, int j)
 {
@@ -44,8 +65,8 @@ void	mini_line(t_game *game, int i, int j)
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, 0xB03030);
 	draw_circle
-	(game, game->player.posy - 3, game->player.posx - 3, game->player.color);
-	game->lenght += 16;
+	(game, game->player.pos_y - 3, game->player.pos_x - 3, game->player.color);
+	game->lenght += 32;
 }
 
 void	mini_map(t_game *game)
@@ -62,6 +83,6 @@ void	mini_map(t_game *game)
 		while (game->tab_map[i][j] && game->lenght <= WIN_W)
 			mini_line(game, i, j++);
 		i++;
-		game->height += 16;
+		game->height += 32;
 	}
 }

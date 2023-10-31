@@ -3,71 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/31 10:36:37 by chsiffre         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/26 10:44:35 by luhumber         ###   ########.fr       */
->>>>>>> KillParse
+/*   Updated: 2023/10/31 16:14:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
-
-void	init_player(t_game *game, int i, int j)
-{
-	printf("%c\n", game->tab_map[i][j]);
-	if (game->tab_map[i][j] == 'N')
-		game->player.orientation = 'N';
-	else if (game->tab_map[i][j] == 'S')
-		game->player.orientation = 'S';
-	else if (game->tab_map[i][j] == 'E')
-		game->player.orientation = 'E';
-	else if (game->tab_map[i][j] == 'W')
-		game->player.orientation = 'W';
-	game->player.color = 0xFFD700;
-	game->player.nb_p++;
-	game->player.x = j;
-	game->player.y = i;
-	game->player.posy = game->player.y * 16;
-	game->player.posx = game->player.x * 16;
-	game->player.top = 0;
-	game->player.right = 0;
-	game->player.down = 0;
-	game->player.left = 0;
-	game->player.mouse_left = 0;
-	game->player.mouse_right = 0;
-	game->player.click_left = 0;
-	game->player.click_right = 0;
-	game->player.rotLeft = 0;
-	game->player.rotRight = 0;
-	game->tab_map[i][j] = '0';
-}
-
-int	player_pos(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	game->player.nb_p = 0;
-	while (game->tab_map[i])
-	{
-		j = 0;
-		while (game->tab_map[i][j])
-		{
-			if (is_player(game, i, j) == 1)
-				init_player(game, i, j);
-			j++;
-		}
-		i++;
-	}
-	if (game->player.nb_p != 1)
-		return (0);
-	return (1);
-}
 
 void	algo_parse(t_game *game, int i, int j)
 {
@@ -109,8 +52,6 @@ int	parse_map(t_game *game)
 		map_error(game, 1, 0, 2);
 	if (player_pos(game) == 0)
 		map_error(game, 1, 0, 2);
-	if (!fill_column_count(game))
-		map_error(game, 1,0, 2);
 	return (0);
 }
 
@@ -121,7 +62,7 @@ int	fill_column_count(t_game *game)
 	i = 0;
 	game->column_count = malloc(sizeof(int) * map_size(game));
 	if (!game->column_count)
-		map_error(game, 1, 1, 1);
+		map_error(game, 1, 1, 0);
 	while (game->tab_map[i] && i <= map_size(game))
 	{
 		game->column_count[i] = ft_strlen(game->tab_map[i]);

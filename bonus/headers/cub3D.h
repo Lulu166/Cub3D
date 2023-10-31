@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 16:09:55 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:24:42 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@
 #  define P_KEY 112
 # endif
 
-//# include <../mlx/mlx.h>
 # include <../minilibx-linux/mlx.h>
 # include <X11/X.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -83,6 +82,13 @@ typedef struct s_screen {
 	t_window	window;
 }	t_screen;
 
+typedef struct s_xpm {
+	void	*xpm_tex;
+	int		x;
+	int		y;
+	t_data	data;
+}	t_xpm;
+
 typedef struct s_texture {
 	char	*no;
 	char	*so;
@@ -90,14 +96,18 @@ typedef struct s_texture {
 	char	*ea;
 	int		f;
 	int		c;
+	t_xpm	no_img;
+	t_xpm	so_img;
+	t_xpm	we_img;
+	t_xpm	ea_img;
 }	t_texture;
 
-typedef	struct	s_pointf {
+typedef struct s_pointf {
 	float	x;
 	float	y;
 }	t_pointf;
 
-typedef	struct	s_point {
+typedef struct s_point {
 	int	x;
 	int	y;
 }	t_point;
@@ -106,8 +116,8 @@ typedef struct s_player {
 	enum e_position	pos;
 	int				x;
 	int				y;
-	float			posx;
-	float			posy;
+	float			pos_x;
+	float			pos_y;
 	int				color;
 	int				nb_p;
 	int				left;
@@ -115,8 +125,8 @@ typedef struct s_player {
 	int				right;
 	int				down;
 	char			orientation;
-	int				rotLeft;
-	int				rotRight;
+	int				rot_left;
+	int				rot_right;
 	int				mouse_right;
 	int				mouse_left;
 	int				click_left;
@@ -124,22 +134,19 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_ray {
-	double	posX;
-	double	posY;
+	double	pos_x;
+	double	pos_y;
+	int		dir_x;
+	int		dir_y;
 	float	dist;
+	float	wall_size;
 	bool	horizontal;
 	float	opposit;
 	float	adjacent;
 	float	ray_angle;
-	int	mapX;
-	int	mapY;
-	int	x;
-	float dirX;
-	float dirY;
-	int		hit;
-	int		side;
-	double time;
-	double old_time;
+	int		map_x;
+	int		map_y;
+	int		x;
 }	t_ray;
 
 typedef struct s_game {
@@ -165,6 +172,7 @@ typedef struct s_game {
 	float		sin_angle;
 	float		cos_angle;
 	int			mini_map;
+	int			nb_xpm;
 }	t_game;
 
 /***************TEXTURE***************/
@@ -189,8 +197,8 @@ int		convert_value(int *tab);
 /***************RAYCASTING***************/
 
 void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h);
-float   check_vertical(t_game *game, t_pointf *xy);
-float   check_horizontal(t_game *game, t_pointf *xy);
+float	check_vertical(t_game *game, t_pointf *xy);
+float	check_horizontal(t_game *game, t_pointf *xy);
 int		fill_column_count(t_game *game);
 float	horizontal_pos(t_game *game, t_pointf *xy);
 float	horizontal_neg(t_game *game, t_pointf *xy);
@@ -207,6 +215,8 @@ int		skip_empty(t_game *game, int i, int *j);
 int		empty_error(t_game *game, int i, int j);
 int		is_empty(t_game *game, int i, int j);
 int		is_player(t_game *game, int i, int j);
+void	init_player(t_game *game, int i, int j);
+int		player_pos(t_game *game);
 
 /***************WINDOW***************/
 void	window_init(t_game *game);
@@ -229,12 +239,19 @@ int		can_mouse(t_game *game);
 
 /***************PIXELS***************/
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
+int		my_pixel_get(t_data *data, int x, int y);
+int		get_text_ns(t_game *game, int *y, long wall_size);
+int		get_text_we(t_game *game, int *y, long wall_size);
+void	draw_ceilling_floor(t_game *game, int *y, int y_max, int color);
 void	draw_square(t_game *game, int height, int len, int color);
 void	draw_circle(t_game *game, int y, int x, int color);
+void	draw_wall(t_game *game, int *y, int y_max, int color);
 void	draw_map(t_game *game);
 
 /***************ERROR***************/
+void	texture_problems(t_game *game, char **line);
 void	map_error(t_game *game, int is_map, int is_mlx, int message);
 void	free_for_end(t_game *game);
+void	free_game(t_game *game, int is_map, int is_mlx);
 
 #endif

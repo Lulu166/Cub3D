@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/31 16:12:15 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/31 16:35:03 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ H_BONUS			= 	$(DIR_H_BONUS)cub3D.h \
 DIR_BONUS		=	bonus/sources/
 
 BONUS			=	$(DIR_BONUS)main.c \
-					$(DIR_BONUS)main.c \
 					$(DIR_BONUS)file.c \
 					$(DIR_BONUS)init.c \
 					$(DIR_BONUS)utils.c \
@@ -90,6 +89,8 @@ BONUS			=	$(DIR_BONUS)main.c \
 					$(DIR_BONUS)check_horizontal.c \
 					$(DIR_BONUS)check_vertical.c \
 					$(DIR_BONUS)error.c \
+					$(DIR_BONUS)player.c \
+					$(DIR_BONUS)end.c \
 					
 DIR_OBJS	    =	.objs/
 

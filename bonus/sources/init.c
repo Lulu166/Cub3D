@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:24:42 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,23 @@ void	game_file(t_game *game)
 	close(game->fd);
 	if (game->tab_map == NULL)
 		map_error(game, 0, 0, 2);
-	// int i = 0;
-	// while (game->tab_map[i])
-	// 	printf("%s\n", game->tab_map[i++]);
+}
+
+void	set_angle(t_game *game)
+{
+	if (game->player.orientation == 'N')
+		game->angle = M_PI / 2;
+	else if (game->player.orientation == 'W')
+		game->angle = M_PI;
+	else if (game->player.orientation == 'S')
+		game->angle = 3 * M_PI / 2;
+	else if (game->player.orientation == 'E')
+		game->angle = 2 * M_PI;
 }
 
 void	game_init(t_game *game, char *arg)
 {
+	game->nb_xpm = 0;
 	game->angle = 0;
 	game->sin_angle = sin(game->angle);
 	game->cos_angle = cos(game->angle);
@@ -48,10 +58,9 @@ void	game_init(t_game *game, char *arg)
 	game->mini_map = 0;
 	game_file(game);
 	parse_map(game);
+	set_angle(game);
 	window_init(game);
-	set_start_value(game);
 }
-
 
 void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h)
 {
@@ -65,31 +74,16 @@ void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h)
 	g->sin_angle = -sinf(g->ray->ray_angle);
 }
 
-
-int	set_start_value(t_game *game)
+void	init_ray_struct(t_game *g)
 {
-	game->ray->posX = (game->player.posx);
-	game->ray->posY = (game->player.posy);
-	// set_start_direction(game);
-	return (1);
-}
-void    init_ray_struct(t_game *g)
-{
-	g->ray->posX = g->player.posx;
-	g->ray->posY = g->player.posy;
-	g->ray->dirX = -1;
-	g->ray->dirY = 0;
-	g->ray->time = 0;
-	g->ray->old_time = 0;
-	g->ray->mapX = 0;
-	g->ray->mapY = 0;
-	g->ray->time = 0;
-	g->ray->old_time = 0;
-	g->ray->side = 0;
-	g->ray->hit = 0;
+	g->ray->pos_x = g->player.pos_x + 8;
+	g->ray->pos_y = g->player.pos_y + 8;
+	g->ray->dir_x = -1;
+	g->ray->dir_y = 0;
+	g->ray->map_x = 0;
+	g->ray->map_y = 0;
 	g->ray->adjacent = 0;
 	g->ray->opposit = 0;
 	g->ray->ray_angle = 0;
 	g->ray->x = 1;
-
 }
