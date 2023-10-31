@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 22:22:24 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/31 12:59:36 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:55:44 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ int	check_line(char *line)
 	return (1);
 }
 
-char	*find_map(t_game *game, int fd)
+char	*loop_map(t_game *game, char *line, int fd)
 {
-	char	*line;
-	int		i;
+	int	i;
 
-	line = get_next_line(fd);
-	game->line_count++;
 	while (1)
 	{
 		while (line && line[0] == '\n')
@@ -61,6 +58,17 @@ char	*find_map(t_game *game, int fd)
 			}
 		}
 	}
+}
+
+char	*find_map(t_game *game, int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	game->line_count++;
+	line = loop_map(game, line, fd);
+	if (line != NULL)
+		return (line);
 	free(line);
 	return (NULL);
 }

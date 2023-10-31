@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 11:18:45 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/31 13:00:24 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:41:20 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	empty_error(t_game *game, int i, int j)
 		return (1);
 	if (j < 0)
 		return (1);
-	if ((j + 1) >= (int)ft_strlen(game->tab_map[i + 1]))
+	if ((j) >= (int)ft_strlen(game->tab_map[i + 1]))
 		return (1);
 	if (game->tab_map[i][j + 1] == '\n')
 		return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:50:55 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 15:07:48 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:23:32 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	movement_keys(int keycode, t_game *game)
 void	arrow_keys(int keycode, t_game *game)
 {
 	if (keycode == RIGHT_ARROW_KEY)
-		game->player.rotRight = 1;
+		game->player.rot_right = 1;
 	else if (keycode == LEFT_ARROW_KEY)
-		game->player.rotLeft = 1;
+		game->player.rot_left = 1;
 }
 
 int	key_press(int keycode, t_game *game)
@@ -68,8 +68,8 @@ int	key_release(int keycode, t_game *game)
 	if (keycode == S_LOWER_KEY)
 		game->player.down = 0;
 	if (keycode == LEFT_ARROW_KEY)
-		game->player.rotLeft = 0;
+		game->player.rot_left = 0;
 	if (keycode == RIGHT_ARROW_KEY)
-		game->player.rotRight = 0;
+		game->player.rot_right = 0;
 	return (0);
 }

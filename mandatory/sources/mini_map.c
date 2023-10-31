@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 15:05:12 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:23:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
-
 
 void	draw_circle(t_game *game, int y, int x, int color)
 {
@@ -66,7 +65,7 @@ void	mini_line(t_game *game, int i, int j)
 	else if (game->tab_map[i][j] == '1')
 		draw_square(game, game->height, game->lenght, 0xB03030);
 	draw_circle
-	(game, game->player.posy - 3, game->player.posx - 3, game->player.color);
+	(game, game->player.pos_y - 3, game->player.pos_x - 3, game->player.color);
 	game->lenght += 32;
 }
 

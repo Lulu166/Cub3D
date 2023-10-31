@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 15:07:48 by chsiffre         ###   ########.fr       */
+/*   Created: 2023/10/31 16:17:29 by luhumber          #+#    #+#             */
+/*   Updated: 2023/10/31 16:17:31 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
