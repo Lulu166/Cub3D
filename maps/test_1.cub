@@ -1,8 +1,8 @@
-NO ./texture/wall.xpm
-WE ./texture/wall.xpm
+NO ./texture/Cement.xpm
+WE ./texture/Grass.xpm
 
-EA ./texture/wall.xpm
-SO ./texture/wall.xpm
+EA ./texture/Marble.xpm
+SO ./texture/Stone.xpm
 C 128,128,128
 F 176,48,48
 11111

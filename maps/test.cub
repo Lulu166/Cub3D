@@ -1,10 +1,9 @@
 
-NO ./texture/wall.xpm
-WE ./texture/wall.xpm
+NO ./texture/wall_5.xpm
+WE ./texture/Grass.xpm
 
-
-EA ./texture/wall.xpm
-SO ./texture/wall.xpm
+EA ./texture/Marble.xpm
+SO ./texture/Stone.xpm
 C 121,125,127
 F 28,40,51
 

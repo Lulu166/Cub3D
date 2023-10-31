@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/31 13:08:02 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:30:40 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,8 @@ void    init_ray_struct(t_game *g)
 	g->ray->posY = g->player.posy + 8;
 	g->ray->dirX = -1;
 	g->ray->dirY = 0;
-	g->ray->time = 0;
-	g->ray->old_time = 0;
 	g->ray->mapX = 0;
 	g->ray->mapY = 0;
-	g->ray->time = 0;
-	g->ray->old_time = 0;
-	g->ray->side = 0;
-	g->ray->hit = 0;
 	g->ray->adjacent = 0;
 	g->ray->opposit = 0;
 	g->ray->ray_angle = 0;

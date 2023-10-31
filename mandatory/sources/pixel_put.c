@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:55:22 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/31 11:07:57 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:05:32 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int my_pixel_get(t_data *data, int x, int y)
     char	*dst;
 
 	dst = data->addr + ((int)y * data->len + (int)x * (data->bpr / 8));
-    if (!(x >= 0 && x <= 255) || !(y >= 0 && y <= 255))
-        return (*(uint32_t *)(data->addr + (255 * data->len + 255 * \
+    if (!(x >= 0 && x <= 127) || !(y >= 0 && y <= 127))
+        return (*(uint32_t *)(data->addr + (127 * data->len + 127 * \
 		(data->bpr / 8))));
     return (*(uint32_t*)dst);
 }
@@ -40,6 +40,10 @@ void	draw_wall(t_game *game, int *y, int y_max, int color)
 {
 	while (*y <= y_max)
 	{
+        if (game->ray->horizontal == true)
+            color = get_text_ns(game, y, game->ray->wall_size);
+        else if (game->ray->horizontal == false)
+            color = get_text_we(game, y, game->ray->wall_size);
 		my_mlx_pixel_put(game->data, game->ray->x, *y, color);
 		(*y)++;
 	}

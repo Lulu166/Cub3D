@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/31 13:07:22 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:38:20 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,20 +137,17 @@ typedef struct s_player {
 typedef struct s_ray {
 	double	posX;
 	double	posY;
+	int		dirX;
+	int		dirY;
 	float	dist;
+	float	wall_size;
 	bool	horizontal;
 	float	opposit;
 	float	adjacent;
 	float	ray_angle;
-	int	mapX;
-	int	mapY;
-	int	x;
-	float dirX;
-	float dirY;
-	int		hit;
-	int		side;
-	double time;
-	double old_time;
+	int		mapX;
+	int		mapY;
+	int		x;
 }	t_ray;
 
 typedef struct s_game {
@@ -242,6 +239,8 @@ int		can_mouse(t_game *game);
 /***************PIXELS***************/
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
 int		my_pixel_get(t_data *data, int x, int y);
+int		get_text_ns(t_game *game, int *y, long wall_size);
+int		get_text_we(t_game *game, int *y, long wall_size);
 void	draw_ceilling_floor(t_game *game, int *y, int y_max, int color);
 void	draw_square(t_game *game, int height, int len, int color);
 void	draw_circle(t_game *game, int y, int x, int color);

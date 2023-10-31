@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
+#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/31 13:08:56 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/31 13:35:39 by chsiffre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ DIR_MANDATORY	=	mandatory/sources/
 MANDATORY		=	$(DIR_MANDATORY)main.c \
 					$(DIR_MANDATORY)file.c \
 					$(DIR_MANDATORY)init.c \
-					$(DIR_MANDATORY)ray_casting.c \
 					$(DIR_MANDATORY)utils.c \
 					$(DIR_MANDATORY)utils1.c \
 					$(DIR_MANDATORY)fill_texture.c \
@@ -52,6 +51,7 @@ MANDATORY		=	$(DIR_MANDATORY)main.c \
 					$(DIR_MANDATORY)mouse.c \
 					$(DIR_MANDATORY)movement.c \
 					$(DIR_MANDATORY)pixel_put.c \
+					$(DIR_MANDATORY)texture_pix.c \
 					$(DIR_MANDATORY)draw3D.c \
 					$(DIR_MANDATORY)check_horizontal.c \
 					$(DIR_MANDATORY)check_vertical.c \
@@ -70,7 +70,6 @@ BONUS			=	$(DIR_BONUS)main.c \
 					$(DIR_BONUS)main.c \
 					$(DIR_BONUS)file.c \
 					$(DIR_BONUS)init.c \
-					$(DIR_BONUS)ray_casting.c \
 					$(DIR_BONUS)utils.c \
 					$(DIR_BONUS)utils1.c \
 					$(DIR_BONUS)fill_texture.c \
@@ -84,6 +83,7 @@ BONUS			=	$(DIR_BONUS)main.c \
 					$(DIR_BONUS)mouse.c \
 					$(DIR_BONUS)movement.c \
 					$(DIR_BONUS)pixel_put.c \
+					$(DIR_BONUS)texture_pix.c \
 					$(DIR_BONUS)draw3D.c \
 					$(DIR_BONUS)check_horizontal.c \
 					$(DIR_BONUS)check_vertical.c \

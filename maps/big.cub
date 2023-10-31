@@ -2,7 +2,7 @@ NO ./texture/no.xpm
 WE ./texture/wall.xpm
 
 
-EA ./texture/wall.xpm
+EA ./texture/no.xpm
 
 SO ./texture/wall.xpm
 

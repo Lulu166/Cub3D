@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 11:08:54 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:09:05 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i);
 void	draw_all(t_game *game, float dist, float angle, int i)
 {
 	int		y;
-	float	wall_size;
 	float	half_size;
+	int color;
 
+	color = 0;
 	y = 0;
 	if (dist == 0)
 		dist = 0.2;
-	wall_size = 1 / (dist * cos(angle)) * 20000;
-	half_size = wall_size / 2;
+	game->ray->wall_size = 1 / (dist * cos(angle)) * 40000;
+	half_size = game->ray->wall_size / 2;
 	game->ray->x = i;
 	draw_ceilling_floor(game, &y, ((WIN_H >> 1) - half_size), game->tex.c);
-	draw_wall(game, &y, ((WIN_H >> 1) + half_size), 0x79615C);
+	draw_wall(game, &y, ((WIN_H >> 1) + half_size), color);
 	draw_ceilling_floor(game, &y, WIN_H, game->tex.f);
 }
 
