@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
+#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/25 16:19:43 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/31 10:57:42 by chsiffre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ MANDATORY		=	$(DIR_MANDATORY)main.c \
 					$(DIR_MANDATORY)hooks.c \
 					$(DIR_MANDATORY)mouse.c \
 					$(DIR_MANDATORY)movement.c \
-					$(DIR_MANDATORY)pix.c \
+					$(DIR_MANDATORY)pixel_put.c \
 					$(DIR_MANDATORY)draw3D.c \
 					$(DIR_MANDATORY)check_horizontal.c \
 					$(DIR_MANDATORY)check_vertical.c \
@@ -83,7 +83,7 @@ BONUS			=	$(DIR_BONUS)main.c \
 					$(DIR_BONUS)hooks.c \
 					$(DIR_BONUS)mouse.c \
 					$(DIR_BONUS)movement.c \
-					$(DIR_BONUS)pix.c \
+					$(DIR_BONUS)pixel_put.c \
 					$(DIR_BONUS)draw3D.c \
 					$(DIR_BONUS)check_horizontal.c \
 					$(DIR_BONUS)check_vertical.c \

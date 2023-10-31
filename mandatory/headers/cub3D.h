@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 16:09:55 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:08:19 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,8 +229,11 @@ int		can_mouse(t_game *game);
 
 /***************PIXELS***************/
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
+int		my_pixel_get(t_data *data, int x, int y);
+void	draw_ceilling_floor(t_game *game, int *y, int y_max, int color);
 void	draw_square(t_game *game, int height, int len, int color);
 void	draw_circle(t_game *game, int y, int x, int color);
+void	draw_wall(t_game *game, int *y, int y_max, int color);
 void	draw_map(t_game *game);
 
 /***************ERROR***************/

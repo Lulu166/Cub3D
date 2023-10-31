@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw3D.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:08:54 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 static void	draw_v_coll(t_game *game, t_pointf *xy_v, float dist, int i);
 static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i);
 
-void	draw_wall(t_game *game, int *y, int y_max, int color)
-{
-	while (*y <= y_max)
-	{
-		my_mlx_pixel_put(game->data, game->ray->x, *y, color);
-		(*y)++;
-	}
-}
-
-void	draw_ceilling_floor(t_game *game, int *y, int y_max, int color)
-{
-	// (void) color;
-	// (void) game;
-	while (*y < y_max)
-	{
-		my_mlx_pixel_put(game->data, game->ray->x, *y, color);
-		(*y)++;
-	}
-}
 
 void	draw_all(t_game *game, float dist, float angle, int i)
 {
@@ -78,7 +59,6 @@ void	draw_map(t_game *game)
 		game->ray->opposit--;
 		game->ray->ray_angle = atanf(game->ray->opposit / game->ray->adjacent) + game->angle;
 	}
-	// printf("dist h = %f\n, dist v = %f", dist_h, dist_v);
 }
 static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i)
 {

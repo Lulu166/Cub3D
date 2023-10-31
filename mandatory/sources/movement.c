@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 13:08:26 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 17:12:08 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:45:00 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void move_up(t_game *g)
 	added_value_x = cosf(g->angle);
 	map_y = g->player.posy - added_value_y;
 	map_x = g->player.posx + added_value_x;
-	if (g->tab_map[(int)(((map_y) / 16 + 1))][(int)(((map_x) / 16))] != '1' && \
+	if (g->tab_map[(int)(((map_y) / 16 + 1))][(int)(((map_x) / 16 ))] != '1' && \
 		g->tab_map[(int)(((map_y) / 16))][(int)(((map_x) / 16))] != '1')
 	{
 		g->player.posx += added_value_x;
@@ -88,7 +88,7 @@ void	move_right(t_game *g)
 	added_value_x = cosf(g->angle - (M_PI / 2));
 	map_y = g->player.posy + added_value_y;
 	map_x = g->player.posx + added_value_x;
-	if (g->tab_map[(int)(((map_y) / 16 + 1.5))][(int)(((map_x) / 16))] != '1' && \
+	if (g->tab_map[(int)(((map_y) / 16 + 1))][(int)(((map_x) / 16))] != '1' && \
 		g->tab_map[(int)(((map_y) / 16))][(int)(((map_x) / 16))] != '1')
 	{
 		g->player.posx += added_value_x;

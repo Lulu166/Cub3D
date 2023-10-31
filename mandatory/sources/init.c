@@ -6,7 +6,7 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 16:34:10 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:41:35 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ void	game_file(t_game *game)
 	// 	printf("%s\n", game->tab_map[i++]);
 }
 
+void	set_angle(t_game *game)
+{
+	if (game->player.orientation == 'N')
+		game->angle = M_PI / 2;
+	else if (game->player.orientation == 'W')
+		game->angle = M_PI;
+	else if (game->player.orientation == 'S')
+		game->angle = 3 * M_PI / 2;
+	else if (game->player.orientation == 'E')
+		game->angle = 2 * M_PI;
+		
+}
+
 void	game_init(t_game *game, char *arg)
 {
 	game->angle = 0;
@@ -48,8 +61,8 @@ void	game_init(t_game *game, char *arg)
 	game->mini_map = 0;
 	game_file(game);
 	parse_map(game);
+	set_angle(game);
 	window_init(game);
-	set_start_value(game);
 }
 
 
@@ -66,13 +79,6 @@ void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h)
 }
 
 
-int	set_start_value(t_game *game)
-{
-	game->ray->posX = (game->player.posx);
-	game->ray->posY = (game->player.posy);
-	// set_start_direction(game);
-	return (1);
-}
 void    init_ray_struct(t_game *g)
 {
 	g->ray->posX = g->player.posx + 8;

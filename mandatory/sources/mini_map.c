@@ -3,39 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 14:00:56 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:57:25 by chsiffre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
 
-// float	throw_ray(t_game *g, float x_start, float y_start, float angle)
-// {
-// 	t_pointf	first_xy;
-// 	t_pointf	step;
-// 	t_point		xy;
-// 	float		dist;
-	
-// 	dist = 0;
-// 	xy.x = x_start + step.x * g->cos_angle;
-// 	xy.y = y_start + step.y * g->sin_angle;
-// 	first_xy.x = xy.x;
-// 	first_xy.y = xy.y;
-// 	while (1)
-// 	{
-// 		if (g->tab_map[((int) g->ray->dirY >> 4)][((((int) g->ray->dirX)) >> 4)] == '1' || g->tab_map[((int) g->ray->dirY >> 4)][(int) (g->ray->dirX) >> 4] == '1' || g->tab_map[(int)(g->ray->dirY + 1) >> 4][(int) g->ray->dirX >> 4] == '1')
-// 			break;
-// 		step.x += 1;
-// 		xy.x = x_start + step.x * g->cos_angle / 10;
-// 		step.y += 1;
-// 		xy.y = y_start + step.y * g->sin_angle / 10;
-// 		//my_mlx_pixel_put(g->data, g->ray->dirX, g->ray->dirY, 0x000080);
-// 	}
-// 	return (dist);
-// }
+
+void	draw_circle(t_game *game, int y, int x, int color)
+{
+	int		i;
+	int		j;
+	float	dst;
+
+	i = 0;
+	while (i <= 16)
+	{
+		j = 0;
+		while (j <= 16)
+		{
+			dst = sqrt(pow((i - 10), 2) + pow((j - 10), 2));
+			if (dst < 5)
+				my_mlx_pixel_put(game->data, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_square(t_game *game, int height, int len, int color)
+{
+	int	pix_h;
+	int	pix_l;
+	int	i;
+	int	j;
+
+	i = 0;
+	pix_h = height;
+	pix_l = len;
+	while (i < 16)
+	{
+		j = 0;
+		pix_l = len;
+		while (j < 16)
+		{
+			my_mlx_pixel_put(game->data, pix_l, pix_h, color);
+			pix_l++;
+			j++;
+		}
+		pix_h++;
+		i++;
+	}
+}
 
 void	mini_line(t_game *game, int i, int j)
 {
