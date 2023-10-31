@@ -6,13 +6,13 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:15:02 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/31 16:17:05 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:25:39 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
 
-static int	float_modulo(float nbr, int div);
+static float	float_modulo(float nbr, int div);
 
 int	get_text_ns(t_game *game, int *y, long wall_size)
 {
@@ -60,7 +60,7 @@ int	get_text_we(t_game *game, int *y, long wall_size)
 	return (color);
 }
 
-static int	float_modulo(float nbr, int div)
+static float	float_modulo(float nbr, int div)
 {
 	int	i;
 
