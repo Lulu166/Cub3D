@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:21:35 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:04:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,27 @@ void	free_mlx(t_game *game, int is_mlx)
 	free(game->screen.mlx);
 }
 
-void	free_game(t_game *game, int is_map, int is_mlx)
+void	free_texture(t_game *game)
 {
-	int	i;
-
 	free(game->tex.no);
 	free(game->tex.so);
 	free(game->tex.ea);
 	free(game->tex.we);
+	if (game->nb_xpm >= 1)
+		mlx_destroy_image(game->screen.mlx, game->tex.no_img.xpm_tex);
+	if (game->nb_xpm >= 2)
+		mlx_destroy_image(game->screen.mlx, game->tex.so_img.xpm_tex);
+	if (game->nb_xpm >= 3)
+		mlx_destroy_image(game->screen.mlx, game->tex.we_img.xpm_tex);
+	if (game->nb_xpm >= 4)
+		mlx_destroy_image(game->screen.mlx, game->tex.ea_img.xpm_tex);
+}
+
+void	free_game(t_game *game, int is_map, int is_mlx)
+{
+	int	i;
+
+	free_texture(game);
 	if (is_map >= 1)
 	{
 		i = 0;
@@ -42,6 +55,7 @@ void	free_game(t_game *game, int is_map, int is_mlx)
 	}
 	if (is_map >= 2)
 	{
+		free(game->column_count);
 		if (is_mlx >= 1)
 			free_mlx(game, is_mlx);
 		free(game->data);

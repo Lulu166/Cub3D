@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 16:09:55 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:02:05 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,13 @@ typedef struct s_screen {
 	t_window	window;
 }	t_screen;
 
+typedef struct s_xpm {
+	void	*xpm_tex;
+	int		x;
+	int		y;
+	t_data	data;
+}	t_xpm;
+
 typedef struct s_texture {
 	char	*no;
 	char	*so;
@@ -90,6 +97,10 @@ typedef struct s_texture {
 	char	*ea;
 	int		f;
 	int		c;
+	t_xpm	no_img;
+	t_xpm	so_img;
+	t_xpm	we_img;
+	t_xpm	ea_img;
 }	t_texture;
 
 typedef	struct	s_pointf {
@@ -165,6 +176,7 @@ typedef struct s_game {
 	float		sin_angle;
 	float		cos_angle;
 	int			mini_map;
+	int			nb_xpm;
 }	t_game;
 
 /***************TEXTURE***************/

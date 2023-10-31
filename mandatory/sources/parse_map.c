@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:00:03 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	parse_map(t_game *game)
 		map_error(game, 1, 0, 2);
 	if (player_pos(game) == 0)
 		map_error(game, 1, 0, 2);
-	if (!fill_column_count(game))
-		map_error(game, 1,0, 2);
 	return (0);
 }
 
@@ -116,7 +114,7 @@ int	fill_column_count(t_game *game)
 	i = 0;
 	game->column_count = malloc(sizeof(int) * map_size(game));
 	if (!game->column_count)
-		return (0);
+		map_error(game, 1, 1, 0);
 	while (game->tab_map[i] && i <= map_size(game))
 	{
 		game->column_count[i] = ft_strlen(game->tab_map[i]);

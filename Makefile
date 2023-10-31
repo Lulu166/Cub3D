@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/25 16:19:43 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/31 12:00:33 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ DIR_OBJS	    =	.objs/
 # ---- Flags ---- #
 
 ifeq ($(R_BONUS), no)
-CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_HEADERS)
+CFLAGS		=	-Wall -Wextra -Werror -O3 -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_HEADERS)
 else
 CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_H_BONUS)
 endif

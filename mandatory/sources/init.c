@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 16:34:10 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:03:06 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ void	game_file(t_game *game)
 	close(game->fd);
 	if (game->tab_map == NULL)
 		map_error(game, 0, 0, 2);
-	// int i = 0;
-	// while (game->tab_map[i])
-	// 	printf("%s\n", game->tab_map[i++]);
 }
 
 void	game_init(t_game *game, char *arg)
 {
+	game->nb_xpm = 0;
 	game->angle = 0;
 	game->sin_angle = sin(game->angle);
 	game->cos_angle = cos(game->angle);
