@@ -6,27 +6,27 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:30:37 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:31:01 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
 
-float   check_vertical(t_game *game, t_pointf *xy)
+float	check_vertical(t_game *game, t_pointf *xy)
 {
-    float dist;
+	float	dist;
 
-    dist = 0.0;
-		if (game->cos_angle >= 0)
-			dist = vertical_pos(game, xy);
-		else if (game->cos_angle < 0)
-			dist = vertical_neg(game, xy);	
+	dist = 0.0;
+	if (game->cos_angle >= 0)
+		dist = vertical_pos(game, xy);
+	else if (game->cos_angle < 0)
+		dist = vertical_neg(game, xy);
 	return (dist);
 }
 
-float   vertical_pos(t_game *game, t_pointf *xy)
+float	vertical_pos(t_game *game, t_pointf *xy)
 {
-    float		depth_y;
+	float		depth_y;
 	float		delta_depth;
 
 	xy->y = 0;
@@ -49,9 +49,9 @@ float   vertical_pos(t_game *game, t_pointf *xy)
 	powf((game->ray->posY - xy->y), 2)));
 }
 
-float   vertical_neg(t_game *game, t_pointf *xy)
+float	vertical_neg(t_game *game, t_pointf *xy)
 {
-    float		depth_y;
+	float		depth_y;
 	float		delta_depth;
 
 	xy->y = 0;
@@ -63,10 +63,13 @@ float   vertical_neg(t_game *game, t_pointf *xy)
 	depth_y = (xy->x - game->ray->posX) / game->cos_angle + 0.000000001;
 	xy->y = game->ray->posY + depth_y * game->sin_angle;
 	delta_depth = (16 / -game->cos_angle) * game->sin_angle;
-	while (((xy->x - 0.000000001) / 16) > 0 && ((xy->y - 0.000000001) / 16) > 0 && \
-	((xy->y - 0.000000001) / 16) < map_size(game) && \
-	((xy->x - 0.000000001) / 16) < game->column_count[(int)((xy->y - 0.000000001)) / 16] && \
-	(game->tab_map[(int)((xy->y - 0.000000001)) / 16][(int)((xy->x - 0.000000001)) / 16] != '1'))
+	while (((xy->x - 0.000000001) / 16) > 0
+		&& ((xy->y - 0.000000001) / 16) > 0 && \
+		((xy->y - 0.000000001) / 16) < map_size(game) && \
+		((xy->x - 0.000000001) / 16) < game->column_count
+		[(int)((xy->y - 0.000000001)) / 16] && \
+		(game->tab_map[(int)((xy->y - 0.000000001)) / 16]
+		[(int)((xy->x - 0.000000001)) / 16] != '1'))
 	{
 		xy->y += delta_depth;
 		xy->x -= 16;

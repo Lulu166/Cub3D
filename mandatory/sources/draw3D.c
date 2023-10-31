@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw3D.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:46:17 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 11:08:54 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:31:39 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	draw_v_coll(t_game *game, t_pointf *xy_v, float dist, int i);
 static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i);
-
 
 void	draw_all(t_game *game, float dist, float angle, int i)
 {
@@ -35,12 +34,12 @@ void	draw_all(t_game *game, float dist, float angle, int i)
 
 void	draw_map(t_game *game)
 {
-	float	dist_h;
-	float	dist_v;
+	float		dist_h;
+	float		dist_v;
 	t_pointf	xy_v;
 	t_pointf	xy_h;
 	int			i;
-	
+
 	i = 1;
 	init_ray_struct(game);
 	game->ray->opposit = WIN_W / 2;
@@ -57,9 +56,11 @@ void	draw_map(t_game *game)
 			draw_v_coll(game, &xy_v, dist_v, i);
 		i++;
 		game->ray->opposit--;
-		game->ray->ray_angle = atanf(game->ray->opposit / game->ray->adjacent) + game->angle;
+		game->ray->ray_angle = atanf
+			(game->ray->opposit / game->ray->adjacent) + game->angle;
 	}
 }
+
 static void	draw_h_coll(t_game *game, t_pointf *xy_h, float dist, int i)
 {
 	game->collision[0] = xy_h->x;

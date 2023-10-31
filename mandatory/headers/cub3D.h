@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:45:38 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/31 13:07:22 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:00:44 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@
 #  define P_KEY 112
 # endif
 
-//# include <../mlx/mlx.h>
 # include <../minilibx-linux/mlx.h>
 # include <X11/X.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -103,12 +102,12 @@ typedef struct s_texture {
 	t_xpm	ea_img;
 }	t_texture;
 
-typedef	struct	s_pointf {
+typedef struct s_pointf {
 	float	x;
 	float	y;
 }	t_pointf;
 
-typedef	struct	s_point {
+typedef struct s_point {
 	int	x;
 	int	y;
 }	t_point;
@@ -142,15 +141,15 @@ typedef struct s_ray {
 	float	opposit;
 	float	adjacent;
 	float	ray_angle;
-	int	mapX;
-	int	mapY;
-	int	x;
-	float dirX;
-	float dirY;
+	int		mapX;
+	int		mapY;
+	int		x;
+	float	dirX;
+	float	dirY;
 	int		hit;
 	int		side;
-	double time;
-	double old_time;
+	double	time;
+	double	old_time;
 }	t_ray;
 
 typedef struct s_game {
@@ -201,8 +200,8 @@ int		convert_value(int *tab);
 /***************RAYCASTING***************/
 
 void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h);
-float   check_vertical(t_game *game, t_pointf *xy);
-float   check_horizontal(t_game *game, t_pointf *xy);
+float	check_vertical(t_game *game, t_pointf *xy);
+float	check_horizontal(t_game *game, t_pointf *xy);
 int		fill_column_count(t_game *game);
 float	horizontal_pos(t_game *game, t_pointf *xy);
 float	horizontal_neg(t_game *game, t_pointf *xy);
@@ -219,6 +218,8 @@ int		skip_empty(t_game *game, int i, int *j);
 int		empty_error(t_game *game, int i, int j);
 int		is_empty(t_game *game, int i, int j);
 int		is_player(t_game *game, int i, int j);
+void	init_player(t_game *game, int i, int j);
+int		player_pos(t_game *game);
 
 /***************WINDOW***************/
 void	window_init(t_game *game);
@@ -249,7 +250,9 @@ void	draw_wall(t_game *game, int *y, int y_max, int color);
 void	draw_map(t_game *game);
 
 /***************ERROR***************/
+void	texture_problems(t_game *game, char **line);
 void	map_error(t_game *game, int is_map, int is_mlx, int message);
 void	free_for_end(t_game *game);
+void	free_game(t_game *game, int is_map, int is_mlx);
 
 #endif

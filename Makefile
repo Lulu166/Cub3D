@@ -6,7 +6,7 @@
 #    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/31 13:08:56 by luhumber         ###   ########.fr        #
+#    Updated: 2023/10/31 13:48:53 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ DIR_MANDATORY	=	mandatory/sources/
 MANDATORY		=	$(DIR_MANDATORY)main.c \
 					$(DIR_MANDATORY)file.c \
 					$(DIR_MANDATORY)init.c \
-					$(DIR_MANDATORY)ray_casting.c \
 					$(DIR_MANDATORY)utils.c \
 					$(DIR_MANDATORY)utils1.c \
 					$(DIR_MANDATORY)fill_texture.c \
@@ -56,6 +55,8 @@ MANDATORY		=	$(DIR_MANDATORY)main.c \
 					$(DIR_MANDATORY)check_horizontal.c \
 					$(DIR_MANDATORY)check_vertical.c \
 					$(DIR_MANDATORY)error.c \
+					$(DIR_MANDATORY)player.c \
+					$(DIR_MANDATORY)end.c \
 
 # ---- Directories  bonus ---- #
 

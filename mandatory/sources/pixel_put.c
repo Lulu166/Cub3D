@@ -3,26 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:55:22 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/31 11:07:57 by chsiffre         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:45:29 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../headers/cub3D.h"
 
-
-int my_pixel_get(t_data *data, int x, int y)
+int	my_pixel_get(t_data *data, int x, int y)
 {
-    char	*dst;
+	char	*dst;
 
 	dst = data->addr + ((int)y * data->len + (int)x * (data->bpr / 8));
-    if (!(x >= 0 && x <= 255) || !(y >= 0 && y <= 255))
-        return (*(uint32_t *)(data->addr + (255 * data->len + 255 * \
+	if (!(x >= 0 && x <= 255) || !(y >= 0 && y <= 255))
+		return (*(uint32_t *)(data->addr + (255 * data->len + 255 * \
 		(data->bpr / 8))));
-    return (*(uint32_t*)dst);
+	return (*(uint32_t *)dst);
 }
 
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color)

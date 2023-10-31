@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:38:21 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/31 13:00:19 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:42:48 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ int	split_to_hexa(t_game *game, int hexa, char **split, int *tmp)
 	return (hexa);
 }
 
+void	rgb_error(t_game *game, int *tmp)
+{
+	free(game->line);
+	free(tmp);
+	free_tab(game->split_line);
+	map_error(game, 0, 0, 3);
+}
+
 int	allocate_rgb(t_game *game, char *line)
 {
 	char	*cpy;
@@ -88,21 +96,11 @@ int	allocate_rgb(t_game *game, char *line)
 		map_error(game, 0, 0, 2);
 	cpy = supp_space(line, 0);
 	if (!cpy)
-	{
-		free(game->line);
-		free(tmp);
-		free_tab(game->split_line);
-		map_error(game, 0, 0, 3);
-	}
+		rgb_error(game, tmp);
 	split = ft_split(cpy, ',');
 	free(cpy);
 	if (split == NULL)
-	{
-		free(game->line);
-		free(tmp);
-		free_tab(game->split_line);
-		map_error(game, 0, 0, 3);
-	}
+		rgb_error(game, tmp);
 	hexa = split_to_hexa(game, hexa, split, tmp);
 	free_tab(split);
 	return (hexa);

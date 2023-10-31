@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:11:04 by chsiffre          #+#    #+#             */
-/*   Updated: 2023/10/31 13:08:02 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:43:38 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	set_angle(t_game *game)
 		game->angle = 3 * M_PI / 2;
 	else if (game->player.orientation == 'E')
 		game->angle = 2 * M_PI;
-		
 }
 
 void	game_init(t_game *game, char *arg)
@@ -63,7 +62,6 @@ void	game_init(t_game *game, char *arg)
 	window_init(game);
 }
 
-
 void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h)
 {
 	g->collision[0] = 0;
@@ -76,8 +74,7 @@ void	init_ray(t_game *g, t_pointf *xy_v, t_pointf *xy_h)
 	g->sin_angle = -sinf(g->ray->ray_angle);
 }
 
-
-void    init_ray_struct(t_game *g)
+void	init_ray_struct(t_game *g)
 {
 	g->ray->posX = g->player.posx + 8;
 	g->ray->posY = g->player.posy + 8;
@@ -95,5 +92,4 @@ void    init_ray_struct(t_game *g)
 	g->ray->opposit = 0;
 	g->ray->ray_angle = 0;
 	g->ray->x = 1;
-
 }

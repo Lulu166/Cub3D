@@ -6,18 +6,11 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:50:37 by lucas             #+#    #+#             */
-/*   Updated: 2023/10/31 12:59:48 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:48:23 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3D.h"
-
-void	texture_problems(t_game *game, char **line)
-{
-	free(game->line);
-	free_tab(line);
-	map_error(game, 0, 0, 3);
-}
 
 int	check_rgb(t_game *game, char **line)
 {
