@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+         #
+#    By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 20:11:11 by lucas             #+#    #+#              #
-#    Updated: 2023/10/31 10:57:42 by chsiffre         ###   ########.fr        #
+#    Updated: 2023/10/31 13:08:56 by luhumber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ DIR_OBJS	    =	.objs/
 # ---- Flags ---- #
 
 ifeq ($(R_BONUS), no)
-CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_HEADERS)
+CFLAGS		=	-Wall -Wextra -Werror -O3 -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_HEADERS)
 else
 CFLAGS		=	-Wall -Wextra -Werror -O3  -Wno-deprecated-declarations -g3 -I $(DIR_LIB) -I $(DIR_MLX) -I $(DIR_H_BONUS)
 endif

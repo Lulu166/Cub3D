@@ -6,7 +6,7 @@
 /*   By: luhumber <luhumber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:43:31 by luhumber          #+#    #+#             */
-/*   Updated: 2023/10/25 16:23:10 by luhumber         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:56:00 by luhumber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	mouse_click(int button, int x, int y, t_game *game)
 	if (button == 1)
 	{
 		game->player.click_right = 0;
-		mlx_mouse_hide(game->screen.mlx, game->screen.win);
 		mlx_mouse_move
 			(game->screen.mlx, game->screen.win, WIN_W / 2, WIN_H / 2);
 	}

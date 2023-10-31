@@ -6,7 +6,11 @@
 /*   By: chsiffre <chsiffre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 00:22:44 by lucas             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/31 10:36:37 by chsiffre         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/26 10:44:35 by luhumber         ###   ########.fr       */
+>>>>>>> KillParse
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +121,7 @@ int	fill_column_count(t_game *game)
 	i = 0;
 	game->column_count = malloc(sizeof(int) * map_size(game));
 	if (!game->column_count)
-		return (0);
+		map_error(game, 1, 1, 1);
 	while (game->tab_map[i] && i <= map_size(game))
 	{
 		game->column_count[i] = ft_strlen(game->tab_map[i]);
